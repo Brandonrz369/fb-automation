@@ -2,7 +2,7 @@
 
 ## For New Claude Sessions - READ THIS FIRST
 
-**Last Updated:** February 5, 2026
+**Last Updated:** February 6, 2026
 **Purpose:** Enable any Claude session to immediately understand and continue this project
 
 ---
@@ -18,11 +18,11 @@
 
 ---
 
-## Current Numbers (Verified Feb 5, 2026)
+## Current Numbers (Verified Feb 6, 2026)
 
 | Metric | Count | Notes |
 |--------|-------|-------|
-| **OC Groups** | 52 | Tier 1: 8, Tier 2: 12, Tier 3: 32 |
+| **OC Groups** | 62 | Tier 1: 8, Tier 2: 14, Tier 3: 40 |
 | **Content Posts** | 16 | Each has 3 variations = 48 total |
 | **Photos** | 18 | Categorized by type |
 | **Delay Between Posts** | 65-140 min | Random, mimics human behavior |
@@ -44,15 +44,15 @@
 
 ---
 
-## Current State (February 5, 2026)
+## Current State (February 6, 2026)
 
 ### What's Complete
-- [x] 52 Orange County groups configured in groups.yaml
+- [x] 62 Orange County groups configured in groups.yaml (rebuilt from live scrape)
 - [x] 16 content pieces with 3 variations each (48 total)
 - [x] Settings updated with safe delays (65-140 min)
 - [x] Strategy guide created from Gemini research
 - [x] 18 photos categorized and ready
-- [x] Cleanup of all non-OC groups complete
+- [x] Groups verified via live Facebook scrape (Feb 6)
 - [x] Dashboard.html fully updated with accurate data
 - [x] All documentation consolidated (Feb 5)
 - [x] Growth strategy for Group/Page created
@@ -158,9 +158,9 @@ Use browser_task with:
 
 | Tier | Count | Description | Examples |
 |------|-------|-------------|----------|
-| **Tier 1** | 8 | High-volume community groups | Santa Ana Neighbors, Anything OC |
-| **Tier 2** | 12 | Niche: B2B, Parents, Local | OC Parents, Business Networks |
-| **Tier 3** | 32 | Local city groups | Irvine, Fullerton, HB, etc. |
+| **Tier 1** | 8 | High-volume community groups | Anything OC, Anaheim Connect, OC Word of Mouth |
+| **Tier 2** | 14 | Business/Niche: B2B, Parents | OC Small Business, Business Networking, Tustin Moms |
+| **Tier 3** | 40 | Local city groups | Westminster, Tustin, Fullerton, Garden Grove, etc. |
 
 ---
 
@@ -295,6 +295,7 @@ When starting a new session:
 
 | Date | Key Changes |
 |------|-------------|
+| Feb 6, 2026 | Groups rebuilt from live FB scrape: 62 active groups (was 52 configured, 9 verified). Real URLs captured. Business page (38 groups) also documented |
 | Feb 5, 2026 | Dashboard rewritten, all docs made consistent, Google Calendar MCP installed, Growth Strategy created, Launch Checklist created |
 | Feb 3, 2026 | Strategy guide created, delays updated to 65-140 min |
 | Feb 2, 2026 | Initial framework built, 52 groups configured |
