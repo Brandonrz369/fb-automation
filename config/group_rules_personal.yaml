@@ -1,0 +1,787 @@
+# LB Computer Help - Group Rules Database (Personal Account: Brandon Ruiz)
+# ========================================================================
+# UPDATED: February 6, 2026
+# PURPOSE: Track posting rules for each group so we don't violate them
+# HOW: Rules are captured during each posting session (agent visits About page first)
+#
+# Fields:
+#   rules_captured: true/false - whether we've scraped the About page yet
+#   captured_date: when rules were last checked
+#   admin_approval: whether posts need admin approval
+#   promo_allowed: whether business/promotional posts are allowed
+#   promo_days: specific days when promo is allowed (null = any day)
+#   post_frequency: group's stated limit on posting frequency
+#   special_restrictions: any other rules to follow
+#   notes: additional context
+#
+# Rules are populated automatically during post sessions.
+# The Browser Use agent visits /about BEFORE posting each time a group
+# has rules_captured: false
+
+# ============================================
+# TIER 1: HIGH-VOLUME OC COMMUNITY GROUPS
+# ============================================
+
+anything_oc:
+  name: "Anything Orange County Ca."
+  url: "https://www.facebook.com/groups/anythingorangecounty/"
+  rules_captured: true
+  captured_date: "2026-02-06"
+  admin_approval: true
+  promo_allowed: true
+  promo_days: null
+  post_frequency: "max 1/day or 5/week"
+  special_restrictions: "No politics (removed/blocked); No spam/irrelevant links"
+  notes: "Business Information explicitly allowed in group description"
+
+oc_city_neighbors:
+  name: "Orange County/City Neighbors"
+  url: "https://www.facebook.com/groups/469434236561202/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+anaheim_connect:
+  name: "Anaheim Connect"
+  url: "https://www.facebook.com/groups/anaheimconnect/"
+  rules_captured: true
+  captured_date: "2026-02-06"
+  admin_approval: true
+  promo_allowed: false
+  promo_days: null
+  post_frequency: null
+  special_restrictions: "Anaheim residents only; Business owners must message admin for approval before posting; No unsolicited ads or excessive self-promotion"
+  notes: "First post triggers Participation Review (answer question + agree to rules). Posts go to pending admin approval."
+
+oc_word_of_mouth:
+  name: "Orange County Word Of Mouth"
+  url: "https://www.facebook.com/groups/1465046331072201/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+regional_placentia:
+  name: "All Things Placentia/Yorba Linda/Fullerton/Brea/Anaheim Hills"
+  url: "https://www.facebook.com/groups/1614383225658934/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+fullerton_friends:
+  name: "Fullerton Friends"
+  url: "https://www.facebook.com/groups/FullertonCA/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+orange_county_general:
+  name: "Orange County"
+  url: "https://www.facebook.com/groups/102979206441781/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+oc_daily_post:
+  name: "Orange County (Daily Post)"
+  url: "https://www.facebook.com/groups/OrangeCountyDaiyPost/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+# ============================================
+# TIER 2: BUSINESS & NICHE GROUPS
+# ============================================
+
+oc_small_business:
+  name: "OC Small Business Owners"
+  url: "https://www.facebook.com/groups/198798850159806/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+buena_park_small_business:
+  name: "Buena Park Small Business"
+  url: "https://www.facebook.com/groups/978445632222816/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+oc_business_networking_1:
+  name: "Orange County Business Networking"
+  url: "https://www.facebook.com/groups/1312732626003804/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+oc_business_networking_2:
+  name: "Orange County Business Networking"
+  url: "https://www.facebook.com/groups/627414672845857/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+oc_business_networking_3:
+  name: "Orange County Business Networking"
+  url: "https://www.facebook.com/groups/304547296236875/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+oc_business_networking_experts:
+  name: "Orange County Business Networking Experts"
+  url: "https://www.facebook.com/groups/orangecountybusinessnetworkingexperts/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+ca_business_entrepreneurs:
+  name: "Business | Business Group | Entrepreneurs | Startups Owners California USA"
+  url: "https://www.facebook.com/groups/694872252765229/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+ca_entrepreneurs:
+  name: "Entrepreneurs & Business Owners California"
+  url: "https://www.facebook.com/groups/entrepreneursandbusinessownerscalifornia/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+s_oc_business:
+  name: "S. Orange County Business"
+  url: "https://www.facebook.com/groups/208267934129333/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+supporting_small_biz_socal:
+  name: "Supporting Small Businesses SoCal"
+  url: "https://www.facebook.com/groups/875591112888772/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+oc_la_business_networking:
+  name: "Orange County / Los Angeles Business Networking Group"
+  url: "https://www.facebook.com/groups/762365660498362/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+socal_business_networking:
+  name: "SoCal Business Networking | oGoing"
+  url: "https://www.facebook.com/groups/socalbusiness/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+oc_contractors:
+  name: "Contractors, Handymen & Home Improvement Suppliers in Orange County, CA"
+  url: "https://www.facebook.com/groups/occontractorhandyman/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+cerritos_business:
+  name: "Open for Business! Cerritos"
+  url: "https://www.facebook.com/groups/cerritosbusiness/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+tustin_moms:
+  name: "Tustin Moms"
+  url: "https://www.facebook.com/groups/827785512169024/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+# ============================================
+# TIER 3: LOCAL CITY & COMMUNITY GROUPS
+# ============================================
+
+# --- Westminster Area ---
+westminster_community_forum_1:
+  name: "Westminster California Community Forum"
+  url: "https://www.facebook.com/groups/2355821157765896/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+westminster_westside:
+  name: "Westminster CA Westside Community Discussion Group"
+  url: "https://www.facebook.com/groups/924611452493452/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+westminster_residents:
+  name: "Westminster CA Residents CommUNITY"
+  url: "https://www.facebook.com/groups/173839769659595/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+westminster_community:
+  name: "Westminster Community"
+  url: "https://www.facebook.com/groups/WestminsterJunior/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+westminster_community_forum_2:
+  name: "Westminster Community Forum"
+  url: "https://www.facebook.com/groups/331325404137008/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+explore_westminster:
+  name: "Explore Westminster"
+  url: "https://www.facebook.com/groups/1036775379839884/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+westminster_buy_sell:
+  name: "Westminster CommUNITY Buy n Sell"
+  url: "https://www.facebook.com/groups/2272799852995670/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+# --- Tustin Area ---
+talk_of_tustin:
+  name: "Talk of Tustin - What's The Buzz?"
+  url: "https://www.facebook.com/groups/483423102042355/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+tustin_camino_real:
+  name: "Communities @ Camino Real Park Tustin, Ca"
+  url: "https://www.facebook.com/groups/411603749460452/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+tustin_trash_treasure:
+  name: "Tustin Trash & Treasure Community"
+  url: "https://www.facebook.com/groups/TustinTrashAndTreasure/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+tustin_community:
+  name: "Tustin Community"
+  url: "https://www.facebook.com/groups/TustinCommunity/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+# --- Anaheim Hills / Yorba Linda ---
+anaheim_hills_buzz:
+  name: "Anaheim Hills Buzz ll"
+  url: "https://www.facebook.com/groups/487622976755738/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+yorba_linda_community:
+  name: "Yorba Linda Community Post"
+  url: "https://www.facebook.com/groups/789404557749501/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+# --- Irvine ---
+irvine_community:
+  name: "Irvine Community Forum"
+  url: "https://www.facebook.com/groups/258031801293776/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+# --- Costa Mesa ---
+costa_mesa_buzz:
+  name: "Costa Mesa Buzz"
+  url: "https://www.facebook.com/groups/CostaMesaBuzz1/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+# --- Santa Ana ---
+santa_ana_california:
+  name: "Santa Ana California"
+  url: "https://www.facebook.com/groups/santaanacaliforniausa/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+santa_ana_vecinos:
+  name: "Santa ana y sus Vecinos"
+  url: "https://www.facebook.com/groups/583896301083964/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+santa_ana_better_community:
+  name: "Santa Ana Residents for a Better Community"
+  url: "https://www.facebook.com/groups/335112143218674/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+santa_ana_costa_mesa:
+  name: "Santa Ana and Costa Mesa Neighborhood"
+  url: "https://www.facebook.com/groups/596343956499183/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+el_tianguis_santa_ana:
+  name: "EL TIANGUIS DE SANTA ANA"
+  url: "https://www.facebook.com/groups/1160880513955561/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+# --- Fullerton / Placentia ---
+fun_in_fullerton:
+  name: "Fun in Fullerton"
+  url: "https://www.facebook.com/groups/funinfullerton/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+real_fullerton_buzz:
+  name: "The Real Fullerton Buzz"
+  url: "https://www.facebook.com/groups/373324747902909/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+fullerton_community_post:
+  name: "Fullerton Community Post"
+  url: "https://www.facebook.com/groups/Fullertoncp/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+placentia_news:
+  name: "Placentia News You Can Use"
+  url: "https://www.facebook.com/groups/720308234712644/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+real_placentia_buzz:
+  name: "The Real Placentia Buzz"
+  url: "https://www.facebook.com/groups/295230495816239/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+# --- Buena Park ---
+buena_park_friends:
+  name: "Buena Park Friends"
+  url: "https://www.facebook.com/groups/buenaparkca/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+buena_park_police:
+  name: "Buena Park Police Department Community Page"
+  url: "https://www.facebook.com/groups/BuenaParkPD/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+# --- Garden Grove ---
+garden_grove_neighbors:
+  name: "Garden Grove Neighbors & Friends"
+  url: "https://www.facebook.com/groups/412659649570719/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+garden_grove_crime:
+  name: "Garden Grove Crime Blog & Safe Community Initiative"
+  url: "https://www.facebook.com/groups/gardengrovecrimeblog/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+garden_grove_whats_going_on:
+  name: "Garden Grove: What's going on?"
+  url: "https://www.facebook.com/groups/422473821227459/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+# --- Cypress ---
+cypress_buy_sell:
+  name: "Cypress CA buy & sell"
+  url: "https://www.facebook.com/groups/2671320156346379/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+whats_up_cypress:
+  name: "What's Up Cypress?"
+  url: "https://www.facebook.com/groups/493855847479166/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+cypress_neighborhood:
+  name: "Cypress, California Neighborhood Group"
+  url: "https://www.facebook.com/groups/493302534034040/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+# --- General OC ---
+oc_south:
+  name: "Orange County, California (South)"
+  url: "https://www.facebook.com/groups/158014559063/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+oc_regional_mix:
+  name: "OC ORANGE RIVERSIDE LOS ANGELES COSTA MESA SANTA ANA ANAHEIM GARDEN STANTON"
+  url: "https://www.facebook.com/groups/578337458989630/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+# --- Buy/Sell & Classifieds ---
+buena_park_buy_sell:
+  name: "Buena Park, La Habra, La Mirada, Anaheim and Fullerton buy or sell online"
+  url: "https://www.facebook.com/groups/389706524993519/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+craigslist_oc:
+  name: "Craigslist Orange, Santa Ana, Anaheim"
+  url: "https://www.facebook.com/groups/Craigslist.Orange.SantaAna.Anaheim/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+buy_sell_anaheim:
+  name: "Buy /sell Anaheim, California"
+  url: "https://www.facebook.com/groups/1371306910186213/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null
+
+craigslist_westminster_gg:
+  name: "Craigslist Westminster, Midway City, Stanton Garden Grove"
+  url: "https://www.facebook.com/groups/154438658258939/"
+  rules_captured: false
+  captured_date: null
+  admin_approval: null
+  promo_allowed: null
+  promo_days: null
+  post_frequency: null
+  special_restrictions: null
+  notes: null

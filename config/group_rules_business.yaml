@@ -1,0 +1,19 @@
+# LB Computer Help - Group Rules Database (Business Page: LB Computer Help)
+# ==========================================================================
+# UPDATED: February 6, 2026
+# PURPOSE: Track posting rules for groups the business page posts in
+# HOW: Rules are captured during each posting session (agent visits About page first)
+#
+# NOTE: Business page has 38 groups. Many overlap with personal account.
+# Strategy: Use business page for B2B groups + groups where personal already posted recently.
+# NEVER post from both accounts to the same group in the same week.
+#
+# Rules are populated automatically during post sessions.
+# The Browser Use agent visits /about BEFORE posting each time a group
+# has rules_captured: false
+
+# Business page groups will be added here as we begin posting from that account.
+# For now, focus is on personal account Phase 2 launch.
+#
+# To populate: Run a Browser Use task from the business page profile to scrape
+# /groups/joins/ and capture all group names + URLs, then add entries here.

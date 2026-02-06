@@ -45,9 +45,38 @@ class BrowserAgent:
         group_url = payload['group_url']
         text = payload['text']
         photo_path = payload.get('photo_path')
+        capture_rules = payload.get('capture_rules', False)
 
         # Escape quotes in text for the prompt
         text_escaped = text.replace('"', '\\"').replace('\n', '\\n')
+
+        # Build rules-capture step (visit About page first if needed)
+        rules_step = ""
+        if capture_rules:
+            rules_step = f"""STEP 0 - CAPTURE GROUP RULES:
+First, navigate to {group_url}about (add "about" to the group URL).
+Wait for the page to load.
+Look for and record ALL of the following:
+- "Group rules" section (numbered rules)
+- Any mentions of allowed posting days (e.g. "Self-promo Saturday", "Business Wednesday")
+- Whether admin approval is required for posts
+- Whether business/promotional posts are allowed or restricted
+- Any posting frequency limits (e.g. "1 post per week")
+- Any special restrictions or requirements
+
+Write all the rules you find to a file called "group_rules_output.txt" using this format:
+GROUP: {payload.get('group_name', 'Unknown')}
+URL: {group_url}
+ADMIN_APPROVAL: [yes/no/unknown]
+PROMO_ALLOWED: [yes/no/restricted/unknown]
+PROMO_DAYS: [specific days or "any"]
+POST_FREQUENCY: [stated limit or "not specified"]
+RULES: [list all rules found, separated by semicolons]
+NOTES: [any other relevant info]
+
+After recording rules, navigate back to {group_url}
+
+"""
 
         # Build photo upload step if needed
         photo_step = ""
@@ -73,7 +102,7 @@ Press Enter or click the comment submit button to post the comment.
 
 """
 
-        task = f"""Navigate to {group_url}
+        task = f"""{rules_step}Navigate to {group_url}
 
 Wait for the page to load completely.
 
@@ -235,8 +264,12 @@ def generate_mcp_command(payload: Dict, profile_id: str) -> Dict:
     agent = BrowserAgent(profile_id, mode='mcp', dry_run=False)
     task = agent._build_post_task(payload)
 
-    # More steps needed now: scroll, like, post, comment
-    max_steps = 25 if payload.get('first_comment') else 20
+    # Calculate steps: base(15) + comment(5) + rules_capture(8)
+    max_steps = 15
+    if payload.get('first_comment'):
+        max_steps += 5
+    if payload.get('capture_rules'):
+        max_steps += 8
 
     return {
         'task': task,

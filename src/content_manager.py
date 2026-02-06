@@ -32,6 +32,9 @@ class ContentManager:
         self.content = self._load_yaml("content_calendar.yaml")
         self.photos = self._load_yaml("photos_manifest.yaml")
 
+        # Load group rules (personal account)
+        self.group_rules = self._load_yaml("group_rules_personal.yaml") or {}
+
         # Load posting history
         self.history = self._load_history()
 
@@ -238,8 +241,13 @@ class ContentManager:
         # Select a soft CTA for the first comment
         first_comment = random.choice(SOFT_CTAS)
 
+        # Check if we need to capture rules for this group
+        group_id = group['id']
+        rules_entry = self.group_rules.get(group_id, {})
+        needs_rules = not rules_entry.get('rules_captured', False)
+
         return {
-            'group_id': group['id'],
+            'group_id': group_id,
             'group_name': group['name'],
             'group_url': group['url'],
             'post_id': post['id'],
@@ -249,6 +257,7 @@ class ContentManager:
             'audience_segment': audience,
             'category': post.get('category'),
             'first_comment': first_comment,
+            'capture_rules': needs_rules,
         }
 
     def get_stats(self) -> Dict:
