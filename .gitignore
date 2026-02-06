@@ -5,3 +5,9 @@ venv/
 .env
 data/paused.lock
 *.log
+.env
+*.env
+credentials*
+secrets*
+*.secret
+*.key
