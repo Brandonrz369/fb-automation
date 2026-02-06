@@ -1,0 +1,45 @@
+2026-02-03 18:31:15,525 - __main__ - INFO - ==================================================
+2026-02-03 18:31:15,525 - __main__ - INFO - Starting daily posting cycle
+2026-02-03 18:31:15,525 - __main__ - INFO - ==================================================
+2026-02-03 18:31:15,525 - __main__ - INFO - Current stats: {'total_groups': 53, 'active_groups': 53, 'total_content_pieces': 16, 'posts_today': 0, 'posts_this_week': 0}
+2026-02-03 18:31:15,525 - __main__ - INFO - Selected 3 groups for today
+2026-02-03 18:31:15,525 - __main__ - INFO - 
+--- Processing group 1/3: Neighbors of Santa Ana ---
+2026-02-03 18:31:15,525 - __main__ - INFO - Content: week1_day1_productivity_tip (tips)
+2026-02-03 18:31:15,525 - __main__ - INFO - Audience: community
+2026-02-03 18:31:15,525 - __main__ - INFO - Photo: None
+2026-02-03 18:31:15,525 - browser_agent - INFO - [DRY RUN] Would post to: Neighbors of Santa Ana
+2026-02-03 18:31:15,525 - browser_agent - INFO - [DRY RUN] Content ID: week1_day1_productivity_tip
+2026-02-03 18:31:15,525 - browser_agent - INFO - [DRY RUN] Photo: None
+2026-02-03 18:31:15,525 - browser_agent - INFO - [DRY RUN] Text preview: Happy Monday, neighbors!
+Ever accidentally close a browser tab with important work on it? Don't pani...
+2026-02-03 18:31:15,525 - __main__ - INFO - SUCCESS: [DRY RUN] Would post 'week1_day1_productivity_tip' to 'Neighbors of Santa Ana'
+2026-02-03 18:31:15,525 - __main__ - INFO - Waiting 39 minutes before next post...
+2026-02-03 18:31:15,525 - __main__ - INFO - 
+--- Processing group 2/3: Fullerton Friends ---
+2026-02-03 18:31:15,526 - __main__ - INFO - Content: week1_day1_productivity_tip (tips)
+2026-02-03 18:31:15,526 - __main__ - INFO - Audience: community
+2026-02-03 18:31:15,526 - __main__ - INFO - Photo: None
+2026-02-03 18:31:15,526 - browser_agent - INFO - [DRY RUN] Would post to: Fullerton Friends
+2026-02-03 18:31:15,526 - browser_agent - INFO - [DRY RUN] Content ID: week1_day1_productivity_tip
+2026-02-03 18:31:15,526 - browser_agent - INFO - [DRY RUN] Photo: None
+2026-02-03 18:31:15,526 - browser_agent - INFO - [DRY RUN] Text preview: Happy Monday, neighbors!
+Ever accidentally close a browser tab with important work on it? Don't pani...
+2026-02-03 18:31:15,526 - __main__ - INFO - SUCCESS: [DRY RUN] Would post 'week1_day1_productivity_tip' to 'Fullerton Friends'
+2026-02-03 18:31:15,526 - __main__ - INFO - Waiting 18 minutes before next post...
+2026-02-03 18:31:15,526 - __main__ - INFO - 
+--- Processing group 3/3: Huntington Beach Surf City ---
+2026-02-03 18:31:15,526 - __main__ - INFO - Content: week1_day1_productivity_tip (tips)
+2026-02-03 18:31:15,526 - __main__ - INFO - Audience: community
+2026-02-03 18:31:15,526 - __main__ - INFO - Photo: None
+2026-02-03 18:31:15,526 - browser_agent - INFO - [DRY RUN] Would post to: Huntington Beach Surf City
+2026-02-03 18:31:15,526 - browser_agent - INFO - [DRY RUN] Content ID: week1_day1_productivity_tip
+2026-02-03 18:31:15,526 - browser_agent - INFO - [DRY RUN] Photo: None
+2026-02-03 18:31:15,526 - browser_agent - INFO - [DRY RUN] Text preview: Happy Monday, neighbors!
+Ever accidentally close a browser tab with important work on it? Don't pani...
+2026-02-03 18:31:15,526 - __main__ - INFO - SUCCESS: [DRY RUN] Would post 'week1_day1_productivity_tip' to 'Huntington Beach Surf City'
+2026-02-03 18:31:15,526 - __main__ - INFO - 
+==================================================
+2026-02-03 18:31:15,526 - __main__ - INFO - Daily cycle complete: 3 success, 0 failed
+2026-02-03 18:31:15,526 - __main__ - INFO - ==================================================
+2026-02-03 19:08:59,759 - __main__ - INFO - Generating posts for manual execution...

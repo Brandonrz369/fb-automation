@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LB Computer Help - FB Automation Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --sidebar-bg: #1a1d21;
+            --sidebar-hover: #2d3238;
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --accent-orange: #f59e0b;
+            --accent-purple: #8b5cf6;
+            --accent-red: #ef4444;
+            --accent-cyan: #06b6d4;
+            --bg-main: #f1f5f9;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-main);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 260px;
+            height: 100vh;
+            background: var(--sidebar-bg);
+            color: white;
+            padding: 0;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: linear-gradient(135deg, #1877f2, #0d47a1);
+        }
+
+        .sidebar-header h4 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .sidebar-header small {
+            opacity: 0.8;
+            font-size: 12px;
+        }
+
+        .nav-section {
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-section-title {
+            padding: 8px 20px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.4);
+            font-weight: 600;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.7);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+            background: var(--sidebar-hover);
+        }
+
+        .nav-link.active {
+            color: #fff;
+            background: var(--sidebar-hover);
+            border-left-color: var(--accent-blue);
+        }
+
+        .nav-link i {
+            width: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .main-content {
+            margin-left: 260px;
+            padding: 24px 32px;
+            min-height: 100vh;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-header {
+            margin-bottom: 24px;
+        }
+
+        .page-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0 0 8px 0;
+        }
+
+        .page-header p {
+            color: #64748b;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+            height: 100%;
+        }
+
+        .stat-card .icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .stat-card .icon.blue { background: #dbeafe; color: var(--accent-blue); }
+        .stat-card .icon.green { background: #dcfce7; color: var(--accent-green); }
+        .stat-card .icon.orange { background: #fef3c7; color: var(--accent-orange); }
+        .stat-card .icon.purple { background: #ede9fe; color: var(--accent-purple); }
+        .stat-card .icon.cyan { background: #cffafe; color: var(--accent-cyan); }
+        .stat-card .icon.red { background: #fee2e2; color: var(--accent-red); }
+
+        .stat-card h3 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0 0 4px 0;
+        }
+
+        .stat-card .label {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .stat-card .sublabel {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .card-panel {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .panel-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fafc;
+        }
+
+        .panel-header h5 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .panel-body {
+            padding: 20px;
+        }
+
+        .badge-tier1 { background: #dcfce7; color: #166534; }
+        .badge-tier2 { background: #fef3c7; color: #92400e; }
+        .badge-tier3 { background: #dbeafe; color: #1e40af; }
+        .badge-status { background: #f3e8ff; color: #7c3aed; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .setting-row:last-child {
+            border-bottom: none;
+        }
+
+        .setting-row .key {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .setting-row .value {
+            color: #1e293b;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .group-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .group-item:last-child {
+            border-bottom: none;
+        }
+
+        .group-item .name {
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        .group-item .meta {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .tier-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 12px 0;
+        }
+
+        .code-block .comment {
+            color: #64748b;
+        }
+
+        .code-block .command {
+            color: #22c55e;
+        }
+
+        .rule-item {
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .rule-item.critical {
+            border-left-color: var(--accent-red);
+            background: #fef2f2;
+        }
+
+        .rule-item h6 {
+            margin: 0 0 8px 0;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .rule-item p {
+            margin: 0;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .content-item {
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .content-item .title {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .content-item .category {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #475569;
+            margin-right: 8px;
+        }
+
+        .content-item .preview {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .photo-item {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .photo-item .filename {
+            font-weight: 500;
+            color: #1e293b;
+            font-size: 13px;
+        }
+
+        .photo-item .category {
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        .photo-item .desc {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .timeline-item {
+            padding: 16px 0;
+            border-left: 2px solid #e2e8f0;
+            padding-left: 24px;
+            position: relative;
+            margin-left: 12px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            position: absolute;
+            left: -7px;
+            top: 20px;
+        }
+
+        .timeline-item.completed::before {
+            background: var(--accent-green);
+        }
+
+        .timeline-item.pending::before {
+            background: #e2e8f0;
+            border: 2px solid var(--accent-blue);
+        }
+
+        .timeline-item .date {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .timeline-item .title {
+            font-weight: 600;
+            color: #1e293b;
+            margin: 4px 0;
+        }
+
+        .timeline-item .desc {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .file-tree {
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+
+        .file-tree .folder {
+            color: #60a5fa;
+        }
+
+        .file-tree .file {
+            color: #a5b4fc;
+        }
+
+        .file-tree .comment {
+            color: #64748b;
+        }
+
+        .enhancement-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border: 1px solid #bae6fd;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .enhancement-card h5 {
+            color: #0369a1;
+            margin: 0 0 12px 0;
+        }
+
+        .enhancement-card p {
+            color: #475569;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sidebar Navigation -->
+<nav class="sidebar">
+    <div class="sidebar-header">
+        <h4><i class="fab fa-facebook me-2"></i>LB Computer Help</h4>
+        <small>Facebook Automation Dashboard</small>
+    </div>
+
+    <div class="nav-section">
+        <div class="nav-section-title">Overview</div>
+        <a class="nav-link active" onclick="showSection('overview', this)">
+            <i class="fas fa-home"></i> Dashboard
+        </a>
+        <a class="nav-link" onclick="showSection('architecture', this)">
+            <i class="fas fa-sitemap"></i> Architecture
+        </a>
+        <a class="nav-link" onclick="showSection('status', this)">
+            <i class="fas fa-signal"></i> Current Status
+        </a>
+    </div>
+
+    <div class="nav-section">
+        <div class="nav-section-title">Configuration</div>
+        <a class="nav-link" onclick="showSection('groups', this)">
+            <i class="fas fa-users"></i> Groups (52)
+        </a>
+        <a class="nav-link" onclick="showSection('content', this)">
+            <i class="fas fa-file-alt"></i> Content Library
+        </a>
+        <a class="nav-link" onclick="showSection('photos', this)">
+            <i class="fas fa-camera"></i> Photo Assets
+        </a>
+        <a class="nav-link" onclick="showSection('settings', this)">
+            <i class="fas fa-cog"></i> Settings
+        </a>
+    </div>
+
+    <div class="nav-section">
+        <div class="nav-section-title">Operations</div>
+        <a class="nav-link" onclick="showSection('commands', this)">
+            <i class="fas fa-terminal"></i> Commands
+        </a>
+        <a class="nav-link" onclick="showSection('rules', this)">
+            <i class="fas fa-shield-alt"></i> Safety Rules
+        </a>
+        <a class="nav-link" onclick="showSection('emergency', this)">
+            <i class="fas fa-exclamation-triangle"></i> Emergency
+        </a>
+    </div>
+
+    <div class="nav-section">
+        <div class="nav-section-title">Strategy</div>
+        <a class="nav-link" onclick="showSection('roadmap', this)">
+            <i class="fas fa-road"></i> Roadmap
+        </a>
+        <a class="nav-link" onclick="showSection('enhancements', this)">
+            <i class="fas fa-magic"></i> AI Enhancements
+        </a>
+        <a class="nav-link" onclick="showSection('growth', this)">
+            <i class="fas fa-chart-line"></i> Growth Strategy
+        </a>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="main-content">
+
+    <!-- OVERVIEW SECTION -->
+    <section id="overview" class="content-section active">
+        <div class="page-header">
+            <h1>Dashboard Overview</h1>
+            <p>Facebook automation system for LB Computer Help - Orange County, CA | Last Updated: February 5, 2026</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="stat-card">
+                    <div class="icon blue"><i class="fas fa-users"></i></div>
+                    <h3>52</h3>
+                    <div class="label">Active Groups</div>
+                    <div class="sublabel">Orange County only</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="stat-card">
+                    <div class="icon green"><i class="fas fa-file-alt"></i></div>
+                    <h3>48</h3>
+                    <div class="label">Content Variations</div>
+                    <div class="sublabel">16 posts × 3 audiences</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="stat-card">
+                    <div class="icon orange"><i class="fas fa-camera"></i></div>
+                    <h3>18</h3>
+                    <div class="label">Photo Assets</div>
+                    <div class="sublabel">Categorized & ready</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="stat-card">
+                    <div class="icon purple"><i class="fas fa-robot"></i></div>
+                    <h3 style="font-size: 20px;">DRY RUN</h3>
+                    <div class="label">Bot Status</div>
+                    <div class="sublabel">Safe mode enabled</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two-Track Strategy -->
+        <div class="row g-4 mb-4">
+            <div class="col-lg-6">
+                <div class="card-panel">
+                    <div class="panel-header">
+                        <h5><i class="fas fa-user me-2 text-primary"></i> Residential Track</h5>
+                        <span class="badge-status">Personal Profile</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="setting-row">
+                            <span class="key">Account</span>
+                            <span class="value">Brandon Ruiz</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">Groups Active</span>
+                            <span class="value">52 OC groups</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">Target Revenue</span>
+                            <span class="value">$50-300/job</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">Tone</span>
+                            <span class="value">Helpful neighbor</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">Automation</span>
+                            <span class="value">High (Browser Use)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card-panel">
+                    <div class="panel-header">
+                        <h5><i class="fas fa-building me-2 text-info"></i> B2B/MSP Track</h5>
+                        <span class="badge-status">Business Page</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="setting-row">
+                            <span class="key">Account</span>
+                            <span class="value">LB Computer Help Page</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">Target Groups</span>
+                            <span class="value">10-15 business groups</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">Target Revenue</span>
+                            <span class="value">$500-2000/mo recurring</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">Tone</span>
+                            <span class="value">Professional consultant</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">Automation</span>
+                            <span class="value">Low (manual)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Group Tiers -->
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-layer-group me-2"></i> Group Tier Distribution</h5>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="stat-card" style="background: #dcfce7;">
+                            <h3 style="color: #166534;">8</h3>
+                            <div class="label" style="color: #166534;">Tier 1 - High Volume</div>
+                            <div class="sublabel">Post 2-3x/week each</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card" style="background: #fef3c7;">
+                            <h3 style="color: #92400e;">12</h3>
+                            <div class="label" style="color: #92400e;">Tier 2 - Niche/B2B</div>
+                            <div class="sublabel">Post 1-2x/week each</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card" style="background: #dbeafe;">
+                            <h3 style="color: #1e40af;">32</h3>
+                            <div class="label" style="color: #1e40af;">Tier 3 - Local Rotation</div>
+                            <div class="sublabel">Rotating 1/day</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARCHITECTURE SECTION -->
+    <section id="architecture" class="content-section">
+        <div class="page-header">
+            <h1>System Architecture</h1>
+            <p>How the automation system works</p>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-folder-tree me-2"></i> Project Structure</h5>
+            </div>
+            <div class="panel-body">
+                <div class="file-tree">
+<span class="folder">fb-automation/</span>
+├── <span class="folder">config/</span>                      <span class="comment"># Configuration files</span>
+│   ├── <span class="file">settings.yaml</span>            <span class="comment"># Core settings (delays, limits)</span>
+│   ├── <span class="file">groups.yaml</span>              <span class="comment"># 52 OC groups with tiers</span>
+│   ├── <span class="file">content_calendar.yaml</span>    <span class="comment"># 16 posts × 3 variations</span>
+│   └── <span class="file">photos_manifest.yaml</span>     <span class="comment"># 18 photo assets</span>
+│
+├── <span class="folder">src/</span>                         <span class="comment"># Python code</span>
+│   ├── <span class="file">main.py</span>                  <span class="comment"># CLI entry point</span>
+│   ├── <span class="file">content_manager.py</span>       <span class="comment"># Content selection logic</span>
+│   └── <span class="file">browser_agent.py</span>        <span class="comment"># Browser Use interface</span>
+│
+├── <span class="folder">data/</span>                        <span class="comment"># Runtime data</span>
+│   ├── <span class="file">history.json</span>             <span class="comment"># What was posted where</span>
+│   ├── <span class="file">paused.lock</span>              <span class="comment"># Emergency pause file</span>
+│   └── <span class="folder">logs/</span>                    <span class="comment"># Daily execution logs</span>
+│
+├── <span class="folder">docs/</span>                        <span class="comment"># Documentation</span>
+│   ├── <span class="file">IMPLEMENTATION_RUNBOOK.md</span>
+│   ├── <span class="file">TROUBLESHOOTING_GUIDE.md</span>
+│   └── <span class="file">PHASE_OVERVIEW.md</span>
+│
+├── <span class="file">JUMPSTART.md</span>                 <span class="comment"># Quick start for new sessions</span>
+├── <span class="file">PROJECT_CONTEXT.md</span>           <span class="comment"># Business context</span>
+├── <span class="file">STRATEGY_GUIDE.md</span>            <span class="comment"># Marketing strategy</span>
+├── <span class="file">EXECUTION_PLAN.md</span>            <span class="comment"># Daily workflow</span>
+├── <span class="file">CONTENT_TEMPLATES.md</span>         <span class="comment"># Post templates</span>
+├── <span class="file">EMERGENCY_PROCEDURES.md</span>      <span class="comment"># Crisis response</span>
+├── <span class="file">MSP-B2B-STRATEGY.md</span>          <span class="comment"># B2B marketing plan</span>
+└── <span class="file">dashboard.html</span>               <span class="comment"># This file</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-cogs me-2"></i> How Posting Works</h5>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="stat-card text-center">
+                            <div class="icon blue mx-auto"><i class="fas fa-play"></i></div>
+                            <div class="label">1. Select Groups</div>
+                            <div class="sublabel">Based on tier rotation</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card text-center">
+                            <div class="icon green mx-auto"><i class="fas fa-file-alt"></i></div>
+                            <div class="label">2. Match Content</div>
+                            <div class="sublabel">Tags + audience segment</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card text-center">
+                            <div class="icon orange mx-auto"><i class="fas fa-robot"></i></div>
+                            <div class="label">3. Browser Use</div>
+                            <div class="sublabel">Automates Facebook</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card text-center">
+                            <div class="icon purple mx-auto"><i class="fas fa-history"></i></div>
+                            <div class="label">4. Track History</div>
+                            <div class="sublabel">Prevent duplicates</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-cloud me-2"></i> Browser Use Integration</h5>
+            </div>
+            <div class="panel-body">
+                <div class="setting-row">
+                    <span class="key">Profile ID</span>
+                    <span class="value"><code>0ab23467-abfc-45a1-b98d-1b199d6168cc</code></span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">Profile Name</span>
+                    <span class="value">facebook</span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">Account</span>
+                    <span class="value">Brandon Ruiz (Personal)</span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">Max Steps per Task</span>
+                    <span class="value">15</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATUS SECTION -->
+    <section id="status" class="content-section">
+        <div class="page-header">
+            <h1>Current Status</h1>
+            <p>Project progress and completion tracking</p>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-lg-6">
+                <div class="card-panel">
+                    <div class="panel-header">
+                        <h5><i class="fas fa-check-circle me-2 text-success"></i> Completed</h5>
+                    </div>
+                    <div class="panel-body">
+                        <div class="timeline-item completed">
+                            <div class="date">Feb 2, 2026</div>
+                            <div class="title">Initial project setup</div>
+                            <div class="desc">Python framework, config files, Browser Use integration</div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="date">Feb 3, 2026</div>
+                            <div class="title">52 OC groups configured</div>
+                            <div class="desc">Tiered system with content tags and audience segments</div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="date">Feb 3, 2026</div>
+                            <div class="title">Content library created</div>
+                            <div class="desc">16 posts with community/b2b/parent variations</div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="date">Feb 3, 2026</div>
+                            <div class="title">Strategy documentation</div>
+                            <div class="desc">Gemini research, safety rules, execution plan</div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="date">Feb 5, 2026</div>
+                            <div class="title">Group cleanup complete</div>
+                            <div class="desc">Manually left all non-OC groups (LB, LA County)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card-panel">
+                    <div class="panel-header">
+                        <h5><i class="fas fa-clock me-2 text-warning"></i> Pending</h5>
+                    </div>
+                    <div class="panel-body">
+                        <div class="timeline-item pending">
+                            <div class="date">Next</div>
+                            <div class="title">First live test post</div>
+                            <div class="desc">Execute one real post to verify everything works</div>
+                        </div>
+                        <div class="timeline-item pending">
+                            <div class="date">Week 2</div>
+                            <div class="title">Content expansion</div>
+                            <div class="desc">Create 5+ variations per post to avoid detection</div>
+                        </div>
+                        <div class="timeline-item pending">
+                            <div class="date">Week 3</div>
+                            <div class="title">Enable live automation</div>
+                            <div class="desc">Set dry_run: false and begin daily cycle</div>
+                        </div>
+                        <div class="timeline-item pending">
+                            <div class="date">Week 4</div>
+                            <div class="title">Cron scheduling</div>
+                            <div class="desc">VPS deployment with automatic daily runs</div>
+                        </div>
+                        <div class="timeline-item pending">
+                            <div class="date">Future</div>
+                            <div class="title">AI image generation</div>
+                            <div class="desc">Use Gemini to create custom images per post</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GROUPS SECTION -->
+    <section id="groups" class="content-section">
+        <div class="page-header">
+            <h1>Facebook Groups</h1>
+            <p>52 Orange County groups configured for posting</p>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-star me-2 text-success"></i> Tier 1 - High Volume (8 groups)</h5>
+                <span class="tier-badge badge-tier1">2-3x/week each</span>
+            </div>
+            <div class="panel-body" style="padding: 0;">
+                <div class="group-item">
+                    <div>
+                        <div class="name">Neighbors of Santa Ana</div>
+                        <div class="meta">106K members • Community</div>
+                    </div>
+                    <span class="tier-badge badge-tier1">Tier 1</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">Anything Orange County Ca.</div>
+                        <div class="meta">68K members • Community</div>
+                    </div>
+                    <span class="tier-badge badge-tier1">Tier 1</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">Cypress Community Group</div>
+                        <div class="meta">17K members • Community</div>
+                    </div>
+                    <span class="tier-badge badge-tier1">Tier 1</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">Fullerton Friends</div>
+                        <div class="meta">13K members • Community</div>
+                    </div>
+                    <span class="tier-badge badge-tier1">Tier 1</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">All Things Placentia/Yorba Linda/Fullerton/Brea</div>
+                        <div class="meta">8.1K members • Community</div>
+                    </div>
+                    <span class="tier-badge badge-tier1">Tier 1</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">Huntington Beach Community Forum</div>
+                        <div class="meta">Community</div>
+                    </div>
+                    <span class="tier-badge badge-tier1">Tier 1</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">Westminster Community Forum</div>
+                        <div class="meta">Community</div>
+                    </div>
+                    <span class="tier-badge badge-tier1">Tier 1</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">Anaheim Connect</div>
+                        <div class="meta">Community</div>
+                    </div>
+                    <span class="tier-badge badge-tier1">Tier 1</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-briefcase me-2 text-warning"></i> Tier 2 - Niche/B2B (12 groups)</h5>
+                <span class="tier-badge badge-tier2">1-2x/week each</span>
+            </div>
+            <div class="panel-body" style="padding: 0;">
+                <div class="group-item">
+                    <div>
+                        <div class="name">OC Small Business Owners</div>
+                        <div class="meta">5K members • B2B</div>
+                    </div>
+                    <span class="tier-badge badge-tier2">Tier 2</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">SoCal Small Business Networking</div>
+                        <div class="meta">B2B</div>
+                    </div>
+                    <span class="tier-badge badge-tier2">Tier 2</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">OC Business Networking</div>
+                        <div class="meta">B2B</div>
+                    </div>
+                    <span class="tier-badge badge-tier2">Tier 2</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">Anaheim Moms Group</div>
+                        <div class="meta">4K members • Parent</div>
+                    </div>
+                    <span class="tier-badge badge-tier2">Tier 2</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">Tustin Moms</div>
+                        <div class="meta">Parent</div>
+                    </div>
+                    <span class="tier-badge badge-tier2">Tier 2</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">+ 7 more business/marketplace groups</div>
+                        <div class="meta">See config/groups.yaml for full list</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-map-marker-alt me-2 text-primary"></i> Tier 3 - Local Rotation (32 groups)</h5>
+                <span class="tier-badge badge-tier3">Rotating 1/day</span>
+            </div>
+            <div class="panel-body">
+                <p class="text-muted">32 city-specific community groups across Orange County:</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <ul class="list-unstyled">
+                            <li>• Huntington Beach (5 groups)</li>
+                            <li>• Westminster/Stanton (3 groups)</li>
+                            <li>• Garden Grove (3 groups)</li>
+                            <li>• Santa Ana (3 groups)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-unstyled">
+                            <li>• Fullerton/Placentia (5 groups)</li>
+                            <li>• Buena Park (2 groups)</li>
+                            <li>• Tustin (1 group)</li>
+                            <li>• Cypress/Los Alamitos (4 groups)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-unstyled">
+                            <li>• Seal Beach (2 groups)</li>
+                            <li>• Newport Beach (1 group)</li>
+                            <li>• General OC (4 groups)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT SECTION -->
+    <section id="content" class="content-section">
+        <div class="page-header">
+            <h1>Content Library</h1>
+            <p>16 content pieces × 3 audience variations = 48 unique posts</p>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-tags me-2"></i> Content Categories</h5>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <div class="icon orange"><i class="fas fa-fan"></i></div>
+                            <h3>Dusty PC</h3>
+                            <div class="label">Highest engagement</div>
+                            <div class="sublabel">"Disaster porn" photos</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <div class="icon red"><i class="fas fa-shield-alt"></i></div>
+                            <h3>Security</h3>
+                            <div class="label">Scam alerts</div>
+                            <div class="sublabel">High shareability</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <div class="icon blue"><i class="fas fa-lightbulb"></i></div>
+                            <h3>Tips</h3>
+                            <div class="label">Educational</div>
+                            <div class="sublabel">Builds trust</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-users me-2"></i> Audience Variations</h5>
+            </div>
+            <div class="panel-body">
+                <div class="content-item">
+                    <div class="title">Community</div>
+                    <span class="category">Tone</span> Friendly neighbor
+                    <div class="preview">"Hey OC neighbors! Opened up a laptop for a neighbor in [CITY] today..."</div>
+                </div>
+                <div class="content-item">
+                    <div class="title">B2B</div>
+                    <span class="category">Tone</span> Professional consultant
+                    <div class="preview">"Equipment maintenance reminder: This workstation came in overheating and throttling..."</div>
+                </div>
+                <div class="content-item">
+                    <div class="title">Parent</div>
+                    <span class="category">Tone</span> Patient, family-focused
+                    <div class="preview">"Is your family computer loud or running hot? Look what we found inside..."</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-calendar me-2"></i> Content Calendar (Week 1-2)</h5>
+            </div>
+            <div class="panel-body">
+                <div class="content-item">
+                    <span class="category">Day 1</span> <span class="category">tips</span>
+                    <div class="title">Productivity Tip - Ctrl+Shift+T</div>
+                </div>
+                <div class="content-item">
+                    <span class="category">Day 2</span> <span class="category">security</span>
+                    <div class="title">Scam Alert - Fake Microsoft Pop-ups</div>
+                </div>
+                <div class="content-item">
+                    <span class="category">Day 3</span> <span class="category">dusty</span>
+                    <div class="title">Dusty PC - Jet Engine Sound</div>
+                </div>
+                <div class="content-item">
+                    <span class="category">Day 4</span> <span class="category">tips</span>
+                    <div class="title">WiFi Tip - 30 Second Rule</div>
+                </div>
+                <div class="content-item">
+                    <span class="category">Day 5</span> <span class="category">promo</span>
+                    <div class="title">Soft Promotion - Weekend Availability</div>
+                </div>
+                <div class="content-item">
+                    <span class="category">Day 6</span> <span class="category">smart_home</span>
+                    <div class="title">Smart Home - Camera WiFi Check</div>
+                </div>
+                <div class="content-item">
+                    <span class="category">Day 7</span> <span class="category">tips</span>
+                    <div class="title">Sunday Reset - Cable Organization</div>
+                </div>
+                <div class="content-item">
+                    <span class="category">+ 9 more</span>
+                    <div class="title">See config/content_calendar.yaml for full library</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHOTOS SECTION -->
+    <section id="photos" class="content-section">
+        <div class="page-header">
+            <h1>Photo Assets</h1>
+            <p>18 categorized photos ready for posting</p>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-fan me-2"></i> Dusty PC Photos (2)</h5>
+            </div>
+            <div class="panel-body">
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <div class="filename">IMG_1810.jpg</div>
+                        <div class="category">dusty</div>
+                        <div class="desc">RTX 2080 Super with dust/pet hair, compressed air visible</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="filename">IMG_1786.jpg</div>
+                        <div class="category">dusty</div>
+                        <div class="desc">Gigabyte Aorus X570 with cobwebs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-network-wired me-2"></i> Network Infrastructure (6)</h5>
+            </div>
+            <div class="panel-body">
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <div class="filename">IMG_1308.jpg</div>
+                        <div class="category">network</div>
+                        <div class="desc">Network rack with Cisco equipment</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="filename">IMG_1309.jpg</div>
+                        <div class="category">network</div>
+                        <div class="desc">Fortinet FortiGate 60F firewall</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="filename">IMG_1393.jpg</div>
+                        <div class="category">network</div>
+                        <div class="desc">Cable spaghetti - great BEFORE photo</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="filename">IMG_0311.jpg</div>
+                        <div class="category">network</div>
+                        <div class="desc">Cybera gateway stacked equipment</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="filename">IMG_0262.jpg</div>
+                        <div class="category">network</div>
+                        <div class="desc">Home networking with Google Wifi</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="filename">IMG_0314.jpg</div>
+                        <div class="category">network</div>
+                        <div class="desc">Linksys switch with ethernet cables</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-tools me-2"></i> Hardware Repairs (8)</h5>
+            </div>
+            <div class="panel-body">
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <div class="filename">IMG_0333.jpg</div>
+                        <div class="category">repairs</div>
+                        <div class="desc">Damaged USB 3.0 port with bent pins</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="filename">IMG_1362.jpg</div>
+                        <div class="category">repairs</div>
+                        <div class="desc">Motherboard cleaning with cotton swab</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="filename">IMG_0867.jpg</div>
+                        <div class="category">repairs</div>
+                        <div class="desc">Dell laptop thermal system</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="filename">IMG_0040.jpg</div>
+                        <div class="category">repairs</div>
+                        <div class="desc">iPhone screen replacement</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="filename">IMG_0690.jpg</div>
+                        <div class="category">repairs</div>
+                        <div class="desc">Mac mini opened for service</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="filename">+ 3 more</div>
+                        <div class="desc">See photos_manifest.yaml</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-user me-2"></i> Personal Brand (2)</h5>
+            </div>
+            <div class="panel-body">
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <div class="filename">IMG_0039.jpg</div>
+                        <div class="category">brand</div>
+                        <div class="desc">Brandon with magnifying headset - precision work</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="filename">IMG_0038.jpg</div>
+                        <div class="category">brand</div>
+                        <div class="desc">Precision work setup</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SETTINGS SECTION -->
+    <section id="settings" class="content-section">
+        <div class="page-header">
+            <h1>Settings Configuration</h1>
+            <p>Current automation settings from config/settings.yaml</p>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-clock me-2"></i> Posting Settings</h5>
+            </div>
+            <div class="panel-body">
+                <div class="setting-row">
+                    <span class="key">Posts per Day</span>
+                    <span class="value">3-5</span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">Posting Window</span>
+                    <span class="value">9 AM - 8 PM</span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">Delay Between Posts</span>
+                    <span class="value">65-140 minutes (randomized)</span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">Per-Group Frequency</span>
+                    <span class="value">Max 1 post every 14 days</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-shield-alt me-2"></i> Safety Settings</h5>
+            </div>
+            <div class="panel-body">
+                <div class="setting-row">
+                    <span class="key">Dry Run Mode</span>
+                    <span class="value" style="color: var(--accent-green); font-weight: 600;">ENABLED (safe)</span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">Pause File</span>
+                    <span class="value">data/paused.lock</span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">Max Consecutive Failures</span>
+                    <span class="value">3 (then auto-pause)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-folder me-2"></i> File Paths</h5>
+            </div>
+            <div class="panel-body">
+                <div class="setting-row">
+                    <span class="key">Photos Directory</span>
+                    <span class="value"><code>/home/brandon/Downloads/drive-download-20260126T055922Z-1-001</code></span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">History File</span>
+                    <span class="value"><code>data/history.json</code></span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">Log Directory</span>
+                    <span class="value"><code>data/logs/</code></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMANDS SECTION -->
+    <section id="commands" class="content-section">
+        <div class="page-header">
+            <h1>CLI Commands</h1>
+            <p>How to operate the automation system</p>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-terminal me-2"></i> Main Commands</h5>
+            </div>
+            <div class="panel-body">
+                <div class="code-block">
+<span class="comment"># Check current status</span>
+<span class="command">python3 ~/fb-automation/src/main.py --status</span>
+
+<span class="comment"># Preview what would be posted (safe - no actual posts)</span>
+<span class="command">python3 ~/fb-automation/src/main.py --dry-run</span>
+
+<span class="comment"># Generate Browser Use task prompts for manual execution</span>
+<span class="command">python3 ~/fb-automation/src/main.py --generate</span>
+
+<span class="comment"># Post to a specific group</span>
+<span class="command">python3 ~/fb-automation/src/main.py --post GROUP_ID</span>
+
+<span class="comment"># Run the full daily cycle (requires dry_run: false)</span>
+<span class="command">python3 ~/fb-automation/src/main.py</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-pause me-2"></i> Emergency Controls</h5>
+            </div>
+            <div class="panel-body">
+                <div class="code-block">
+<span class="comment"># PAUSE all automation immediately</span>
+<span class="command">touch ~/fb-automation/data/paused.lock</span>
+
+<span class="comment"># Check if paused and why</span>
+<span class="command">cat ~/fb-automation/data/paused.lock</span>
+
+<span class="comment"># Resume automation</span>
+<span class="command">rm ~/fb-automation/data/paused.lock</span>
+
+<span class="comment"># Check recent logs</span>
+<span class="command">tail -50 ~/fb-automation/data/logs/automation_$(date +%Y-%m-%d).log</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-toggle-on me-2"></i> Enable Live Posting</h5>
+            </div>
+            <div class="panel-body">
+                <div class="code-block">
+<span class="comment"># Edit settings.yaml</span>
+<span class="command">nano ~/fb-automation/config/settings.yaml</span>
+
+<span class="comment"># Change this line:</span>
+safety:
+  dry_run: false  <span class="comment"># Change from true to false</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RULES SECTION -->
+    <section id="rules" class="content-section">
+        <div class="page-header">
+            <h1>Safety Rules</h1>
+            <p>Critical rules to prevent account restrictions</p>
+        </div>
+
+        <div class="rule-item critical">
+            <h6><i class="fas fa-link me-2"></i> NEVER put links in main post</h6>
+            <p>Put links in FIRST COMMENT only. Links in main text kill reach by 80% and trigger spam detection.</p>
+        </div>
+
+        <div class="rule-item critical">
+            <h6><i class="fas fa-copy me-2"></i> NEVER post identical content to multiple groups</h6>
+            <p>Facebook AI fingerprints detect this instantly. Need 5+ text variations per content piece.</p>
+        </div>
+
+        <div class="rule-item critical">
+            <h6><i class="fas fa-clock me-2"></i> Wait 65-140 minutes between posts</h6>
+            <p>Faster posting looks like bot behavior. Randomize delays within this range.</p>
+        </div>
+
+        <div class="rule-item">
+            <h6><i class="fas fa-calendar me-2"></i> Max 3-5 posts per day</h6>
+            <p>Higher volume triggers rate limits and spam detection.</p>
+        </div>
+
+        <div class="rule-item">
+            <h6><i class="fas fa-users me-2"></i> 1 post per group every 14 days</h6>
+            <p>More frequent posting to the same group looks spammy to admins.</p>
+        </div>
+
+        <div class="rule-item">
+            <h6><i class="fas fa-heart me-2"></i> Engage 10:1 ratio</h6>
+            <p>For every promotional post, engage with 10 non-business posts (likes, comments on friends' content).</p>
+        </div>
+
+        <div class="rule-item">
+            <h6><i class="fas fa-camera me-2"></i> Use raw photos, not graphics</h6>
+            <p>Canva graphics and text overlays look like ads. Authentic photos perform better.</p>
+        </div>
+
+        <div class="rule-item">
+            <h6><i class="fas fa-user me-2"></i> Sound like a neighbor, not a business</h6>
+            <p>Community groups respond better to helpful neighbors than corporate marketing.</p>
+        </div>
+    </section>
+
+    <!-- EMERGENCY SECTION -->
+    <section id="emergency" class="content-section">
+        <div class="page-header">
+            <h1>Emergency Procedures</h1>
+            <p>What to do when things go wrong</p>
+        </div>
+
+        <div class="card-panel" style="border-left: 4px solid var(--accent-red);">
+            <div class="panel-header" style="background: #fef2f2;">
+                <h5><i class="fas fa-ban me-2 text-danger"></i> CRITICAL: Account Restricted</h5>
+            </div>
+            <div class="panel-body">
+                <ol>
+                    <li><strong>STOP all automation immediately</strong><br>
+                        <code>touch ~/fb-automation/data/paused.lock</code></li>
+                    <li><strong>Do NOT try to log in repeatedly</strong> - makes it worse</li>
+                    <li><strong>Wait 24-48 hours</strong> with zero activity</li>
+                    <li><strong>Log in from phone</strong> - scroll, like friends' photos</li>
+                    <li><strong>After 72 hours</strong> - resume at 50% volume (2 posts/day max)</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="card-panel" style="border-left: 4px solid var(--accent-orange);">
+            <div class="panel-header" style="background: #fffbeb;">
+                <h5><i class="fas fa-exclamation-triangle me-2 text-warning"></i> HIGH: Multiple Posts Deleted</h5>
+            </div>
+            <div class="panel-body">
+                <ol>
+                    <li>Pause automation for 72 hours</li>
+                    <li>Review which posts were deleted - identify pattern</li>
+                    <li>Disable problem groups in groups.yaml</li>
+                    <li>Manual activity only for 1 week</li>
+                    <li>Resume with ONE post per day</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="card-panel" style="border-left: 4px solid var(--accent-blue);">
+            <div class="panel-header" style="background: #eff6ff;">
+                <h5><i class="fas fa-robot me-2 text-primary"></i> MEDIUM: CAPTCHA Appearing</h5>
+            </div>
+            <div class="panel-body">
+                <ol>
+                    <li>Complete the CAPTCHA carefully</li>
+                    <li>Pause automation for 24 hours</li>
+                    <li>Review posting frequency - may need to slow down</li>
+                    <li>Resume with caution</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP SECTION -->
+    <section id="roadmap" class="content-section">
+        <div class="page-header">
+            <h1>Project Roadmap</h1>
+            <p>Phased implementation plan</p>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-check-circle me-2 text-success"></i> Phase 1: Foundation (Complete)</h5>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>✅ Python framework built and tested</li>
+                    <li>✅ Browser Use integration working</li>
+                    <li>✅ 52 OC groups configured</li>
+                    <li>✅ Content library created</li>
+                    <li>✅ Safety rules documented</li>
+                    <li>✅ Group cleanup complete (left all non-OC groups)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-play-circle me-2 text-primary"></i> Phase 2: Soft Launch (Current)</h5>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>⏳ First live test post</li>
+                    <li>⏳ Post to Tier 1 groups (8 groups)</li>
+                    <li>⏳ Monitor engagement daily</li>
+                    <li>⏳ Respond to all comments</li>
+                    <li>⏳ Expand content variations</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-rocket me-2 text-warning"></i> Phase 3: Full Automation</h5>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>📋 Enable live mode (dry_run: false)</li>
+                    <li>📋 Expand to all 52 groups</li>
+                    <li>📋 Set up cron scheduling</li>
+                    <li>📋 Daily monitoring routine</li>
+                    <li>📋 Weekly performance reviews</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-building me-2 text-info"></i> Phase 4: B2B Track (Parallel)</h5>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>📋 Join 10-15 business networking groups (Business Page)</li>
+                    <li>📋 Create B2B-focused content</li>
+                    <li>📋 Manual posting 2x/week</li>
+                    <li>📋 Lead tracking spreadsheet</li>
+                    <li>📋 Target: $500-2000/mo MSP contracts</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI ENHANCEMENTS SECTION -->
+    <section id="enhancements" class="content-section">
+        <div class="page-header">
+            <h1>AI Enhancements</h1>
+            <p>Future improvements using AI image generation and content creation</p>
+        </div>
+
+        <div class="enhancement-card">
+            <h5><i class="fas fa-image me-2"></i> AI Image Generation with Gemini</h5>
+            <p>Generate unique, engaging images for each post using Gemini's image generation capabilities.</p>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-magic me-2"></i> Concept: Dynamic Image Generation</h5>
+            </div>
+            <div class="panel-body">
+                <p>Instead of reusing the same 18 photos, generate unique images per post:</p>
+
+                <div class="content-item">
+                    <div class="title">1. Dusty PC Visualizations</div>
+                    <span class="category">gemini-generate-image</span>
+                    <div class="preview">Prompt: "Photorealistic close-up of a dusty computer fan clogged with pet hair and dust bunnies, dramatic lighting, before-after cleaning concept"</div>
+                </div>
+
+                <div class="content-item">
+                    <div class="title">2. Scam Alert Graphics</div>
+                    <span class="category">gemini-generate-image</span>
+                    <div class="preview">Prompt: "Warning graphic showing a fake Microsoft virus popup on a computer screen, red warning colors, photorealistic monitor display"</div>
+                </div>
+
+                <div class="content-item">
+                    <div class="title">3. Tech Tips Infographics</div>
+                    <span class="category">gemini-generate-image</span>
+                    <div class="preview">Prompt: "Clean minimalist infographic showing keyboard shortcut Ctrl+Shift+T, modern flat design, blue and white colors"</div>
+                </div>
+
+                <div class="content-item">
+                    <div class="title">4. Local Community Feel</div>
+                    <span class="category">gemini-generate-image</span>
+                    <div class="preview">Prompt: "Friendly local computer technician helping a neighbor with their laptop in a sunny Orange County home office setting"</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-code me-2"></i> Implementation Approach</h5>
+            </div>
+            <div class="panel-body">
+                <div class="code-block">
+<span class="comment"># Add to content_manager.py</span>
+
+def generate_ai_image(self, post: Dict, group: Dict) -> str:
+    """Generate a unique AI image for this post."""
+
+    category = post.get('category')
+    city = self.get_city_for_group(group)
+
+    <span class="comment"># Build prompt based on content category</span>
+    prompts = {
+        'dusty': f"Photorealistic dusty computer fan...",
+        'security': f"Warning graphic about tech scam...",
+        'tips': f"Clean infographic showing {post['title']}...",
+        'repairs': f"Computer repair workspace with {city} vibes...",
+    }
+
+    prompt = prompts.get(category, "Generic tech repair image")
+
+    <span class="comment"># Call Gemini image generation</span>
+    result = gemini_generate_image(
+        prompt=prompt,
+        aspectRatio="4:3",
+        style="photorealistic"
+    )
+
+    return result['image_path']
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-brain me-2"></i> Other AI Enhancement Ideas</h5>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="stat-card">
+                            <div class="icon cyan"><i class="fas fa-pen"></i></div>
+                            <h3 style="font-size: 18px;">Content Variations</h3>
+                            <div class="sublabel">Use Gemini to generate 10+ unique variations of each post, avoiding duplicate detection</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="stat-card">
+                            <div class="icon purple"><i class="fas fa-city"></i></div>
+                            <h3 style="font-size: 18px;">City Personalization</h3>
+                            <div class="sublabel">Auto-insert local landmarks, neighborhoods, and city names for each group</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="stat-card">
+                            <div class="icon green"><i class="fas fa-chart-line"></i></div>
+                            <h3 style="font-size: 18px;">Engagement Analysis</h3>
+                            <div class="sublabel">Use AI to analyze which posts perform best and why, then optimize</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="stat-card">
+                            <div class="icon orange"><i class="fas fa-clock"></i></div>
+                            <h3 style="font-size: 18px;">Optimal Timing</h3>
+                            <div class="sublabel">AI-predicted best posting times based on group activity patterns</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-tools me-2"></i> Available MCP Tools for AI</h5>
+            </div>
+            <div class="panel-body">
+                <div class="setting-row">
+                    <span class="key">gemini-generate-image</span>
+                    <span class="value">Generate images from text prompts</span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">gemini-query</span>
+                    <span class="value">Get content ideas and variations</span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">gemini-brainstorm</span>
+                    <span class="value">Collaborate on marketing strategy</span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">gemini-analyze-image</span>
+                    <span class="value">Analyze your repair photos for best posting</span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">gemini-search</span>
+                    <span class="value">Research current trends and best practices</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GROWTH STRATEGY SECTION -->
+    <section id="growth" class="content-section">
+        <div class="page-header">
+            <h1>Growth Strategy</h1>
+            <p>Growing your Facebook Group and keeping your Business Page active</p>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-funnel-dollar me-2"></i> The "Helpful Neighbor" Funnel</h5>
+            </div>
+            <div class="panel-body">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <div class="stat-card" style="background: #dbeafe;">
+                            <div class="icon blue mx-auto"><i class="fas fa-users"></i></div>
+                            <h3 style="font-size: 18px; color: #1e40af;">TOP OF FUNNEL</h3>
+                            <div class="label" style="color: #1e40af;">52 Community Groups</div>
+                            <div class="sublabel">Get seen by neighbors</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card" style="background: #fef3c7;">
+                            <div class="icon orange mx-auto"><i class="fas fa-handshake"></i></div>
+                            <h3 style="font-size: 18px; color: #92400e;">MIDDLE OF FUNNEL</h3>
+                            <div class="label" style="color: #92400e;">Group + Page</div>
+                            <div class="sublabel">Build ongoing relationship</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card" style="background: #dcfce7;">
+                            <div class="icon green mx-auto"><i class="fas fa-dollar-sign"></i></div>
+                            <h3 style="font-size: 18px; color: #166534;">BOTTOM OF FUNNEL</h3>
+                            <div class="label" style="color: #166534;">Paid Services</div>
+                            <div class="sublabel">Convert to revenue</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-lg-6">
+                <div class="card-panel">
+                    <div class="panel-header">
+                        <h5><i class="fas fa-users-cog me-2 text-primary"></i> Facebook Group Setup</h5>
+                    </div>
+                    <div class="panel-body">
+                        <div class="setting-row">
+                            <span class="key">Recommended Name</span>
+                            <span class="value">"OC Tech Help & Computer Tips"</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">Privacy</span>
+                            <span class="value">Private but Visible</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">Membership Q1</span>
+                            <span class="value">"Do you live in Orange County?"</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">Membership Q2</span>
+                            <span class="value">"What's your biggest computer frustration?"</span>
+                        </div>
+                        <p class="mt-3 text-muted" style="font-size: 13px;">
+                            <strong>Why:</strong> People join "Advice" groups, not "Business" groups.
+                            The membership questions filter spam and give you content ideas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card-panel">
+                    <div class="panel-header">
+                        <h5><i class="fas fa-calendar-alt me-2 text-success"></i> Business Page Schedule</h5>
+                    </div>
+                    <div class="panel-body">
+                        <div class="setting-row">
+                            <span class="key">Monday</span>
+                            <span class="value">"Horror Photo" - dusty PCs, spills</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">Wednesday</span>
+                            <span class="value">Scam Alert or Quick Tip</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">Friday</span>
+                            <span class="value">Behind the Scenes / Week Wrap</span>
+                        </div>
+                        <p class="mt-3 text-muted" style="font-size: 13px;">
+                            <strong>Goal:</strong> 3 posts/week keeps the page active without burnout.
+                            Use Meta Business Suite to schedule on Sunday night.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-comment-dots me-2"></i> Soft CTA Scripts (First Comment)</h5>
+            </div>
+            <div class="panel-body">
+                <p class="text-muted mb-3">Add these as FIRST COMMENTS on your community posts (not in main text). Rotate through them.</p>
+
+                <div class="content-item">
+                    <div class="title">CTA 1 - Video Hook</div>
+                    <div class="preview">"PS: I posted a quick video on how to check this yourself in my local tech group. No sales pitch, just helpful tips: [GROUP LINK]"</div>
+                </div>
+                <div class="content-item">
+                    <div class="title">CTA 2 - Weekly Tips</div>
+                    <div class="preview">"If you want more tips like this, I share them weekly in my OC Tech Help group. It's free and no spam, promise: [GROUP LINK]"</div>
+                </div>
+                <div class="content-item">
+                    <div class="title">CTA 3 - Scam Alerts</div>
+                    <div class="preview">"I post scam alerts as soon as I see them hitting OC in my tech group. Join to stay protected: [GROUP LINK]"</div>
+                </div>
+                <div class="content-item">
+                    <div class="title">CTA 4 - Free Q&A</div>
+                    <div class="preview">"Got a tech question? I answer them for free in my local group. No appointment needed: [GROUP LINK]"</div>
+                </div>
+                <div class="content-item">
+                    <div class="title">CTA 5 - Exclusive Access</div>
+                    <div class="preview">"Group members get first access to my open slots each week. Join here if interested: [GROUP LINK]"</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-sync-alt me-2"></i> The "Tech Tuesday" Cross-Promotion Loop</h5>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="rule-item" style="border-left-color: var(--accent-blue);">
+                            <h6>Step 1: Tuesday AM</h6>
+                            <p>Post question in your Group: "What tech issue is annoying you this week?"</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="rule-item" style="border-left-color: var(--accent-orange);">
+                            <h6>Step 2: Tuesday PM</h6>
+                            <p>Answer the best question on your Business Page (video or text).</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="rule-item" style="border-left-color: var(--accent-green);">
+                            <h6>Step 3: Wednesday</h6>
+                            <p>Share that answer to community groups: "Answering a question from a neighbor..."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-search me-2"></i> Active Engagement (15 min/day)</h5>
+            </div>
+            <div class="panel-body">
+                <p><strong>The "Search & Comment" Technique:</strong></p>
+                <ol>
+                    <li>Search within community groups for: "laptop slow", "computer broken", "virus", "scam", "tech help"</li>
+                    <li>Comment helpfully on posts (give real advice, no link)</li>
+                    <li>End with: "Message me if you get stuck"</li>
+                </ol>
+                <p class="text-muted mt-3">
+                    <strong>Benefits:</strong> Triggers "Top Contributor" badge, higher visibility than posts, builds genuine reputation.
+                </p>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-exclamation-circle me-2 text-danger"></i> Scam Alert Template</h5>
+            </div>
+            <div class="panel-body">
+                <div class="code-block" style="white-space: pre-wrap;">
+🚨 SCAM ALERT for [CITY/AREA] 🚨
+
+What it looks like:
+[Describe the scam - fake email, popup, phone call]
+
+Red flags to spot:
+❌ [Red flag 1]
+❌ [Red flag 2]
+❌ [Red flag 3]
+
+What to do:
+✅ [Action 1 - Delete/Hang up]
+✅ [Action 2 - If they clicked]
+
+Already fell for it?
+[Recovery steps]
+
+Share to protect your neighbors!
+#ScamAlert #OrangeCounty
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-chart-bar me-2"></i> Growth Metrics to Track</h5>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="setting-row">
+                            <span class="key">Group members</span>
+                            <span class="value">Target: +10/week</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">Page followers</span>
+                            <span class="value">Target: +5/week</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">Page post reach</span>
+                            <span class="value">Target: 500+ avg</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="setting-row">
+                            <span class="key">Group engagement</span>
+                            <span class="value">Target: 5+ comments/post</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">DM inquiries</span>
+                            <span class="value">Target: 3+/week</span>
+                        </div>
+                        <div class="setting-row">
+                            <span class="key">FB conversions</span>
+                            <span class="value">Target: 2+/week</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="enhancement-card">
+            <h5><i class="fas fa-file-alt me-2"></i> Full Strategy Document</h5>
+            <p>See <code>GROWTH_STRATEGY.md</code> for complete details including sample posts, content ideas bank, and implementation checklist.</p>
+        </div>
+    </section>
+
+</main>
+
+<script>
+function showSection(sectionId, clickedLink) {
+    // Hide all sections
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+    });
+
+    // Show target section
+    document.getElementById(sectionId).classList.add('active');
+
+    // Update nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    clickedLink.classList.add('active');
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

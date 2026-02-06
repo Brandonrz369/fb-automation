@@ -1,0 +1,166 @@
+# LB Computer Help - Photo Asset Manifest
+# ========================================
+#
+# Maps photo files to categories for automatic matching
+# Categories should match content_tags in groups.yaml
+#
+# used_count: Tracks usage for rotation (prefer less-used photos)
+
+# ============================================
+# DUSTY PCs / CLEANING
+# ============================================
+
+- filename: "IMG_1810.jpg"
+  category: "dusty"
+  description: "Dusty RTX 2080 Super, Corsair fans with dust/pet hair, compressed air visible"
+  quality: "excellent"
+  used_count: 0
+
+- filename: "IMG_1786.jpg"
+  category: "dusty"
+  description: "Gigabyte Aorus X570 with cobwebs and dust accumulation"
+  quality: "excellent"
+  used_count: 0
+
+# ============================================
+# NETWORK INFRASTRUCTURE (B2B)
+# ============================================
+
+- filename: "IMG_1393.jpg"
+  category: "network"
+  description: "Messy security workstation with camera feeds, cable spaghetti - great BEFORE photo"
+  quality: "excellent"
+  used_count: 0
+
+- filename: "IMG_1308.jpg"
+  category: "network"
+  description: "Network rack with Cisco equipment, UTT router, switch with active ports"
+  quality: "excellent"
+  used_count: 0
+
+- filename: "IMG_1309.jpg"
+  category: "network"
+  description: "Network rack with Fortinet FortiGate 60F firewall, patch panel, blue cables"
+  quality: "excellent"
+  used_count: 0
+
+- filename: "IMG_0311.jpg"
+  category: "network"
+  description: "Cybera gateway stacked equipment, messy cables - BEFORE photo"
+  quality: "good"
+  used_count: 0
+
+- filename: "IMG_0262.jpg"
+  category: "network"
+  description: "Home networking setup, Google Wifi node, cable clutter"
+  quality: "good"
+  used_count: 0
+
+- filename: "IMG_0314.jpg"
+  category: "network"
+  description: "Hand holding Linksys SE3005V2 switch with ethernet cables"
+  quality: "good"
+  used_count: 0
+
+# ============================================
+# HARDWARE REPAIRS
+# ============================================
+
+- filename: "IMG_0333.jpg"
+  category: "repairs"
+  description: "Damaged USB 3.0 port with bent pins, broken housing"
+  quality: "excellent"
+  used_count: 0
+
+- filename: "IMG_1362.jpg"
+  category: "repairs"
+  description: "Motherboard cleaning with cotton swab, corrosion removal"
+  quality: "excellent"
+  used_count: 0
+
+- filename: "IMG_0867.jpg"
+  category: "repairs"
+  description: "Dell laptop internals showing thermal system, copper heat pipes"
+  quality: "excellent"
+  used_count: 0
+
+- filename: "IMG_0326.jpg"
+  category: "repairs"
+  description: "ASRock X570 Steel Legend motherboard with Corsair liquid cooler"
+  quality: "excellent"
+  used_count: 0
+
+- filename: "IMG_1895.HEIC"
+  category: "repairs"
+  description: "Laptop internals with dual cooling fans, heat pipes, RAM slot visible"
+  quality: "good"
+  used_count: 0
+
+# ============================================
+# PERSONAL BRAND / BEHIND THE SCENES
+# ============================================
+
+- filename: "IMG_0039.jpg"
+  category: "brand"
+  description: "Brandon wearing magnifying headset with LED light - shows precision work"
+  quality: "excellent"
+  used_count: 0
+
+- filename: "IMG_0038.jpg"
+  category: "brand"
+  description: "Precision work setup with magnifying headset"
+  quality: "good"
+  used_count: 0
+
+# ============================================
+# PHONE / MOBILE REPAIR
+# ============================================
+
+- filename: "IMG_0040.jpg"
+  category: "repairs"
+  description: "iPhone screen replacement with corner clamps - mobile repair capability"
+  quality: "excellent"
+  used_count: 0
+
+# ============================================
+# MAC REPAIR
+# ============================================
+
+- filename: "IMG_0690.jpg"
+  category: "repairs"
+  description: "Mac mini opened for service, internal fan and components visible"
+  quality: "excellent"
+  used_count: 0
+
+- filename: "IMG_0691.jpg"
+  category: "repairs"
+  description: "Mac mini internal components"
+  quality: "good"
+  used_count: 0
+
+# ============================================
+# GENERAL / TROUBLESHOOTING
+# ============================================
+
+- filename: "IMG_1394.jpg"
+  category: "repairs"
+  description: "Dell laptop with ethernet cable connected - troubleshooting session"
+  quality: "good"
+  used_count: 0
+
+# ============================================
+# NOTES
+# ============================================
+#
+# To add new photos:
+# 1. Copy photo to the photos base_path directory
+# 2. Add entry here with category that matches content tags
+# 3. Set used_count to 0
+#
+# Categories available:
+# - dusty: Dust/cleaning related posts
+# - network: Network infrastructure, B2B
+# - repairs: Hardware repair, laptop, phone, Mac
+# - brand: Personal/behind-the-scenes
+# - security: Scam screenshots, security visuals
+# - tips: General tips (often no photo needed)

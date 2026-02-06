@@ -1,0 +1,503 @@
+# LB Computer Help - Facebook Groups Configuration
+# =================================================
+# UPDATED: February 3, 2026 - Focused on Orange County ONLY
+#
+# audience_segment: Determines which text variation to use
+#   - community: Friendly neighbor tone
+#   - b2b: Professional business tone
+#   - parent: Patient, family-focused tone
+#
+# content_tags: What types of content this group should receive
+#   - dusty, repairs, network, security, tips, promo, smart_home, data_recovery
+#
+# tier: Posting frequency
+#   - 1: High volume (2-3x/week)
+#   - 2: Moderate (1-2x/week)
+#   - 3: Low (1x/week rotation)
+
+# ============================================
+# TIER 1: HIGH-VOLUME COMMUNITY GROUPS
+# ============================================
+
+- id: "santa_ana_neighbors"
+  name: "Neighbors of Santa Ana"
+  url: "https://www.facebook.com/groups/neighborsof.santaana"
+  members: 106000
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security", "data_recovery"]
+  tier: 1
+  active: true
+
+- id: "anything_oc"
+  name: "Anything Orange County Ca."
+  url: "https://www.facebook.com/groups/anythingorangecounty"
+  members: 68000
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security", "network", "promo"]
+  tier: 1
+  active: true
+
+- id: "cypress_community"
+  name: "Cypress Community Group (Original)"
+  url: "https://www.facebook.com/groups/cypresscommunity"
+  members: 17000
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "smart_home"]
+  tier: 1
+  active: true
+
+- id: "fullerton_friends"
+  name: "Fullerton Friends"
+  url: "https://www.facebook.com/groups/fullertonfriends"
+  members: 13000
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security"]
+  tier: 1
+  active: true
+
+- id: "regional_placentia"
+  name: "All Things Placentia/Yorba Linda/Fullerton/Brea/Anaheim Hills"
+  url: "https://www.facebook.com/groups/allthingsplacentia"
+  members: 8100
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "promo"]
+  tier: 1
+  active: true
+
+- id: "huntington_beach_forum"
+  name: "Huntington Beach Community Forum v. 2.0"
+  url: "https://www.facebook.com/groups/HuntingtonBeachCommunityForum/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security", "network"]
+  tier: 1
+  active: true
+
+- id: "westminster_community"
+  name: "Westminster Community Forum"
+  url: "https://www.facebook.com/groups/westminstercommunity"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security"]
+  tier: 1
+  active: true
+
+- id: "anaheim_connect"
+  name: "Anaheim Connect"
+  url: "https://www.facebook.com/groups/anaheimconnect"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "promo"]
+  tier: 1
+  active: true
+
+# ============================================
+# TIER 2: NICHE/ENGAGED GROUPS
+# ============================================
+
+# Business Groups (B2B)
+- id: "oc_small_business"
+  name: "OC Small Business Owners"
+  url: "https://www.facebook.com/groups/198798850159806/"
+  members: 5000
+  audience_segment: "b2b"
+  content_tags: ["network", "security", "promo", "repairs"]
+  tier: 2
+  active: true
+  notes: "Focus on MSP services, network infrastructure"
+
+- id: "buena_park_small_business"
+  name: "Buena Park Small Business"
+  url: "https://www.facebook.com/groups/978445632222816/"
+  audience_segment: "b2b"
+  content_tags: ["network", "security", "promo", "repairs"]
+  tier: 2
+  active: true
+
+- id: "socal_small_business_network"
+  name: "Small Business Networking Group - Southern California"
+  url: "https://www.facebook.com/groups/481785042447596/"
+  audience_segment: "b2b"
+  content_tags: ["network", "security", "promo", "repairs"]
+  tier: 2
+  active: true
+
+- id: "ca_small_business_owners"
+  name: "California Small Business Owners"
+  url: "https://www.facebook.com/groups/331110381911041/"
+  audience_segment: "b2b"
+  content_tags: ["network", "security", "promo", "repairs"]
+  tier: 2
+  active: true
+
+- id: "huntington_beach_business_network"
+  name: "Huntington Beach Business Network Community"
+  url: "https://www.facebook.com/groups/1678652125691030/"
+  audience_segment: "b2b"
+  content_tags: ["network", "security", "promo", "repairs"]
+  tier: 2
+  active: true
+
+- id: "oc_business_networking"
+  name: "Orange County Business Networking"
+  url: "https://www.facebook.com/groups/1312732626003804/"
+  audience_segment: "b2b"
+  content_tags: ["network", "security", "promo", "repairs"]
+  tier: 2
+  active: true
+
+- id: "seal_beach_small_business"
+  name: "Support Seal Beach Small Businesses"
+  url: "https://www.facebook.com/groups/1149945832032305/"
+  audience_segment: "b2b"
+  content_tags: ["network", "security", "promo", "repairs"]
+  tier: 2
+  active: true
+
+- id: "oc_contractors"
+  name: "Contractors, Handymen & Home Improvement Suppliers in Orange County, CA"
+  url: "https://www.facebook.com/groups/occontractors"
+  audience_segment: "b2b"
+  content_tags: ["network", "promo", "repairs"]
+  tier: 2
+  active: true
+
+# Parent Groups
+- id: "anaheim_moms"
+  name: "Anaheim Moms Group"
+  url: "https://www.facebook.com/groups/anaheimmoms"
+  members: 4000
+  audience_segment: "parent"
+  content_tags: ["tips", "security", "smart_home", "repairs"]
+  tier: 2
+  active: true
+  notes: "Focus on parental controls, kid-safe tech"
+
+- id: "tustin_moms"
+  name: "Tustin Moms"
+  url: "https://www.facebook.com/groups/tustinmoms"
+  audience_segment: "parent"
+  content_tags: ["tips", "security", "smart_home", "repairs"]
+  tier: 2
+  active: true
+
+# Classifieds/Marketplace (good for promo)
+- id: "huntington_beach_for_sale"
+  name: "Huntington Beach For Sale"
+  url: "https://www.facebook.com/groups/461197337294543/"
+  audience_segment: "community"
+  content_tags: ["promo", "repairs"]
+  tier: 2
+  active: true
+
+- id: "costa_mesa_buzz"
+  name: "Costa Mesa Buzz"
+  url: "https://www.facebook.com/groups/costamesabuzz"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "promo"]
+  tier: 2
+  active: true
+
+# ============================================
+# TIER 3: LOCAL CITY GROUPS (ROTATION)
+# ============================================
+
+# Huntington Beach Area
+- id: "huntington_beach_ca"
+  name: "HUNTINGTON BEACH- CA"
+  url: "https://www.facebook.com/groups/2975997252532905/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "hb_surf_city"
+  name: "Huntington Beach Surf City"
+  url: "https://www.facebook.com/groups/hbsurfcity"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "hb_insider"
+  name: "Huntington Beach Insider"
+  url: "https://www.facebook.com/groups/hbinsider"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "promo"]
+  tier: 3
+  active: true
+
+- id: "hb_anything_goes"
+  name: "Huntington Beach Anything Goes"
+  url: "https://www.facebook.com/groups/hbanythinggoes"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "promo"]
+  tier: 3
+  active: true
+
+- id: "newport_hb_whats_going_on"
+  name: "What's going on in Newport And Huntington Beach!"
+  url: "https://www.facebook.com/groups/newporthb"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+# Westminster/Stanton/Midway City
+- id: "westminster_residents"
+  name: "Westminster CA Residents CommUNITY"
+  url: "https://www.facebook.com/groups/westminsterresidents"
+  members: 6300
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "explore_westminster"
+  name: "Explore Westminster"
+  url: "https://www.facebook.com/groups/explorewestminster"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "stanton_residents"
+  name: "Stanton CA Residents & Friends"
+  url: "https://www.facebook.com/groups/stantonresidents"
+  members: 4500
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+# Garden Grove
+- id: "garden_grove_whats_going_on"
+  name: "Garden Grove: What's going on?"
+  url: "https://www.facebook.com/groups/gardengrovewhats"
+  members: 5300
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security"]
+  tier: 3
+  active: true
+
+- id: "garden_grove_neighbors"
+  name: "Garden Grove Neighbors & Friends"
+  url: "https://www.facebook.com/groups/gardengroveneighbors"
+  members: 2000
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "garden_grove_crime"
+  name: "Garden Grove Crime Blog & Safe Community Initiative"
+  url: "https://www.facebook.com/groups/gardengrovecrime"
+  audience_segment: "community"
+  content_tags: ["security", "tips"]
+  tier: 3
+  active: true
+
+# Santa Ana
+- id: "santa_ana_california"
+  name: "Santa Ana California"
+  url: "https://www.facebook.com/groups/santaanacalifornia"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "santa_ana_vecinos"
+  name: "Santa ana y sus Vecinos"
+  url: "https://www.facebook.com/groups/santaanavecinos"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "santa_ana_costa_mesa"
+  name: "Santa Ana and Costa Mesa Neighborhood"
+  url: "https://www.facebook.com/groups/santaanacostamesa"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+# Fullerton/Placentia/Brea
+- id: "fullerton_community_post"
+  name: "Fullerton Community Post"
+  url: "https://www.facebook.com/groups/fullertoncommunitypost"
+  members: 4400
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "real_fullerton_buzz"
+  name: "The Real Fullerton Buzz"
+  url: "https://www.facebook.com/groups/realfullertonbuzz"
+  members: 4000
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "promo"]
+  tier: 3
+  active: true
+
+- id: "fun_in_fullerton"
+  name: "Fun in Fullerton"
+  url: "https://www.facebook.com/groups/funinfullerton"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "real_placentia_buzz"
+  name: "The Real Placentia Buzz"
+  url: "https://www.facebook.com/groups/realplacentiabuzz"
+  members: 4500
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "smart_home"]
+  tier: 3
+  active: true
+
+- id: "placentia_news"
+  name: "Placentia News You Can Use"
+  url: "https://www.facebook.com/groups/placentianews"
+  members: 1400
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+# Buena Park
+- id: "buena_park_friends"
+  name: "Buena Park Friends"
+  url: "https://www.facebook.com/groups/buenaparkfriends"
+  members: 4100
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "buena_park_police"
+  name: "Buena Park Police Department Community Page"
+  url: "https://www.facebook.com/groups/buenaparkpd"
+  audience_segment: "community"
+  content_tags: ["security", "tips"]
+  tier: 3
+  active: true
+
+# Tustin
+- id: "talk_of_tustin"
+  name: "Talk of Tustin - What's The Buzz?"
+  url: "https://www.facebook.com/groups/talkoftustin"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+# Cypress/Los Alamitos/Seal Beach
+- id: "cypress_forum"
+  name: "Cypress California Community Forum"
+  url: "https://www.facebook.com/groups/193960731106609/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "smart_home"]
+  tier: 3
+  active: true
+
+- id: "cypress_buy_sell"
+  name: "Cypress CA buy & sell"
+  url: "https://www.facebook.com/groups/cypressbuysell"
+  audience_segment: "community"
+  content_tags: ["promo", "repairs"]
+  tier: 3
+  active: true
+
+- id: "los_alamitos_community"
+  name: "Los Alamitos Community Group"
+  url: "https://www.facebook.com/groups/353227338898014/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security"]
+  tier: 3
+  active: true
+
+- id: "shop_los_al_cypress_seal"
+  name: "Shop Los Alamitos/ Cypress/ Seal Beach"
+  url: "https://www.facebook.com/groups/shoploscypressseal"
+  audience_segment: "community"
+  content_tags: ["promo", "repairs"]
+  tier: 3
+  active: true
+
+- id: "seal_beach_locals"
+  name: "Seal Beach Locals"
+  url: "https://www.facebook.com/groups/1647313832213038/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "seal_beach_strong"
+  name: "Seal Beach Strong"
+  url: "https://www.facebook.com/groups/3133630196671158/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+# Newport Beach
+- id: "newport_beach_community"
+  name: "Newport Beach Community Forum"
+  url: "https://www.facebook.com/groups/newportbeachcommunity"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security"]
+  tier: 3
+  active: true
+
+# General OC
+- id: "orange_county_general"
+  name: "Orange County"
+  url: "https://www.facebook.com/groups/orangecountygeneral"
+  members: 5000
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security", "promo"]
+  tier: 3
+  active: true
+
+- id: "oc_south"
+  name: "Orange County, California (South)"
+  url: "https://www.facebook.com/groups/ocsouth"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "que_pasa_oc"
+  name: "QUE PASA EN OC"
+  url: "https://www.facebook.com/groups/quepasaoc"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "socal_memories"
+  name: "Southern California Memories"
+  url: "https://www.facebook.com/groups/1030320337396188/"
+  audience_segment: "community"
+  content_tags: ["dusty", "tips"]
+  tier: 3
+  active: true
+
+# ============================================
+# CONFIGURATION NOTES
+# ============================================
+#
+# Total Groups Configured: 52 (OC-focused)
+# Removed: All Long Beach and LA County groups
+#
+# Tier Distribution:
+#   - Tier 1 (high volume): 8 groups
+#   - Tier 2 (moderate): 12 groups
+#   - Tier 3 (rotation): 32 groups
+#
+# To add more groups:
+# 1. Check the audit results for additional OC groups
+# 2. Verify group URL is correct
+# 3. Wait 48 hours after joining before posting
+# 4. Start with active: false for testing
+#

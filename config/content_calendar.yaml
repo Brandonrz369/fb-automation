@@ -1,0 +1,586 @@
+# LB Computer Help - Content Calendar with Audience Variations
+# =============================================================
+#
+# Each post has 3 variations for different audience segments:
+#   - community: Friendly neighbor tone
+#   - b2b: Professional business tone
+#   - parent: Patient, family-focused tone
+#
+# category: Matches to photos and group content_tags
+# suggested_photos: Recommended images from the photo library
+
+# ============================================
+# WEEK 1: ESTABLISHING TRUST & EXPERTISE
+# ============================================
+
+- id: "week1_day1_productivity_tip"
+  day: 1
+  category: "tips"
+  suggested_photos: []
+  variations:
+    community: |
+      Happy Monday, neighbors!
+      Ever accidentally close a browser tab with important work on it? Don't panic!
+      You can bring it right back by pressing Ctrl + Shift + T (or Cmd + Shift + T on Mac).
+      It's a lifesaver for those Monday morning clumsy fingers.
+      Hope everyone has a productive week!
+      - Brandon, LB Computer Help
+
+    b2b: |
+      Quick productivity tip for your team:
+      Lost an important browser tab? Ctrl + Shift + T brings it right back.
+      Simple tricks like this save hours of frustration. What other shortcuts does your office rely on?
+      - Brandon Ruiz, LB Computer Help
+      www.lbcomputerhelp.com
+
+    parent: |
+      Monday tip for busy parents!
+      Kids accidentally close your browser tab while you were in the middle of something?
+      Press Ctrl + Shift + T to bring it right back. Works on homework tabs too!
+      - Brandon, LB Computer Help
+
+- id: "week1_day2_scam_alert"
+  day: 2
+  category: "security"
+  suggested_photos: []
+  variations:
+    community: |
+      Neighbor Alert: Pop-up Scams
+      I've had two calls this week from folks who got a loud "VIRUS DETECTED" pop-up telling them to call a Microsoft number immediately.
+
+      Please tell your parents/grandparents: Microsoft will NEVER put a phone number on your screen.
+
+      If this happens:
+      1. Don't call the number
+      2. Don't click anything
+      3. Force shut down (hold power button)
+
+      Stay safe out there!
+      - Brandon
+
+    b2b: |
+      Security Alert for Business Owners:
+      Seeing an uptick in fake "Microsoft Support" pop-ups targeting small offices.
+
+      Train your staff: Microsoft will NEVER display a phone number on screen.
+
+      Response protocol:
+      - Don't call or click
+      - Force shutdown (hold power button)
+      - Contact your IT support
+
+      Need employee security training? I offer on-site sessions.
+      - Brandon Ruiz, LB Computer Help
+
+    parent: |
+      Parents - heads up on a common scam!
+      Those scary "VIRUS DETECTED" pop-ups with a phone number? They're fake.
+
+      Teach your kids: NEVER call those numbers. Just hold the power button to shut down.
+
+      If it happens, message me - I can make sure nothing was compromised.
+      - Brandon, your local tech helper
+
+- id: "week1_day3_dusty_pc"
+  day: 3
+  category: "dusty"
+  suggested_photos: ["IMG_1810.jpg", "IMG_1786.jpg"]
+  variations:
+    community: |
+      This desktop came in running super slow and sounding like a jet engine taking off!
+
+      A quick open-up revealed... a dust bunny civilization! Heat is the #1 killer of electronics.
+
+      Pro Tip: Keep your computer tower off the carpet if you can!
+
+      A quick cleaning and this PC is purring again.
+      - Brandon, LB Computer Help
+
+    b2b: |
+      Equipment maintenance reminder:
+
+      This workstation came in overheating and throttling. The culprit? Dust accumulation from 3+ years without cleaning.
+
+      Heat damage costs more than preventive maintenance. I offer quarterly cleaning contracts for business equipment.
+
+      - Brandon Ruiz, LB Computer Help
+      www.lbcomputerhelp.com
+
+    parent: |
+      Is your family computer loud or running hot?
+
+      Look what we found inside this one - years of dust! No wonder it was struggling.
+
+      Quick tip: Keep computers off carpet and away from pet areas. Dust builds up fast!
+
+      If your home PC needs a cleaning, I'm local and can help same-day.
+      - Brandon
+
+- id: "week1_day4_wifi_tip"
+  day: 4
+  category: "tips"
+  suggested_photos: ["IMG_0262.jpg"]
+  variations:
+    community: |
+      Is your internet crawling today? Before you spend hours on hold with Spectrum or AT&T, try the "30-Second Rule."
+
+      Unplug your router from power. Wait a full 30 seconds. Plug it back in.
+
+      It sounds like a cliche ("Have you tried turning it off and on again?"), but it actually clears the cache and solves about 50% of connection issues.
+
+      Let me know if that helps!
+      - Brandon, your local IT guy
+
+    b2b: |
+      Network troubleshooting 101:
+
+      Before escalating to your ISP, try power cycling your router (unplug 30 seconds, replug).
+
+      This clears the routing cache and resolves ~50% of connectivity issues without a support ticket.
+
+      For persistent business connectivity issues, I offer same-day network diagnostics.
+      - Brandon Ruiz, LB Computer Help
+
+    parent: |
+      WiFi acting up during homework time? Try this first:
+
+      Unplug your router, wait 30 seconds, plug it back in.
+
+      I know "turn it off and on again" sounds like a joke, but it really works about half the time!
+
+      Still having issues? I do house calls and can sort out your home network.
+      - Brandon
+
+- id: "week1_day5_soft_promo"
+  day: 5
+  category: "promo"
+  suggested_photos: ["IMG_0039.jpg"]
+  variations:
+    community: |
+      Heading into the weekend! Just a reminder that if you're stuck with a broken screen, a slow laptop, or a "blue screen of death," I'm right here in Anaheim.
+
+      - $99 Diagnostic (goes toward repair cost)
+      - Same-day service on most issues
+      - 90-Day Warranty on my work
+
+      I'm a solo tech, not a big chain, so you'll always talk directly to me. Drop a comment or message if you need help!
+
+      www.lbcomputerhelp.com
+
+    b2b: |
+      Quick reminder for local business owners:
+
+      Tired of being the "IT department" for your own office?
+
+      I offer managed IT services for small businesses - $299/mo includes:
+      - System updates & security patches
+      - Cloud backup monitoring
+      - Priority same-day support
+
+      Let me handle the tech so you can handle your business.
+      - Brandon Ruiz, LB Computer Help
+      www.lbcomputerhelp.com
+
+    parent: |
+      Weekend reminder for busy families:
+
+      Got a laptop that won't turn on? Gaming PC running slow? WiFi not reaching the kids' rooms?
+
+      I'm local in Anaheim and offer same-day help. Patient with tech questions and happy to explain things in plain English.
+
+      - $99 diagnostic
+      - 90-day warranty
+      - Family-friendly service
+
+      Message me anytime!
+      - Brandon, LB Computer Help
+
+- id: "week1_day6_smart_home"
+  day: 6
+  category: "smart_home"
+  suggested_photos: []
+  variations:
+    community: |
+      Weekend Project: Installing a Ring or Nest camera?
+
+      Make sure you check your WiFi signal at the OUTSIDE of your door before you drill holes! If the signal is weak, your video will lag.
+
+      Need help with smart home setup (or hiding those ugly wires)? Give me a shout.
+      - Brandon
+
+    b2b: |
+      Installing security cameras at your business location?
+
+      Pro tip: Test WiFi signal strength at each camera position BEFORE mounting. Weak signal = unreliable footage.
+
+      I do professional security camera and access point installations for small businesses.
+      - Brandon Ruiz, LB Computer Help
+
+    parent: |
+      Thinking about smart home cameras to keep an eye on the kids or pets?
+
+      Quick tip: Check your WiFi signal where you want to put the camera BEFORE you install it. Weak signal = choppy video.
+
+      Need help setting up parental controls or smart home devices? That's my specialty!
+      - Brandon
+
+- id: "week1_day7_community"
+  day: 7
+  category: "tips"
+  suggested_photos: []
+  variations:
+    community: |
+      Sunday Reset Mode.
+
+      I'm spending the day organizing cables (my version of relaxing) and getting ready for the week.
+
+      Does anyone else have a drawer full of random cables they're afraid to throw away "just in case"?
+      - Brandon
+
+    b2b: |
+      Sunday prep: Reviewing my client equipment maintenance schedule for the week.
+
+      Proactive maintenance beats emergency repairs every time. How does your business handle IT planning?
+      - Brandon Ruiz, LB Computer Help
+
+    parent: |
+      Lazy Sunday here! Organizing the tech drawer while the kids watch movies.
+
+      Anyone else have a drawer of mystery cables? "What does this even go to??"
+
+      Enjoy your Sunday, everyone!
+      - Brandon
+
+# ============================================
+# WEEK 2: DEMONSTRATING VALUE & SOLUTIONS
+# ============================================
+
+- id: "week2_day8_security"
+  day: 8
+  category: "security"
+  suggested_photos: []
+  variations:
+    community: |
+      Start the week secure!
+
+      If you're using the same password for Facebook, Email, and Banking... please change them today!
+
+      If one site gets hacked, the bad guys try that password everywhere else.
+
+      Recommendation: Use a Password Manager (like Bitwarden - it's free). You only remember one master password, and it generates secure ones for everything else.
+
+    b2b: |
+      Security reminder for business owners:
+
+      Are your employees reusing passwords across personal and work accounts?
+
+      When a breach happens elsewhere, attackers try those credentials on business systems.
+
+      Solution: Implement a password manager (Bitwarden, 1Password, LastPass) across your organization.
+
+      Need help setting up company-wide password policies? I can help.
+      - Brandon Ruiz, LB Computer Help
+
+    parent: |
+      Quick security tip for families:
+
+      Are you using the same password for everything? (We've all done it!)
+
+      Problem: If hackers get ONE password, they try it everywhere.
+
+      Solution: Password manager apps. The whole family can use one - even the kids' gaming accounts.
+
+      Need help setting one up? Message me!
+      - Brandon
+
+- id: "week2_day9_phishing"
+  day: 9
+  category: "security"
+  suggested_photos: []
+  variations:
+    community: |
+      Quick Tip to Spot a Fake Email:
+
+      Got an email from "Amazon" or "Netflix" saying your account is locked?
+
+      The Hover Test: Don't click! Just hover your mouse over the link. A box pops up showing the REAL website address.
+
+      If it says "amazon-security-update.xyz.com" instead of just "amazon.com" - delete it immediately!
+
+      Stay safe!
+      - Brandon
+
+    b2b: |
+      Phishing awareness for your team:
+
+      Train employees on the "hover test" - before clicking any email link, hover to preview the actual URL.
+
+      Legitimate domains: amazon.com, paypal.com
+      Phishing domains: amazon-secure-login.xyz.com, paypa1.com
+
+      Want to schedule a security awareness training for your office? I offer on-site sessions.
+      - Brandon Ruiz, LB Computer Help
+
+    parent: |
+      Teaching moment for the family:
+
+      Those "Your Netflix account is locked!" emails are usually scams.
+
+      Show your kids the "hover test" - put your mouse over a link WITHOUT clicking. See the real website address pop up.
+
+      If it looks weird (like netflix-secure.xyz.com), it's fake!
+      - Brandon
+
+- id: "week2_day10_data_recovery"
+  day: 10
+  category: "data_recovery"
+  suggested_photos: []
+  variations:
+    community: |
+      This is my favorite part of the job.
+
+      A client brought in a hard drive that stopped spinning. It had 5 years of family photos that weren't backed up.
+
+      After some advanced data recovery work, we got 100% of the files back. The relief on their face was worth everything.
+
+      Please back up your data today! Message me if you need help setting up automatic backups.
+      - Brandon
+
+    b2b: |
+      Data recovery success story:
+
+      Recovered 5 years of business records from a failed drive this week. Client had no backup strategy.
+
+      The cost of data recovery: $$$
+      The cost of automated cloud backup: $10/month
+
+      Is your business data protected? I can audit your backup situation.
+      - Brandon Ruiz, LB Computer Help
+
+    parent: |
+      Just saved 5 years of family photos from a broken hard drive!
+
+      The family was devastated thinking they'd lost everything - birthdays, vacations, first days of school.
+
+      We got it all back.
+
+      Please, please back up your photos! Cloud storage is cheap. Message me if you need help setting it up.
+      - Brandon
+
+- id: "week2_day11_laptop_tip"
+  day: 11
+  category: "tips"
+  suggested_photos: ["IMG_0867.jpg"]
+  variations:
+    community: |
+      Quick tip: If you use your laptop in bed or on the couch, put a book or tray under it!
+
+      Laptops suck in air from the bottom to stay cool. Smother it with a blanket = overheating = shorter lifespan.
+
+      Keep those vents clear!
+      - Brandon, LB Computer Help
+
+    b2b: |
+      Remote work tip for your team:
+
+      Employees working from home on laptops? Remind them: laptops on soft surfaces (beds, couches) block airflow and cause overheating.
+
+      Overheating = thermal throttling = slower performance = frustrated workers.
+
+      Simple fix: Laptop stand or even a book underneath.
+      - Brandon Ruiz
+
+    parent: |
+      Parents: Are your kids doing homework on the laptop in bed?
+
+      Laptops need airflow from the bottom. Blankets block it = overheating = damage.
+
+      Simple fix: Put a book or tray underneath!
+
+      Already running hot? I can clean out the dust and fans.
+      - Brandon
+
+- id: "week2_day12_msp_promo"
+  day: 12
+  category: "promo"
+  suggested_photos: ["IMG_1308.jpg", "IMG_1309.jpg"]
+  variations:
+    community: |
+      For the small business owners in the group:
+
+      Are you tired of being the "IT Guy" for your own office when you should be running your business?
+
+      I offer managed IT service ($299/mo) that keeps your systems updated, secure, and backed up - plus I'm a phone call away for support.
+
+      Let me handle the tech headaches so you can handle your business.
+      - Brandon Ruiz, LB Computer Help
+      www.lbcomputerhelp.com
+
+    b2b: |
+      Calling all Anaheim/OC small business owners!
+
+      Stop playing IT department. Focus on what you do best.
+
+      My Managed IT Service ($299/mo) includes:
+      - System updates & security patches
+      - 24/7 monitoring
+      - Cloud backup management
+      - Priority support response
+      - Quarterly on-site maintenance
+
+      Let's talk about your needs.
+      - Brandon Ruiz, LB Computer Help
+      www.lbcomputerhelp.com
+
+    parent: |
+      Do you work from home or run a small business?
+
+      I help local entrepreneurs and remote workers keep their tech running smoothly.
+
+      From home office setup to network troubleshooting - I'm your on-call tech support without the corporate price tag.
+
+      Message me anytime!
+      - Brandon, LB Computer Help
+
+- id: "week2_day13_ssd_upgrade"
+  day: 13
+  category: "repairs"
+  suggested_photos: []
+  variations:
+    community: |
+      Is your computer running slow, but you don't want to buy a new one?
+
+      The SSD Upgrade:
+      If your computer is 3-4+ years old, it probably has an old "spinning" hard drive. Swapping it for a Solid State Drive (SSD) makes it literally 10x faster.
+
+      It's like getting a new computer for a fraction of the price.
+
+      I do these upgrades all the time - it's the best bang for your buck in tech!
+      - Brandon
+
+    b2b: |
+      IT budget tip:
+
+      Before replacing slow workstations, consider SSD upgrades.
+
+      A $100-150 SSD upgrade can extend the life of 5-year-old hardware by 3+ years while dramatically improving employee productivity.
+
+      ROI: Usually pays for itself in 2-3 months of reduced wait times.
+
+      I do bulk SSD upgrades for offices. Let's talk.
+      - Brandon Ruiz, LB Computer Help
+
+    parent: |
+      Kids complaining their computer is slow for gaming or school?
+
+      Before buying new, try an SSD upgrade. It makes old computers feel brand new - seriously, 10x faster.
+
+      Way cheaper than a new computer!
+
+      I can do the upgrade and transfer all their files safely.
+      - Brandon
+
+- id: "week2_day14_appreciation"
+  day: 14
+  category: "tips"
+  suggested_photos: []
+  variations:
+    community: |
+      Grateful to be serving the Anaheim community.
+
+      Thanks to everyone who has trusted me with their devices. I know handing over your computer is stressful - I appreciate the trust!
+
+      Gearing up for another week of fixing screens and fighting viruses.
+
+      Enjoy your Sunday evening, everyone!
+      - Brandon, LB Computer Help
+
+    b2b: |
+      End of week 2 - grateful for the local business community.
+
+      Thanks to all the Anaheim/OC entrepreneurs who have trusted me with their IT needs. Looking forward to helping more businesses run smoothly.
+
+      Have a productive week ahead!
+      - Brandon Ruiz, LB Computer Help
+
+    parent: |
+      Sunday gratitude post!
+
+      Thanks to all the local families who have trusted me with their home tech this month. From gaming PCs to WiFi fixes - it's been great meeting everyone.
+
+      Enjoy your family time!
+      - Brandon
+
+# ============================================
+# ADDITIONAL CONTENT (Weeks 3-4 rotation)
+# ============================================
+
+- id: "extra_myth_buster_battery"
+  day: 15
+  category: "tips"
+  suggested_photos: []
+  variations:
+    community: |
+      Tech Myth Buster!
+
+      MYTH: "You need to let your laptop battery drain completely before charging."
+
+      TRUTH: Modern lithium batteries actually prefer partial charges. Plug in whenever you want - you won't hurt it!
+
+      This "full drain" myth was true for old nickel batteries, but those haven't been used in laptops for 15+ years.
+      - Brandon
+
+    b2b: |
+      Quick IT myth to share with your team:
+
+      There's no need to fully drain laptop batteries before charging. Modern lithium-ion batteries prefer partial charging cycles.
+
+      Let employees charge whenever convenient - it won't damage equipment.
+      - Brandon Ruiz
+
+    parent: |
+      Quick myth buster for the family:
+
+      You do NOT need to drain the laptop battery completely before charging! That was true for old batteries, not anymore.
+
+      Tell the kids: plug in whenever you want!
+      - Brandon
+
+- id: "extra_cable_management"
+  day: 16
+  category: "network"
+  suggested_photos: ["IMG_1393.jpg", "IMG_0311.jpg"]
+  variations:
+    community: |
+      Cable management transformation!
+
+      Swipe to see the before/after of this home office setup. Took about an hour to sort out the spaghetti.
+
+      Good cable management isn't just about looks - it improves airflow and makes troubleshooting SO much easier.
+
+      Need help with your cable situation? I do cleanups!
+      - Brandon
+
+    b2b: |
+      Professional cable management matters.
+
+      This server room was a troubleshooting nightmare before cleanup. Now: clear labels, proper runs, easy access.
+
+      Benefits beyond aesthetics:
+      - Faster troubleshooting
+      - Better airflow
+      - Reduced fire risk
+      - Professional appearance for clients
+
+      I do network infrastructure cleanups. Let's talk.
+      - Brandon Ruiz, LB Computer Help
+
+    parent: |
+      Anyone else's home office look like a cable explosion?
+
+      Just cleaned up this setup - went from chaos to organized in about an hour.
+
+      Pro tip: Velcro cable ties are your friend (not zip ties - those are a pain to remove later).
+
+      Need help taming your cables? I do house calls!
+      - Brandon

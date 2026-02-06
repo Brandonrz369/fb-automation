@@ -1,0 +1,44 @@
+# LB Computer Help - Facebook Automation Settings
+# ================================================
+
+# Browser Use Configuration
+browser_use:
+  profile_id: "0ab23467-abfc-45a1-b98d-1b199d6168cc"
+  profile_name: "facebook"
+  max_steps_per_task: 15
+
+# Posting Configuration
+posting:
+  # How many groups to post to per day (random between min and max)
+  min_posts_per_day: 3
+  max_posts_per_day: 5
+
+  # Time window for posting (24-hour format)
+  # Posts will be randomly distributed within this window
+  start_hour: 9   # 9 AM
+  end_hour: 20    # 8 PM
+
+  # Minimum minutes between posts (humanization)
+  # UPDATED: Per Gemini research, 65-140 min prevents bot detection
+  min_delay_minutes: 65
+  max_delay_minutes: 140
+
+# Safety Configuration
+safety:
+  # If true, won't actually post - just logs what it would do
+  dry_run: true
+
+  # Pause all posting if this file exists
+  pause_file: "data/paused.lock"
+
+  # Max consecutive failures before auto-pause
+  max_failures: 3
+
+# Photo Configuration
+photos:
+  base_path: "/home/brandon/Downloads/drive-download-20260126T055922Z-1-001"
+
+# Logging
+logging:
+  level: "INFO"
+  keep_days: 30
