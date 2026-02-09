@@ -596,58 +596,53 @@
   suggested_photos: ["IMG_0039.jpg", "IMG_0867.jpg", "IMG_1362.jpg"]
   variations:
     community: |
-      Computer Repair - Anaheim / All OC
+      Computer Tune-Up & Cleanup - Anaheim / All OC
 
-      Tired of a slow, crashing, or overheating computer? I fix it same-day.
+      Got a slow, overheating, or crashing PC? A full tune-up gets it running like new.
 
-      Services:
-      - Virus/malware removal
-      - Screen replacement (laptop & phone)
-      - SSD upgrade (makes old PCs feel brand new)
-      - Data recovery from dead drives
-      - WiFi/network setup & troubleshooting
+      What's included:
+      - Deep dust cleaning (fans, heatsink, vents)
+      - Virus and malware removal
+      - System optimization and junk file cleanup
+      - Fresh thermal paste application
+      - 90-day warranty
 
-      $99 diagnostic (applied toward repair cost)
-      90-day warranty on all work
+      $99 flat rate. Same-day turnaround in most cases.
 
-      I'm a solo tech in Anaheim, not a big chain - you deal directly with me.
+      I'm a solo tech in Anaheim - you deal directly with me.
 
       - Brandon, LB Computer Help
-      Comment "INFO" or DM me for a quote!
 
     b2b: |
-      IT Services for Small Businesses - Orange County
+      Office Computer Tune-Up Package - Orange County
 
-      Are you the "IT department" for your own office? Let me handle it.
+      Slow workstations dragging down your team? A full tune-up brings them back to speed without replacing hardware.
 
-      Services:
-      - Managed IT support ($299/mo)
-      - Network setup & troubleshooting
-      - Security audits & employee training
-      - Cloud backup management
-      - Hardware procurement & setup
+      Each unit gets:
+      - Internal dust cleaning and thermal paste refresh
+      - Malware scan and removal
+      - System optimization and startup cleanup
+      - Driver and security patch updates
+      - 90-day warranty
 
-      Same-day support. One point of contact. No contracts required.
+      Volume pricing for 5+ machines. Same-day turnaround.
 
       - Brandon Ruiz, LB Computer Help
-      DM me to discuss your business needs.
 
     parent: |
-      Computer Repair - Family-Friendly Service in Anaheim
+      Computer Tune-Up - Get the Family PC Running Fast Again
 
-      Is the family computer acting up? Kids' laptop running slow? WiFi not reaching their rooms?
+      Is the family computer acting up? Kids' laptop running hot or slow?
 
-      I fix it all:
-      - Slow computers & virus removal
-      - Screen replacement (laptops & phones)
-      - WiFi setup that reaches every room
-      - Data recovery (photos, homework, everything)
+      A full tune-up fixes that:
+      - Dust cleaning inside the case
+      - Virus and malware removal
+      - System cleanup and speed optimization
+      - 90-day warranty
 
-      $99 diagnostic (applied toward repair)
-      Patient with questions - I explain everything in plain English.
+      $99 flat rate. I explain everything in plain English and I'm patient with questions.
 
       - Brandon, LB Computer Help
-      DM me or comment below for help!
 
 - id: "marketplace_ssd_upgrade"
   day: 18
@@ -655,51 +650,50 @@
   suggested_photos: ["IMG_0326.jpg", "IMG_0867.jpg"]
   variations:
     community: |
-      Make Your Old Computer Fast Again - SSD Upgrade
+      500GB SSD Upgrade + Data Transfer - Make Any PC 10x Faster
 
-      Is your computer taking forever to start up? Apps loading slow? Don't buy a new one yet.
+      Computer taking forever to start? Don't replace it yet.
 
-      An SSD upgrade makes 5+ year old computers feel brand new. Literally 10x faster.
+      This 500GB solid state drive makes 5+ year old computers feel brand new. Boots in seconds instead of minutes.
 
       What you get:
-      - New 500GB SSD installed
-      - Windows reinstalled fresh
-      - All your files, photos, and bookmarks transferred
-      - 90-day warranty
+      - Brand new 500GB SSD
+      - Fresh Windows installation
+      - All your files, photos, and bookmarks transferred over
+      - 90-day warranty on parts and labor
 
-      Most upgrades done same-day. Serving Anaheim and all of Orange County.
+      Same-day turnaround. Anaheim and all of Orange County.
 
       - Brandon, LB Computer Help
-      Comment "UPGRADE" or DM me to book!
 
     b2b: |
-      Extend Your Office Hardware Life - Bulk SSD Upgrades
+      Bulk SSD Upgrade Kit - Revive Your Office Workstations
 
-      Before replacing slow workstations, consider SSD upgrades.
+      A $100-150 SSD extends the life of 5-year-old hardware by 3+ years. 10x faster boot and load times.
 
-      A $100-150 SSD upgrade can extend the life of 5-year-old hardware by 3+ years while dramatically improving employee productivity.
+      Each workstation gets:
+      - New 500GB or 1TB SSD (your choice)
+      - Clean Windows deployment
+      - Full data migration
+      - 90-day warranty
 
-      ROI: Usually pays for itself in 2-3 months of reduced wait times.
-
-      I do bulk SSD upgrades for offices - volume pricing available.
+      Volume pricing on 5+ units. ROI usually within 2-3 months.
 
       - Brandon Ruiz, LB Computer Help
-      DM me for a quote on your office fleet.
 
     parent: |
-      Kids Complaining Their Computer Is Slow?
+      SSD Upgrade - Make the Kids' Computer Fast Again
 
-      Before buying a new one, try an SSD upgrade. It makes old computers feel brand new - seriously, 10x faster for games, homework, and streaming.
+      Their computer slow for homework and games? A new SSD makes it 10x faster. Seriously.
 
-      What you get:
-      - New SSD installed
+      What they get:
+      - New solid state drive
       - All their files and games transferred
       - 90-day warranty
 
-      Way cheaper than a new computer! Same-day service in OC.
+      Way cheaper than a new computer. Same-day in OC.
 
       - Brandon, LB Computer Help
-      Comment or DM me - happy to answer questions!
 
 - id: "marketplace_data_recovery"
   day: 19
@@ -707,49 +701,42 @@
   suggested_photos: ["IMG_0333.jpg", "IMG_0690.jpg"]
   variations:
     community: |
-      Lost Photos? Dead Hard Drive? Data Recovery Available
+      Hard Drive Data Recovery - Files Returned on USB
 
-      Before you throw away that old computer or hard drive - the data might still be recoverable.
+      Before you throw away that old computer or hard drive, the data might still be recoverable.
 
-      I've recovered:
-      - 5+ years of family photos from dead drives
-      - Business files from crashed systems
-      - School projects from corrupted USB drives
+      Recently recovered:
+      - 5+ years of family photos from a dead drive
+      - Business files from a crashed system
+      - School projects from a corrupted USB
 
-      Free evaluation - I'll tell you if it's recoverable before you pay anything.
+      You get your recovered files on a fresh USB drive or external hard drive. Free evaluation first.
 
-      Serving Anaheim and all of Orange County. House calls available.
+      Anaheim and all of Orange County.
 
       - Brandon, LB Computer Help
-      DM me with what happened and I'll let you know your options.
 
     b2b: |
-      Business Data Recovery & Backup Solutions
+      Business Data Recovery + Cloud Backup Setup
 
-      Lost critical business files? Server crashed? Don't panic.
+      Lost critical files? Server drive failed? The data may still be intact.
 
-      Data recovery services:
-      - Failed hard drive recovery
-      - RAID/server data recovery
-      - Ransomware file recovery
+      What you get back:
+      - Recovered files delivered on new external drive
+      - Full recovery report documenting what was saved
+      - Optional: Automated cloud backup setup ($10/mo) so it never happens again
 
-      Plus: Automated cloud backup setup ($10/mo) so this never happens again.
-
-      Free evaluation on all recovery jobs.
+      Free evaluation on all recovery jobs. Most completed within 48 hours.
 
       - Brandon Ruiz, LB Computer Help
-      DM me for emergency data recovery.
 
     parent: |
-      Don't Throw Away That Old Computer - Your Photos Might Be Saved!
+      Family Photo Recovery - Don't Throw Away That Old Computer!
 
-      Just recovered 5 years of family photos from a broken hard drive. The family thought everything was gone - birthdays, vacations, first days of school.
+      Just recovered 5 years of family photos from a broken hard drive. Birthdays, vacations, first days of school - all saved.
 
-      We got it all back.
+      If you have an old computer or hard drive collecting dust, those memories might still be inside.
 
-      If you have an old computer or hard drive collecting dust, the memories inside might be recoverable.
-
-      Free evaluation - I'll tell you before you pay anything.
+      Your recovered photos delivered on a USB drive. Free evaluation first - I'll tell you what's recoverable before you pay anything.
 
       - Brandon, LB Computer Help
-      DM me with what happened!

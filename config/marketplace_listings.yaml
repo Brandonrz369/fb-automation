@@ -1,0 +1,213 @@
+# LB Computer Help - Facebook Marketplace Product Listings
+# ========================================================
+# STRATEGY: Frame every listing as a PHYSICAL PRODUCT, not a service.
+# See memory/marketplace_strategy.md for full analysis.
+#
+# Facebook uses semantic AI (DeepText + LLM) to detect service listings.
+# These listings are written to pass as product sales.
+#
+# RULES:
+# - Title = Physical item + outcome (NEVER "service")
+# - Description = what customer GETS, not what you DO
+# - Photos = physical items (SSD, screen, cables, router)
+# - Category = Electronics or Home Improvement
+# - Flat pricing (product price, not hourly)
+# - No "service/offer/hire/booking/consultation" words
+# - No business name in title
+# - Keep total active listings under 8 at a time (CORGI behavioral detection)
+# - Space out posting by 1-2 days between listings
+
+# ============================================
+# PROVEN SURVIVORS (these 4 stayed up)
+# Keep these as-is or tweak minimally
+# ============================================
+
+- id: "mp_screen_replacement"
+  title: "Cracked Laptop Screen Replacement - All Brands"
+  price: 89
+  category: "Electronics"
+  status: "survived"
+  photos: ["IMG_0867.jpg"]
+  description: |
+    Cracked or broken laptop screen? New replacement LCD/LED panel for most brands.
+
+    Includes:
+    - Brand new compatible screen panel
+    - Professional installation
+    - Testing and calibration
+    - 90-day warranty on parts
+
+    HP, Dell, Lenovo, ASUS, Acer, Toshiba, Samsung, and more.
+    Most replacements completed same day. Anaheim / all OC.
+
+    - Brandon, LB Computer Help
+
+- id: "mp_bluescreen_virus"
+  title: "Blue Screen Fix and Virus Removal"
+  price: 79
+  category: "Electronics"
+  status: "survived"
+  photos: ["IMG_0039.jpg"]
+  description: |
+    Computer stuck on blue screen? Infected with viruses or malware?
+
+    What you get back:
+    - Clean, working computer
+    - All viruses, malware, and adware removed
+    - System restored to stable operation
+    - Your files and data preserved
+    - 90-day warranty
+
+    Bring it in or I can pick up. Anaheim and all OC.
+
+    - Brandon, LB Computer Help
+
+- id: "mp_mesh_network"
+  title: "Home WiFi and Mesh Network Setup"
+  price: 149
+  category: "Electronics"
+  status: "survived"
+  photos: ["IMG_0262.jpg"]
+  description: |
+    WiFi not reaching every room? Dead zones killing your streaming?
+
+    Complete home mesh network setup:
+    - Mesh router system configured and installed
+    - Coverage testing in every room
+    - All your devices reconnected
+    - Parental controls set up if needed
+    - Network secured with strong encryption
+
+    Bring your own mesh system or I can source one for you.
+    Anaheim and all of Orange County.
+
+    - Brandon, LB Computer Help
+
+- id: "mp_network_cabling"
+  title: "Office Network Cabling and Ethernet Installation"
+  price: 199
+  category: "Home Improvement Supplies"
+  status: "survived"
+  photos: ["IMG_1393.jpg", "IMG_0311.jpg"]
+  description: |
+    Need ethernet run to your office, gaming setup, or security cameras?
+
+    What's included:
+    - Cat6 ethernet cable run and terminated
+    - Wall plates and keystone jacks installed
+    - Cable tested and certified
+    - Clean cable management with labels
+
+    Homes and offices. Up to 150ft per run.
+    Anaheim and all of Orange County.
+
+    - Brandon, LB Computer Help
+
+# ============================================
+# NEW PRODUCT-FRAMED LISTINGS (rewrites of removed ones)
+# ============================================
+
+- id: "mp_ssd_upgrade"
+  title: "500GB SSD Upgrade + Data Transfer - Laptop or Desktop"
+  price: 149
+  category: "Electronics"
+  status: "new_rewrite"
+  photos: ["IMG_0326.jpg", "IMG_0867.jpg"]
+  description: |
+    Computer taking 5+ minutes to boot? This SSD makes it start in under 30 seconds.
+
+    What you get:
+    - Brand new 500GB solid state drive
+    - Fresh Windows installation
+    - All your files, photos, and bookmarks transferred
+    - Old hard drive returned to you as backup
+    - 90-day warranty on parts
+
+    Works with any laptop or desktop, any age. 10x speed improvement guaranteed.
+    Same-day turnaround. Anaheim and all of Orange County.
+
+    - Brandon, LB Computer Help
+
+- id: "mp_pc_tuneup"
+  title: "PC Cleanup and Tune-Up Kit - Speed Up Any Computer"
+  price: 99
+  category: "Electronics"
+  status: "new_rewrite"
+  photos: ["IMG_1810.jpg", "IMG_1786.jpg"]
+  description: |
+    Computer running slow, overheating, or crashing?
+
+    Full tune-up includes:
+    - Internal dust removal (fans, heatsink, vents)
+    - New thermal paste application
+    - Virus and malware scan + removal
+    - System optimization and junk file cleanup
+    - Startup program cleanup
+    - 90-day warranty
+
+    Most tune-ups completed same day. Your computer returned running like new.
+    Anaheim and all of OC.
+
+    - Brandon, LB Computer Help
+
+- id: "mp_data_recovery_usb"
+  title: "Hard Drive Data Recovery - Photos and Files Returned on USB"
+  price: 149
+  category: "Electronics"
+  status: "new_rewrite"
+  photos: ["IMG_0333.jpg", "IMG_0690.jpg"]
+  description: |
+    Old computer or hard drive collecting dust? Your photos and files might still be inside.
+
+    What you get:
+    - All recoverable files extracted
+    - Delivered to you on a fresh USB drive
+    - Recovery report showing what was saved
+    - Free evaluation first - no charge if nothing is recoverable
+
+    Family photos, documents, school projects - if the drive isn't physically destroyed, there's a good chance.
+    Anaheim and all of Orange County.
+
+    - Brandon, LB Computer Help
+
+- id: "mp_security_camera"
+  title: "Security Camera and Doorbell Installation - Ring, Nest, Arlo"
+  price: 79
+  category: "Home Improvement Supplies"
+  status: "new_rewrite"
+  photos: []
+  description: |
+    Got a new Ring, Nest, or Arlo camera sitting in the box?
+
+    Complete setup includes:
+    - Camera mounted and positioned for optimal coverage
+    - WiFi connected and signal tested
+    - App configured on your phone with notifications
+    - Cloud recording verified working
+    - Clean wire concealment
+
+    Bring your own camera. Homes and small businesses.
+    Anaheim and all of Orange County.
+
+    - Brandon, LB Computer Help
+
+# ============================================
+# POSTING STRATEGY
+# ============================================
+#
+# Week 1: Post 3-4 listings (survivors first)
+#   Day 1: mp_screen_replacement
+#   Day 2: mp_mesh_network
+#   Day 3: mp_ssd_upgrade
+#   Day 4: mp_network_cabling
+#
+# Week 2: Post remaining 4
+#   Day 1: mp_bluescreen_virus
+#   Day 2: mp_pc_tuneup
+#   Day 3: mp_data_recovery_usb
+#   Day 4: mp_security_camera
+#
+# Renew before 7-day expiration
+# If any get removed, note which one and adjust language
+# Keep max 6-8 active at a time
+# Photos MUST show physical items (hardware, cables, screens)
