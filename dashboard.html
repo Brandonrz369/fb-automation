@@ -496,10 +496,16 @@
     <div class="nav-section">
         <div class="nav-section-title">Configuration</div>
         <a class="nav-link" onclick="showSection('groups', this)">
-            <i class="fas fa-users"></i> Groups (52)
+            <i class="fas fa-users"></i> Groups (76)
         </a>
         <a class="nav-link" onclick="showSection('content', this)">
             <i class="fas fa-file-alt"></i> Content Library
+        </a>
+        <a class="nav-link" onclick="showSection('marketplace', this)">
+            <i class="fas fa-store"></i> Group Buy/Sell Posts
+        </a>
+        <a class="nav-link" onclick="showSection('fb-marketplace', this)">
+            <i class="fas fa-shopping-cart"></i> FB Marketplace Listings
         </a>
         <a class="nav-link" onclick="showSection('photos', this)">
             <i class="fas fa-camera"></i> Photo Assets
@@ -543,7 +549,7 @@
     <section id="overview" class="content-section active">
         <div class="page-header">
             <h1>Dashboard Overview</h1>
-            <p>Facebook automation system for LB Computer Help - Orange County, CA | Last Updated: February 5, 2026</p>
+            <p>Facebook automation system for LB Computer Help - Orange County, CA | Last Updated: February 6, 2026 (PM - v3.5)</p>
         </div>
 
         <!-- Stats Cards -->
@@ -551,17 +557,17 @@
             <div class="col-md-6 col-lg-3">
                 <div class="stat-card">
                     <div class="icon blue"><i class="fas fa-users"></i></div>
-                    <h3>52</h3>
+                    <h3>76</h3>
                     <div class="label">Active Groups</div>
-                    <div class="sublabel">Orange County only</div>
+                    <div class="sublabel">OC: 9 T1 + 17 T2 + 50 T3</div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="stat-card">
                     <div class="icon green"><i class="fas fa-file-alt"></i></div>
-                    <h3>48</h3>
+                    <h3>57</h3>
                     <div class="label">Content Variations</div>
-                    <div class="sublabel">16 posts × 3 audiences</div>
+                    <div class="sublabel">19 posts × 3 audiences</div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
@@ -569,15 +575,15 @@
                     <div class="icon orange"><i class="fas fa-camera"></i></div>
                     <h3>18</h3>
                     <div class="label">Photo Assets</div>
-                    <div class="sublabel">Categorized & ready</div>
+                    <div class="sublabel">Mapped to content types</div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="stat-card">
-                    <div class="icon purple"><i class="fas fa-robot"></i></div>
-                    <h3 style="font-size: 20px;">DRY RUN</h3>
+                    <div class="icon green"><i class="fas fa-check-circle"></i></div>
+                    <h3 style="font-size: 20px;">v3.5 LIVE</h3>
                     <div class="label">Bot Status</div>
-                    <div class="sublabel">Safe mode enabled</div>
+                    <div class="sublabel">13 successful posts today</div>
                 </div>
             </div>
         </div>
@@ -597,7 +603,7 @@
                         </div>
                         <div class="setting-row">
                             <span class="key">Groups Active</span>
-                            <span class="value">52 OC groups</span>
+                            <span class="value">76 OC groups</span>
                         </div>
                         <div class="setting-row">
                             <span class="key">Target Revenue</span>
@@ -653,25 +659,32 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="stat-card" style="background: #dcfce7;">
-                            <h3 style="color: #166534;">8</h3>
+                            <h3 style="color: #166534;">9</h3>
                             <div class="label" style="color: #166534;">Tier 1 - High Volume</div>
-                            <div class="sublabel">Post 2-3x/week each</div>
+                            <div class="sublabel">2x/week - all content types</div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="stat-card" style="background: #fef3c7;">
-                            <h3 style="color: #92400e;">12</h3>
+                            <h3 style="color: #92400e;">17</h3>
                             <div class="label" style="color: #92400e;">Tier 2 - Niche/B2B</div>
-                            <div class="sublabel">Post 1-2x/week each</div>
+                            <div class="sublabel">1x/week - security, network</div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="stat-card" style="background: #dbeafe;">
-                            <h3 style="color: #1e40af;">32</h3>
-                            <div class="label" style="color: #1e40af;">Tier 3 - Local Rotation</div>
-                            <div class="sublabel">Rotating 1/day</div>
+                            <h3 style="color: #1e40af;">41</h3>
+                            <div class="label" style="color: #1e40af;">Tier 3 - Community</div>
+                            <div class="sublabel">1x/2 weeks - tips, dusty</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card" style="background: #fce7f3;">
+                            <h3 style="color: #9d174d;">9</h3>
+                            <div class="label" style="color: #9d174d;">Marketplace</div>
+                            <div class="sublabel">1x/2 weeks - promo only</div>
                         </div>
                     </div>
                 </div>
@@ -695,8 +708,8 @@
 <span class="folder">fb-automation/</span>
 ├── <span class="folder">config/</span>                      <span class="comment"># Configuration files</span>
 │   ├── <span class="file">settings.yaml</span>            <span class="comment"># Core settings (delays, limits)</span>
-│   ├── <span class="file">groups.yaml</span>              <span class="comment"># 52 OC groups with tiers</span>
-│   ├── <span class="file">content_calendar.yaml</span>    <span class="comment"># 16 posts × 3 variations</span>
+│   ├── <span class="file">groups.yaml</span>              <span class="comment"># 76 OC groups with tiers + matching</span>
+│   ├── <span class="file">content_calendar.yaml</span>    <span class="comment"># 19 posts × 3 variations</span>
 │   └── <span class="file">photos_manifest.yaml</span>     <span class="comment"># 18 photo assets</span>
 │
 ├── <span class="folder">src/</span>                         <span class="comment"># Python code</span>
@@ -783,7 +796,49 @@
                 </div>
                 <div class="setting-row">
                     <span class="key">Max Steps per Task</span>
-                    <span class="value">15</span>
+                    <span class="value">15 (typically uses 9)</span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">Engine Version</span>
+                    <span class="value" style="color: var(--accent-green);">v3.5 (native input + .closest() Post click)</span>
+                </div>
+                <div class="setting-row">
+                    <span class="key">Success Rate</span>
+                    <span class="value" style="color: var(--accent-green);">100% (13/13 on v3.5 session)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-project-diagram me-2"></i> Content-to-Group Matching Algorithm</h5>
+            </div>
+            <div class="panel-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="rule-item" style="border-left-color: var(--accent-blue);">
+                            <h6>Vertical Axis: Audience (Tone)</h6>
+                            <p><code>group.audience_segment</code> &rarr; <code>content.variation</code><br>
+                            Community groups get friendly neighbor text<br>
+                            B2B groups get professional consultant text<br>
+                            Parent groups get family-focused text<br>
+                            Marketplace groups get community text + direct CTA</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="rule-item" style="border-left-color: var(--accent-orange);">
+                            <h6>Horizontal Axis: Topic (Subject)</h6>
+                            <p><code>group.content_tags</code> &cap; <code>content.category</code><br>
+                            Only posts matching a group's allowed tags are eligible<br>
+                            Marketplace: ONLY promo + repairs<br>
+                            Community: tips, dusty, security, etc.<br>
+                            B2B: network, security, promo, repairs</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-item" style="border-left-color: var(--accent-green);">
+                    <h6>Saturation Math</h6>
+                    <p>19 posts &times; 14-day cooldown = <strong>266 days (8.9 months)</strong> before any content repeats in a single group. No content fatigue concern.</p>
                 </div>
             </div>
         </div>
@@ -810,23 +865,38 @@
                         </div>
                         <div class="timeline-item completed">
                             <div class="date">Feb 3, 2026</div>
-                            <div class="title">52 OC groups configured</div>
-                            <div class="desc">Tiered system with content tags and audience segments</div>
-                        </div>
-                        <div class="timeline-item completed">
-                            <div class="date">Feb 3, 2026</div>
-                            <div class="title">Content library created</div>
-                            <div class="desc">16 posts with community/b2b/parent variations</div>
-                        </div>
-                        <div class="timeline-item completed">
-                            <div class="date">Feb 3, 2026</div>
-                            <div class="title">Strategy documentation</div>
+                            <div class="title">Strategy & safety documentation</div>
                             <div class="desc">Gemini research, safety rules, execution plan</div>
                         </div>
                         <div class="timeline-item completed">
                             <div class="date">Feb 5, 2026</div>
-                            <div class="title">Group cleanup complete</div>
-                            <div class="desc">Manually left all non-OC groups (LB, LA County)</div>
+                            <div class="title">Dashboard & docs consolidated</div>
+                            <div class="desc">Group cleanup, Google Calendar MCP installed</div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="date">Feb 6, 2026 AM</div>
+                            <div class="title">Browser Use v3.2 - initial success</div>
+                            <div class="desc">execCommand + dialog scoping. 6 posts, then execCommand broke PM.</div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="date">Feb 6, 2026 PM</div>
+                            <div class="title">Browser Use v3.5 - 100% success rate</div>
+                            <div class="desc">Native input + .closest() Post click. 13 successful posts total today.</div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="date">Feb 6, 2026</div>
+                            <div class="title">76 groups configured (rebuilt from live scrape)</div>
+                            <div class="desc">9 Tier 1 + 17 Tier 2 + 50 Tier 3 with content-to-group matching</div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="date">Feb 6, 2026</div>
+                            <div class="title">Content sign-offs standardized</div>
+                            <div class="desc">All 57 variations now include "LB Computer Help"</div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="date">Feb 6, 2026</div>
+                            <div class="title">Marketplace strategy + photo mapping</div>
+                            <div class="desc">3 marketplace posts, photo guide for all content types</div>
                         </div>
                     </div>
                 </div>
@@ -834,33 +904,126 @@
             <div class="col-lg-6">
                 <div class="card-panel">
                     <div class="panel-header">
-                        <h5><i class="fas fa-clock me-2 text-warning"></i> Pending</h5>
+                        <h5><i class="fas fa-history me-2 text-info"></i> Posting History (Feb 6) - 13 Successful</h5>
+                    </div>
+                    <div class="panel-body" style="padding: 0; max-height: 600px; overflow-y: auto;">
+                        <div class="group-item">
+                            <div>
+                                <div class="name">Anaheim Connect</div>
+                                <div class="meta">productivity_tip - v1</div>
+                            </div>
+                            <span class="tier-badge" style="background: #fef3c7; color: #92400e;">Pending</span>
+                        </div>
+                        <div class="group-item">
+                            <div>
+                                <div class="name">Garden Grove: What's going on?</div>
+                                <div class="meta">tech_tip - v2</div>
+                            </div>
+                            <span class="tier-badge" style="background: #fef3c7; color: #92400e;">Pending</span>
+                        </div>
+                        <div class="group-item">
+                            <div>
+                                <div class="name">OC City Neighbors</div>
+                                <div class="meta">scam_alert - v2</div>
+                            </div>
+                            <span class="tier-badge badge-tier1">Published</span>
+                        </div>
+                        <div class="group-item">
+                            <div>
+                                <div class="name">Anaheim Community</div>
+                                <div class="meta">laptop_tip - v3.2</div>
+                            </div>
+                            <span class="tier-badge badge-tier1">Published</span>
+                        </div>
+                        <div class="group-item">
+                            <div>
+                                <div class="name">Fun in Fullerton</div>
+                                <div class="meta">myth_buster - v3.2</div>
+                            </div>
+                            <span class="tier-badge badge-tier1">Published</span>
+                        </div>
+                        <div class="group-item">
+                            <div>
+                                <div class="name">Anything Orange County</div>
+                                <div class="meta">dusty_pc - v3.2</div>
+                            </div>
+                            <span class="tier-badge" style="background: #fef3c7; color: #92400e;">Pending</span>
+                        </div>
+                        <div class="group-item">
+                            <div>
+                                <div class="name">Anything OC</div>
+                                <div class="meta">wifi_tip - v3.5</div>
+                            </div>
+                            <span class="tier-badge badge-tier1">Published</span>
+                        </div>
+                        <div class="group-item">
+                            <div>
+                                <div class="name">OC Word of Mouth</div>
+                                <div class="meta">ssd_upgrade - v3.5</div>
+                            </div>
+                            <span class="tier-badge badge-tier1">Published</span>
+                        </div>
+                        <div class="group-item">
+                            <div>
+                                <div class="name">All Things Placentia/YL/Fullerton</div>
+                                <div class="meta">community - v3.5</div>
+                            </div>
+                            <span class="tier-badge" style="background: #fef3c7; color: #92400e;">Pending</span>
+                        </div>
+                        <div class="group-item">
+                            <div>
+                                <div class="name">Fullerton Friends</div>
+                                <div class="meta">scam_alert - v3.5</div>
+                            </div>
+                            <span class="tier-badge" style="background: #fef3c7; color: #92400e;">Pending</span>
+                        </div>
+                        <div class="group-item">
+                            <div>
+                                <div class="name">Orange County</div>
+                                <div class="meta">phishing_tip - v3.5</div>
+                            </div>
+                            <span class="tier-badge badge-tier1">Published</span>
+                        </div>
+                        <div class="group-item">
+                            <div>
+                                <div class="name">OC Daily Post</div>
+                                <div class="meta">password_security - v3.5</div>
+                            </div>
+                            <span class="tier-badge" style="background: #fef3c7; color: #92400e;">Pending</span>
+                        </div>
+                        <div class="group-item">
+                            <div>
+                                <div class="name">Orange County (Beach)</div>
+                                <div class="meta">appreciation - v3.5</div>
+                            </div>
+                            <span class="tier-badge" style="background: #fef3c7; color: #92400e;">Pending</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-panel">
+                    <div class="panel-header">
+                        <h5><i class="fas fa-clock me-2 text-warning"></i> Next Steps</h5>
                     </div>
                     <div class="panel-body">
                         <div class="timeline-item pending">
                             <div class="date">Next</div>
-                            <div class="title">First live test post</div>
-                            <div class="desc">Execute one real post to verify everything works</div>
+                            <div class="title">Production posting schedule</div>
+                            <div class="desc">Begin daily automated posting with tier rotation</div>
                         </div>
                         <div class="timeline-item pending">
                             <div class="date">Week 2</div>
-                            <div class="title">Content expansion</div>
-                            <div class="desc">Create 5+ variations per post to avoid detection</div>
+                            <div class="title">Marketplace group posting</div>
+                            <div class="desc">Service listings to 9 buy/sell groups</div>
                         </div>
                         <div class="timeline-item pending">
                             <div class="date">Week 3</div>
-                            <div class="title">Enable live automation</div>
-                            <div class="desc">Set dry_run: false and begin daily cycle</div>
+                            <div class="title">Cron automation</div>
+                            <div class="desc">Automated daily posting cycle</div>
                         </div>
                         <div class="timeline-item pending">
-                            <div class="date">Week 4</div>
-                            <div class="title">Cron scheduling</div>
-                            <div class="desc">VPS deployment with automatic daily runs</div>
-                        </div>
-                        <div class="timeline-item pending">
-                            <div class="date">Future</div>
-                            <div class="title">AI image generation</div>
-                            <div class="desc">Use Gemini to create custom images per post</div>
+                            <div class="date">Ongoing</div>
+                            <div class="title">Monitor & optimize</div>
+                            <div class="desc">Track engagement, reply to comments, refine content</div>
                         </div>
                     </div>
                 </div>
@@ -872,12 +1035,12 @@
     <section id="groups" class="content-section">
         <div class="page-header">
             <h1>Facebook Groups</h1>
-            <p>52 Orange County groups configured for posting</p>
+            <p>76 Orange County groups configured with content-to-group matching</p>
         </div>
 
         <div class="card-panel">
             <div class="panel-header">
-                <h5><i class="fas fa-star me-2 text-success"></i> Tier 1 - High Volume (8 groups)</h5>
+                <h5><i class="fas fa-star me-2 text-success"></i> Tier 1 - High Volume (9 groups)</h5>
                 <span class="tier-badge badge-tier1">2-3x/week each</span>
             </div>
             <div class="panel-body" style="padding: 0;">
@@ -942,7 +1105,7 @@
 
         <div class="card-panel">
             <div class="panel-header">
-                <h5><i class="fas fa-briefcase me-2 text-warning"></i> Tier 2 - Niche/B2B (12 groups)</h5>
+                <h5><i class="fas fa-briefcase me-2 text-warning"></i> Tier 2 - Niche/B2B (17 groups)</h5>
                 <span class="tier-badge badge-tier2">1-2x/week each</span>
             </div>
             <div class="panel-body" style="padding: 0;">
@@ -992,8 +1155,8 @@
 
         <div class="card-panel">
             <div class="panel-header">
-                <h5><i class="fas fa-map-marker-alt me-2 text-primary"></i> Tier 3 - Local Rotation (32 groups)</h5>
-                <span class="tier-badge badge-tier3">Rotating 1/day</span>
+                <h5><i class="fas fa-map-marker-alt me-2 text-primary"></i> Tier 3 - Local + Marketplace (50 groups)</h5>
+                <span class="tier-badge badge-tier3">1x/2 weeks rotation</span>
             </div>
             <div class="panel-body">
                 <p class="text-muted">32 city-specific community groups across Orange County:</p>
@@ -1030,7 +1193,7 @@
     <section id="content" class="content-section">
         <div class="page-header">
             <h1>Content Library</h1>
-            <p>16 content pieces × 3 audience variations = 48 unique posts</p>
+            <p>19 content pieces × 3 audience variations = 57 unique posts</p>
         </div>
 
         <div class="card-panel">
@@ -1131,11 +1294,900 @@
         </div>
     </section>
 
+    <!-- MARKETPLACE SECTION -->
+    <section id="marketplace" class="content-section">
+        <div class="page-header">
+            <h1>Group Buy/Sell Posts</h1>
+            <p>Content for Buy/Sell Facebook groups (NOT actual FB Marketplace listings - see "FB Marketplace Listings" for those)</p>
+        </div>
+
+        <div class="card-panel" style="border-left: 4px solid #ec4899;">
+            <div class="panel-header" style="background: #fdf2f8;">
+                <h5><i class="fas fa-info-circle me-2" style="color: #ec4899;"></i> Marketplace Strategy</h5>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>DO in Marketplace Groups</h6>
+                        <ul style="color: #166534; font-size: 14px;">
+                            <li>List services with clear pricing</li>
+                            <li>Include "DM me" or "Comment below" CTA</li>
+                            <li>Use real repair photos (builds trust)</li>
+                            <li>Mention Anaheim / Orange County location</li>
+                            <li>Keep it direct - these groups expect offers</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>DON'T in Marketplace Groups</h6>
+                        <ul style="color: #991b1b; font-size: 14px;">
+                            <li>Post educational tips (gets flagged as off-topic)</li>
+                            <li>Use "helpful neighbor" tone (too soft)</li>
+                            <li>Post links in the main text</li>
+                            <li>Use AI-generated images (looks fake)</li>
+                            <li>Post the same listing to multiple groups</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-store me-2"></i> Marketplace Groups (9 total)</h5>
+            </div>
+            <div class="panel-body" style="padding: 0;">
+                <div class="group-item">
+                    <div>
+                        <div class="name">Westminster CommUNITY Buy n Sell</div>
+                        <div class="meta">Marketplace - promo, repairs</div>
+                    </div>
+                    <span class="tier-badge" style="background: #fce7f3; color: #9d174d;">Marketplace</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">Tustin Trash & Treasure Community</div>
+                        <div class="meta">Marketplace - promo, repairs</div>
+                    </div>
+                    <span class="tier-badge" style="background: #fce7f3; color: #9d174d;">Marketplace</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">Cypress CA buy & sell</div>
+                        <div class="meta">Marketplace - promo, repairs</div>
+                    </div>
+                    <span class="tier-badge" style="background: #fce7f3; color: #9d174d;">Marketplace</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">Buena Park / La Habra / Anaheim / Fullerton buy or sell</div>
+                        <div class="meta">Marketplace - promo, repairs</div>
+                    </div>
+                    <span class="tier-badge" style="background: #fce7f3; color: #9d174d;">Marketplace</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">Buy/Sell Anaheim, California</div>
+                        <div class="meta">Marketplace - promo, repairs</div>
+                    </div>
+                    <span class="tier-badge" style="background: #fce7f3; color: #9d174d;">Marketplace</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">Craigslist Orange, Santa Ana, Anaheim</div>
+                        <div class="meta">Marketplace - promo, repairs</div>
+                    </div>
+                    <span class="tier-badge" style="background: #fce7f3; color: #9d174d;">Marketplace</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">Craigslist Westminster, Midway City, Stanton, Garden Grove</div>
+                        <div class="meta">Marketplace - promo, repairs</div>
+                    </div>
+                    <span class="tier-badge" style="background: #fce7f3; color: #9d174d;">Marketplace</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">EL TIANGUIS DE SANTA ANA</div>
+                        <div class="meta">Marketplace - promo, repairs</div>
+                    </div>
+                    <span class="tier-badge" style="background: #fce7f3; color: #9d174d;">Marketplace</span>
+                </div>
+                <div class="group-item">
+                    <div>
+                        <div class="name">Orange County Ca, Buy, Sell, trade</div>
+                        <div class="meta">Marketplace - promo, repairs (NEW)</div>
+                    </div>
+                    <span class="tier-badge" style="background: #fce7f3; color: #9d174d;">Marketplace</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MARKETPLACE POST 1 -->
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-wrench me-2 text-primary"></i> Post 1: Computer Repair Service Listing</h5>
+                <span class="badge-status">Best for all marketplace groups</span>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; font-family: system-ui;">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                                <div style="width: 40px; height: 40px; background: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">BR</div>
+                                <div>
+                                    <div style="font-weight: 600; font-size: 14px;">Brandon Ruiz</div>
+                                    <div style="font-size: 12px; color: #64748b;">Computer Repair - Anaheim / All OC</div>
+                                </div>
+                            </div>
+                            <div style="font-size: 14px; line-height: 1.6; color: #1e293b; white-space: pre-line;">Tired of a slow, crashing, or overheating computer? I fix it same-day.
+
+Services:
+- Virus/malware removal
+- Screen replacement (laptop & phone)
+- SSD upgrade (makes old PCs feel brand new)
+- Data recovery from dead drives
+- WiFi/network setup & troubleshooting
+
+$99 diagnostic (applied toward repair cost)
+90-day warranty on all work
+
+I'm a solo tech in Anaheim, not a big chain - you deal directly with me.
+
+- Brandon, LB Computer Help
+Comment "INFO" or DM me for a quote!</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 style="color: #1e293b; margin-bottom: 12px;">Recommended Photos</h6>
+                        <img src="assets/real-photos/IMG_0039.jpg" style="width:100%; height:90px; object-fit:cover; border-radius:8px; border:2px solid #3b82f6; margin-bottom:4px;" alt="Brandon headset">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:8px;">IMG_0039 - Brandon headset (PRIMARY)</div>
+                        <img src="assets/real-photos/IMG_0867.JPG" style="width:100%; height:90px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Dell laptop thermal">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:8px;">IMG_0867 - Dell thermal (ALTERNATE)</div>
+                        <img src="assets/real-photos/IMG_1362.jpg" style="width:100%; height:90px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Motherboard cleaning">
+                        <div style="font-size:11px; color:#64748b;">IMG_1362 - Motherboard cleaning</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MARKETPLACE POST 2 -->
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-bolt me-2 text-warning"></i> Post 2: SSD Upgrade Special</h5>
+                <span class="badge-status">High conversion potential</span>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; font-family: system-ui;">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                                <div style="width: 40px; height: 40px; background: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">BR</div>
+                                <div>
+                                    <div style="font-weight: 600; font-size: 14px;">Brandon Ruiz</div>
+                                    <div style="font-size: 12px; color: #64748b;">SSD Upgrade - Make Your Old PC Fast Again</div>
+                                </div>
+                            </div>
+                            <div style="font-size: 14px; line-height: 1.6; color: #1e293b; white-space: pre-line;">Is your computer taking forever to start up? Apps loading slow? Don't buy a new one yet.
+
+An SSD upgrade makes 5+ year old computers feel brand new. Literally 10x faster.
+
+What you get:
+- New 500GB SSD installed
+- Windows reinstalled fresh
+- All your files, photos, and bookmarks transferred
+- 90-day warranty
+
+Most upgrades done same-day. Serving Anaheim and all of Orange County.
+
+- Brandon, LB Computer Help
+Comment "UPGRADE" or DM me to book!</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 style="color: #1e293b; margin-bottom: 12px;">Recommended Photos</h6>
+                        <img src="assets/real-photos/IMG_0326.jpg" style="width:100%; height:90px; object-fit:cover; border-radius:8px; border:2px solid #3b82f6; margin-bottom:4px;" alt="ASRock X570">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:8px;">IMG_0326 - ASRock X570 (PRIMARY)</div>
+                        <img src="assets/real-photos/IMG_0867.JPG" style="width:100%; height:90px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Dell laptop">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:8px;">IMG_0867 - Dell thermal (ALTERNATE)</div>
+                        <div class="rule-item" style="margin-top: 8px; border-left-color: #f59e0b;">
+                            <h6 style="font-size: 12px;">Pro Tip</h6>
+                            <p style="font-size: 12px;">SSD upgrades are your highest-margin service. Great entry point.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MARKETPLACE POST 3 -->
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-hdd me-2 text-danger"></i> Post 3: Data Recovery Service</h5>
+                <span class="badge-status">Emotional appeal - high engagement</span>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; font-family: system-ui;">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                                <div style="width: 40px; height: 40px; background: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">BR</div>
+                                <div>
+                                    <div style="font-weight: 600; font-size: 14px;">Brandon Ruiz</div>
+                                    <div style="font-size: 12px; color: #64748b;">Data Recovery - Don't Throw That Drive Away!</div>
+                                </div>
+                            </div>
+                            <div style="font-size: 14px; line-height: 1.6; color: #1e293b; white-space: pre-line;">Before you toss that old computer or hard drive - the data might still be there.
+
+I've recovered:
+- 5+ years of family photos from dead drives
+- Business files from crashed systems
+- School projects from corrupted USB drives
+
+Free evaluation - I'll tell you if it's recoverable before you pay anything.
+
+I'm local in Anaheim, serving all of Orange County. House calls available.
+
+- Brandon, LB Computer Help
+DM me with what happened and I'll let you know your options.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 style="color: #1e293b; margin-bottom: 12px;">Recommended Photos</h6>
+                        <img src="assets/real-photos/IMG_0333.jpg" style="width:100%; height:90px; object-fit:cover; border-radius:8px; border:2px solid #3b82f6; margin-bottom:4px;" alt="Damaged USB">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:8px;">IMG_0333 - Damaged USB port (PRIMARY)</div>
+                        <img src="assets/real-photos/IMG_0690.jpg" style="width:100%; height:90px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Mac mini">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:8px;">IMG_0690 - Mac mini open (ALTERNATE)</div>
+                        <div class="rule-item" style="margin-top: 8px; border-left-color: #ef4444;">
+                            <h6 style="font-size: 12px;">Emotional Hook</h6>
+                            <p style="font-size: 12px;">Data recovery posts get shared - people know someone who lost photos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHOTO MAPPING GUIDE -->
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-map me-2"></i> Photo-to-Content Mapping Guide</h5>
+            </div>
+            <div class="panel-body">
+                <p class="text-muted mb-3">Which photos to use with which content type. Use REAL photos only - research confirms AI images hurt trust in local groups.</p>
+                <table class="table table-sm" style="font-size: 13px;">
+                    <thead style="background: #f1f5f9;">
+                        <tr>
+                            <th>Content Type</th>
+                            <th>Primary Photo</th>
+                            <th>Alternates</th>
+                            <th>Why It Works</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Dusty PC</strong></td>
+                            <td>IMG_1810.jpg (RTX dust)</td>
+                            <td>IMG_1786.jpg (cobwebs)</td>
+                            <td>"Disaster porn" - highest engagement, people share these</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Repairs</strong></td>
+                            <td>IMG_0867.jpg (laptop thermal)</td>
+                            <td>IMG_1362.jpg, IMG_0333.jpg, IMG_0040.jpg</td>
+                            <td>Shows real hands-on work. Builds credibility.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Network / B2B</strong></td>
+                            <td>IMG_1308.jpg (Cisco rack)</td>
+                            <td>IMG_1309.jpg (Fortinet), IMG_1393.jpg (cable mess)</td>
+                            <td>Enterprise equipment impresses business owners</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Promo / Service</strong></td>
+                            <td>IMG_0039.jpg (Brandon headset)</td>
+                            <td>IMG_0038.jpg</td>
+                            <td>Personal photo = trust. Shows who they're hiring.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>WiFi / Home Setup</strong></td>
+                            <td>IMG_0262.jpg (Google Wifi)</td>
+                            <td>IMG_0314.jpg (Linksys), IMG_0311.jpg</td>
+                            <td>Relatable home equipment people recognize</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Data Recovery</strong></td>
+                            <td>IMG_0333.jpg (damaged port)</td>
+                            <td>IMG_0690.jpg (Mac mini open)</td>
+                            <td>Shows the "before" state - emotional impact</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Security / Scam</strong></td>
+                            <td><em>No photo needed</em></td>
+                            <td>Text-only performs best</td>
+                            <td>Scam alerts get more engagement as pure text - feels urgent</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tips / Education</strong></td>
+                            <td><em>No photo needed</em></td>
+                            <td>Optional: IMG_0039.jpg</td>
+                            <td>Tips work best as text. Photo optional for personality.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FB MARKETPLACE LISTINGS SECTION -->
+    <section id="fb-marketplace" class="content-section">
+        <div class="page-header">
+            <h1>Facebook Marketplace Listings</h1>
+            <p>10 SEO-optimized listings for Facebook Marketplace - structured with titles, pricing, and keywords for search visibility</p>
+        </div>
+
+        <!-- SEO STRATEGY -->
+        <div class="card-panel" style="border-left: 4px solid #8b5cf6;">
+            <div class="panel-header" style="background: #f5f3ff;">
+                <h5><i class="fas fa-search me-2" style="color: #8b5cf6;"></i> Facebook Marketplace SEO Strategy</h5>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h6>Listing Setup</h6>
+                        <ul style="font-size: 13px;">
+                            <li><strong>Category:</strong> Electronics > Computers</li>
+                            <li><strong>Price:</strong> $1 (signals "contact for quote")</li>
+                            <li><strong>Condition:</strong> Used - Good</li>
+                            <li><strong>Renew</strong> every 7 days</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h6>Title Formula</h6>
+                        <ul style="font-size: 13px;">
+                            <li>Put main service in first 3 words</li>
+                            <li>Include brand names (Dell, HP, Mac)</li>
+                            <li>Add location (Anaheim / OC)</li>
+                            <li>Use problem language people search</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h6>Pro Tips</h6>
+                        <ul style="font-size: 13px;">
+                            <li>Delete & recreate after 4-5 renewals</li>
+                            <li>Reply to "Is this available?" instantly</li>
+                            <li>Use action shots, not stock photos</li>
+                            <li>Keywords at bottom of description</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI vs REAL PHOTO COMPARISON -->
+        <div class="card-panel" style="border-left: 4px solid #06b6d4;">
+            <div class="panel-header" style="background: #ecfeff;">
+                <h5><i class="fas fa-images me-2" style="color: #06b6d4;"></i> Photo Comparison: Real vs AI-Generated</h5>
+            </div>
+            <div class="panel-body">
+                <p class="text-muted mb-3">Compare your real photos with AI-generated alternatives. Research says real photos build more trust in local markets, but AI images can supplement for services you don't have photos of.</p>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <h6 class="text-center mb-2" style="color: #166534;">Your Real Photos</h6>
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <div style="text-align:center;">
+                                    <img src="assets/real-photos/IMG_0039.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px; border:2px solid #22c55e;" alt="Brandon with headset">
+                                    <div style="font-size:11px; color:#64748b; margin-top:4px;">IMG_0039 - Brandon headset</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div style="text-align:center;">
+                                    <img src="assets/real-photos/IMG_0867.JPG" style="width:100%; height:140px; object-fit:cover; border-radius:8px; border:2px solid #22c55e;" alt="Dell laptop internals">
+                                    <div style="font-size:11px; color:#64748b; margin-top:4px;">IMG_0867 - Laptop thermal</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div style="text-align:center;">
+                                    <img src="assets/real-photos/IMG_1308.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px; border:2px solid #22c55e;" alt="Network rack">
+                                    <div style="font-size:11px; color:#64748b; margin-top:4px;">IMG_1308 - Cisco rack</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div style="text-align:center;">
+                                    <img src="assets/real-photos/IMG_0262.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px; border:2px solid #22c55e;" alt="Google Wifi">
+                                    <div style="font-size:11px; color:#64748b; margin-top:4px;">IMG_0262 - Home WiFi</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-center mb-2" style="color: #7c3aed;">AI-Generated Images</h6>
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <div style="text-align:center;">
+                                    <img src="assets/ai-photos/ai_repair_workstation.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px; border:2px solid #8b5cf6;" alt="AI Repair Workstation">
+                                    <div style="font-size:11px; color:#64748b; margin-top:4px;">AI - Repair Workstation</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div style="text-align:center;">
+                                    <img src="assets/ai-photos/ai_ssd_upgrade.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px; border:2px solid #8b5cf6;" alt="AI SSD Upgrade">
+                                    <div style="font-size:11px; color:#64748b; margin-top:4px;">AI - SSD Upgrade</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div style="text-align:center;">
+                                    <img src="assets/ai-photos/ai_mesh_wifi.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px; border:2px solid #8b5cf6;" alt="AI Mesh WiFi">
+                                    <div style="font-size:11px; color:#64748b; margin-top:4px;">AI - Mesh WiFi</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div style="text-align:center;">
+                                    <img src="assets/ai-photos/ai_virus_removal.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px; border:2px solid #8b5cf6;" alt="AI Virus Removal">
+                                    <div style="font-size:11px; color:#64748b; margin-top:4px;">AI - Virus Removal</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div style="text-align:center;">
+                            <img src="assets/ai-photos/ai_server_rack.jpg" style="width:50%; max-width:400px; height:200px; object-fit:cover; border-radius:8px; border:2px solid #8b5cf6;" alt="AI Server Rack">
+                            <div style="font-size:11px; color:#64748b; margin-top:4px;">AI - Server Rack (for Business IT listings)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MASTER LISTING: General All-Services -->
+        <div class="card-panel" style="border-left: 6px solid #22c55e; border: 2px solid #22c55e;">
+            <div class="panel-header" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7);">
+                <h5><i class="fas fa-star me-2" style="color:#22c55e;"></i> MASTER LISTING: All Services (Keep Active 24/7)</h5>
+                <span class="badge-status" style="background:#166534; color:white;">ALWAYS ON</span>
+            </div>
+            <div class="panel-body">
+                <div style="background:#fefce8; border:1px solid #fde68a; border-radius:8px; padding:12px; margin-bottom:16px; font-size:13px;">
+                    <strong>This is your anchor listing.</strong> Keep it active at all times on Facebook Marketplace. Renew every 7 days. Delete and recreate fresh every month. This catches ALL search queries that the specific listings below might miss.
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div style="background: #f8fafc; border: 2px solid #22c55e; border-radius: 12px; padding: 20px;">
+                            <div style="font-size:11px; color:#166534; font-weight:700; margin-bottom:4px;">FACEBOOK MARKETPLACE LISTING</div>
+                            <div style="font-weight:700; font-size:20px; color:#1e293b; margin-bottom:4px;">Computer Repair & Laptop Fix - Virus Removal, Screen Replacement, Data Recovery - Anaheim OC</div>
+                            <div style="font-size:14px; color:#22c55e; font-weight:600; margin-bottom:12px;">$1 &middot; Electronics > Computers & Laptops &middot; Used - Good</div>
+                            <div style="font-size:14px; line-height:1.7; color:#1e293b; white-space:pre-line;">PROFESSIONAL COMPUTER REPAIR & TECH SUPPORT IN ANAHEIM
+
+Is your computer running slow, overheating, or won't turn on? Broken laptop screen or nasty virus? LB Computer Help offers fast, affordable, and reliable repair services for all makes and models - Apple/Mac, Windows, Desktop, and Laptop.
+
+SERVICES OFFERED:
+- Virus & Spyware Removal (without losing your data)
+- Laptop Screen Replacement (MacBook, Dell, HP, Lenovo, Asus)
+- Laptop Battery & Charging Port Repair
+- Hard Drive to SSD Upgrade (makes your PC 10x faster!)
+- Data Recovery & Backup from dead or crashed drives
+- Blue Screen of Death (BSOD) Fix
+- Windows & MacOS Installation / Reinstall
+- Custom Gaming PC Builds & GPU Upgrades
+- WiFi & Mesh Network Setup (fix dead zones)
+- Printer Setup & Smart Home Installation
+- Small Business IT Support & Network Admin
+- Ethernet Cabling & Server Maintenance
+
+WHY CHOOSE LB COMPUTER HELP?
+- Local Anaheim technician - you deal directly with me, not a big chain
+- Fair, upfront pricing with FREE estimates
+- Fast turnaround - same day service available
+- 90-day warranty on all repairs
+- Hundreds of happy local clients
+
+HOW IT WORKS:
+1. Message me with your computer model and issue
+2. Get a free quote within minutes
+3. Drop off in Anaheim or schedule pickup
+4. Most repairs done same day
+
+PRICING:
+Free diagnostics! Repairs start at $49. SSD upgrades from $99. Screen replacements from $89. Message for exact quote.
+
+SERVING ALL OF ORANGE COUNTY:
+Anaheim, Fullerton, Garden Grove, Santa Ana, Irvine, Huntington Beach, Costa Mesa, Tustin, Orange, Yorba Linda, Buena Park, Cypress, La Habra, Placentia, Brea, La Mirada, Cerritos, Stanton, Westminster, Fountain Valley, Lake Forest, Mission Viejo, Laguna Hills, Aliso Viejo, Dana Point, San Clemente, Rancho Santa Margarita, Newport Beach.</div>
+                        </div>
+                        <!-- SEO KEYWORD BLOCK -->
+                        <div style="background:#f1f5f9; border:1px solid #e2e8f0; border-radius:8px; padding:12px; margin-top:12px;">
+                            <div style="font-size:12px; font-weight:700; color:#475569; margin-bottom:6px;">SEO Keywords (copy these to the bottom of your listing description):</div>
+                            <div style="font-size:11px; color:#64748b; line-height:1.8;">
+                                computer repair, laptop repair, PC fix, virus removal, malware removal, spyware removal, screen replacement, cracked screen fix, laptop screen repair, MacBook repair, Dell repair, HP repair, Lenovo repair, Asus repair, data recovery, hard drive repair, SSD upgrade, slow computer fix, blue screen fix, BSOD repair, battery replacement, charging port repair, DC jack repair, custom PC build, gaming PC repair, gaming PC build, RTX upgrade, GPU installation, WiFi setup, mesh network, router setup, internet fix, network setup, ethernet cabling, printer setup, smart home setup, IT support, tech support, computer technician, computer help, tech help near me, same day computer repair, affordable computer repair, local computer repair, Anaheim computer repair, Orange County computer repair, OC tech support, Fullerton computer repair, Santa Ana computer repair, Irvine tech support, Huntington Beach computer fix, Garden Grove laptop repair, Costa Mesa PC repair, Tustin computer help, Yorba Linda tech support, Buena Park computer repair, Cypress laptop fix, La Habra computer help, Brea PC repair, Westminster computer repair, Placentia tech support
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 style="color: #1e293b; margin-bottom: 8px;">Photo Strategy (use 3-5 photos)</h6>
+                        <img src="assets/real-photos/IMG_0039.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px; border:3px solid #22c55e;" alt="Brandon headset">
+                        <div style="font-size:11px; color:#166534; font-weight:600; margin-bottom:8px;">1. IMG_0039 - ALWAYS lead with this (trust)</div>
+                        <img src="assets/real-photos/IMG_0867.JPG" style="width:100%; height:80px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Laptop repair">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:6px;">2. IMG_0867 - Laptop internals (shows skill)</div>
+                        <img src="assets/real-photos/IMG_1810.jpg" style="width:100%; height:80px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Dusty PC">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:6px;">3. IMG_1810 - Dusty PC (engagement bait)</div>
+                        <img src="assets/real-photos/IMG_1308.jpg" style="width:100%; height:80px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Network rack">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:6px;">4. IMG_1308 - Network rack (shows range)</div>
+                        <img src="assets/real-photos/IMG_0040.jpg" style="width:100%; height:80px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Phone repair">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:12px;">5. IMG_0040 - Phone repair (extra service)</div>
+                        <div style="background:#ecfdf5; border:1px solid #bbf7d0; border-radius:8px; padding:10px; font-size:12px;">
+                            <strong style="color:#166534;">Renewal Schedule:</strong><br>
+                            - Renew every Sunday<br>
+                            - Delete & recreate on the 1st of each month<br>
+                            - Rotate photo order each renewal
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LISTING 1: Data Recovery -->
+        <div class="card-panel">
+            <div class="panel-header" style="background: #fef2f2;">
+                <h5><i class="fas fa-exclamation-triangle me-2 text-danger"></i> Listing 1: Data Recovery (Urgent/Panic)</h5>
+                <span class="badge-status" style="background:#fee2e2; color:#991b1b;">High Emotion</span>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                            <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">MARKETPLACE LISTING</div>
+                            <div style="font-weight:700; font-size:18px; color:#1e293b; margin-bottom:4px;">Data Recovery Service - Hard Drive Clicking or Dead? - Anaheim</div>
+                            <div style="font-size:14px; color:#22c55e; font-weight:600; margin-bottom:8px;">$1 &middot; Electronics > Computers &middot; Used - Good</div>
+                            <div style="font-size:13px; line-height:1.6; color:#1e293b; white-space:pre-line; max-height:200px; overflow-y:auto;">DID YOU LOSE YOUR PHOTOS OR DOCUMENTS? DON'T PANIC.
+
+At LB Computer Help, we specialize in emergency data recovery for crashed hard drives, clicking external drives, and dead laptops. If your computer won't turn on or you accidentally deleted files, stop using the device immediately and send us a message.
+
+We fix: Clicking hard drives (HDD), Dead SSDs, Corrupted USB/SD cards, "No Boot Device Found" errors, Accidental file deletion.
+
+Don't trust big box stores that ship your drive out for weeks. We offer local, personalized service.
+
+Service Area: Anaheim, Fullerton, Garden Grove, Santa Ana, Irvine, Huntington Beach, Costa Mesa, Tustin, Orange, Yorba Linda, Buena Park, Cypress, La Habra, Placentia, Brea.</div>
+                            <div style="margin-top:8px; font-size:11px; color:#94a3b8;">Keywords: data recovery, hard drive repair, lost photos, computer repair, laptop repair, clicking drive, tech support, Anaheim</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 style="font-size:12px; margin-bottom:8px;">Suggested Photos</h6>
+                        <img src="assets/real-photos/IMG_0333.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Damaged USB port">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:8px;">IMG_0333 - Damaged port (shows the problem)</div>
+                        <img src="assets/real-photos/IMG_0690.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Mac mini open">
+                        <div style="font-size:11px; color:#64748b;">IMG_0690 - Mac mini open for service</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LISTING 2: Virus & Blue Screen -->
+        <div class="card-panel">
+            <div class="panel-header" style="background: #fef2f2;">
+                <h5><i class="fas fa-shield-virus me-2 text-danger"></i> Listing 2: Virus & Blue Screen Fix (Urgent)</h5>
+                <span class="badge-status" style="background:#fee2e2; color:#991b1b;">High Search Volume</span>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                            <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">MARKETPLACE LISTING</div>
+                            <div style="font-weight:700; font-size:18px; color:#1e293b; margin-bottom:4px;">Blue Screen Fix & Virus Removal - Laptop & Desktop Repair</div>
+                            <div style="font-size:14px; color:#22c55e; font-weight:600; margin-bottom:8px;">$1 &middot; Electronics > Computers &middot; Used - Good</div>
+                            <div style="font-size:13px; line-height:1.6; color:#1e293b; white-space:pre-line; max-height:200px; overflow-y:auto;">COMPUTER WON'T START? GETTING A BLUE SCREEN?
+
+If your computer is frozen, giving you the "Blue Screen of Death" (BSOD), or acting possessed by a virus, LB Computer Help is here to fix it fast.
+
+Emergency Services: Virus/Trojan/Malware removal without losing data, Blue Screen troubleshooting and repair, Boot loop fixes, Pop-up removal and browser cleaning, Ransomware mitigation.
+
+We offer same-day diagnostics. Drop off in Anaheim or on-site options for OC.
+
+Serving: Anaheim, Fullerton, Garden Grove, Santa Ana, Irvine, Huntington Beach, Costa Mesa, Tustin, Orange, Yorba Linda, Buena Park, Cypress.</div>
+                            <div style="margin-top:8px; font-size:11px; color:#94a3b8;">Keywords: computer virus, blue screen fix, laptop repair, malware removal, PC repair, windows repair, BSOD</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 style="font-size:12px; margin-bottom:8px;">Suggested Photos</h6>
+                        <img src="assets/ai-photos/ai_virus_removal.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px; border:2px solid #8b5cf6;" alt="AI Virus removal">
+                        <div style="font-size:11px; color:#7c3aed; margin-bottom:8px;">AI Generated - Virus removal scene</div>
+                        <img src="assets/real-photos/IMG_1394.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Troubleshooting">
+                        <div style="font-size:11px; color:#64748b;">IMG_1394 - Laptop troubleshooting</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LISTING 3: Cracked Screen -->
+        <div class="card-panel">
+            <div class="panel-header" style="background: #eff6ff;">
+                <h5><i class="fas fa-mobile-alt me-2 text-primary"></i> Listing 3: Screen Replacement (Hardware)</h5>
+                <span class="badge-status">All Brands</span>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                            <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">MARKETPLACE LISTING</div>
+                            <div style="font-weight:700; font-size:18px; color:#1e293b; margin-bottom:4px;">Cracked Laptop Screen Replacement - Dell HP Lenovo MacBook</div>
+                            <div style="font-size:14px; color:#22c55e; font-weight:600; margin-bottom:8px;">$1 &middot; Electronics > Computer Parts &middot; New</div>
+                            <div style="font-size:13px; line-height:1.6; color:#1e293b; white-space:pre-line; max-height:200px; overflow-y:auto;">DROPPED YOUR LAPTOP? CRACKED SCREEN? WE FIX IT.
+
+A broken screen doesn't mean you need a new computer. LB Computer Help provides affordable laptop screen replacement in Anaheim - often 50% cheaper than Apple Store.
+
+We repair: Apple MacBook Air/Pro, Dell Inspiron/XPS/Latitude, HP Pavilion/Envy/Spectre, Lenovo ThinkPad/IdeaPad, Asus, Acer, MSI Gaming Laptops.
+
+Message us with your laptop model number for an instant quote!
+
+Locations: Anaheim, Fullerton, Garden Grove, Santa Ana, Irvine, Huntington Beach, Costa Mesa, Tustin, Orange.</div>
+                            <div style="margin-top:8px; font-size:11px; color:#94a3b8;">Keywords: laptop screen repair, cracked screen, macbook repair, LCD replacement, screen fix, Dell, HP</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 style="font-size:12px; margin-bottom:8px;">Suggested Photos</h6>
+                        <img src="assets/real-photos/IMG_0040.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="iPhone screen replacement">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:8px;">IMG_0040 - Screen replacement work</div>
+                        <img src="assets/real-photos/IMG_1362.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Motherboard cleaning">
+                        <div style="font-size:11px; color:#64748b;">IMG_1362 - Precision motherboard work</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LISTING 4: Battery & Charging -->
+        <div class="card-panel">
+            <div class="panel-header" style="background: #eff6ff;">
+                <h5><i class="fas fa-battery-half me-2 text-primary"></i> Listing 4: Battery & Charging Port (Hardware)</h5>
+                <span class="badge-status">Common Problem</span>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                            <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">MARKETPLACE LISTING</div>
+                            <div style="font-weight:700; font-size:18px; color:#1e293b; margin-bottom:4px;">Laptop Battery Replacement & Charging Port Repair Service</div>
+                            <div style="font-size:14px; color:#22c55e; font-weight:600; margin-bottom:8px;">$1 &middot; Electronics > Computer Parts &middot; New</div>
+                            <div style="font-size:13px; line-height:1.6; color:#1e293b; white-space:pre-line; max-height:200px; overflow-y:auto;">LAPTOP WON'T CHARGE? BATTERY DIES IN 10 MINUTES?
+
+Common symptoms we fix: "Plugged in, not charging", Battery drains instantly, Swollen battery (trackpad popping up) - DANGEROUS!, Broken or loose charging port, Random shutoffs.
+
+We use high-quality replacement batteries and solder loose charging ports right here in Anaheim. Don't throw away a good laptop just because the battery is old!
+
+Serving Orange County: Anaheim, Fullerton, Garden Grove, Santa Ana, Irvine, Huntington Beach, Costa Mesa, Tustin, Orange, Yorba Linda, Buena Park.</div>
+                            <div style="margin-top:8px; font-size:11px; color:#94a3b8;">Keywords: laptop battery, charging port fix, DC jack repair, macbook battery, dell battery, hp battery, swollen battery</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 style="font-size:12px; margin-bottom:8px;">Suggested Photos</h6>
+                        <img src="assets/real-photos/IMG_0867.JPG" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Dell laptop internals">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:8px;">IMG_0867 - Laptop thermal/battery area</div>
+                        <img src="assets/real-photos/IMG_0326.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Motherboard">
+                        <div style="font-size:11px; color:#64748b;">IMG_0326 - Motherboard hardware work</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LISTING 5: SSD Upgrade -->
+        <div class="card-panel">
+            <div class="panel-header" style="background: #fefce8;">
+                <h5><i class="fas fa-bolt me-2 text-warning"></i> Listing 5: SSD Speed Upgrade (Performance)</h5>
+                <span class="badge-status" style="background:#fef3c7; color:#92400e;">Highest Conversion</span>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                            <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">MARKETPLACE LISTING</div>
+                            <div style="font-weight:700; font-size:18px; color:#1e293b; margin-bottom:4px;">Speed Up Slow Laptop - SSD Upgrade Service - PC & Mac</div>
+                            <div style="font-size:14px; color:#22c55e; font-weight:600; margin-bottom:8px;">$1 &middot; Electronics > Computers &middot; New</div>
+                            <div style="font-size:13px; line-height:1.6; color:#1e293b; white-space:pre-line; max-height:200px; overflow-y:auto;">IS YOUR COMPUTER PAINFULLY SLOW?
+
+If it takes 10 minutes to turn on, you don't need a new computer - you need an SSD upgrade. Makes old 2015-2020 laptops FASTER than brand new ones.
+
+The Upgrade Includes: New high-speed SSD (500GB/1TB/2TB), Data cloning - keep ALL files and programs, Internal dust cleaning + thermal paste, RAM upgrade available too!
+
+Stop waiting for the spinning wheel. Message us to schedule.
+
+Local Service: Anaheim, Fullerton, Garden Grove, Santa Ana, Irvine, Huntington Beach, Costa Mesa, Tustin, Orange, Yorba Linda, Buena Park, Cypress.</div>
+                            <div style="margin-top:8px; font-size:11px; color:#94a3b8;">Keywords: slow computer, SSD upgrade, laptop speed up, hard drive replacement, faster PC, computer slow fix</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 style="font-size:12px; margin-bottom:8px;">Suggested Photos</h6>
+                        <img src="assets/ai-photos/ai_ssd_upgrade.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px; border:2px solid #8b5cf6;" alt="AI SSD Upgrade">
+                        <div style="font-size:11px; color:#7c3aed; margin-bottom:8px;">AI Generated - SSD install with speed chart</div>
+                        <img src="assets/real-photos/IMG_0326.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Motherboard with SSD">
+                        <div style="font-size:11px; color:#64748b;">IMG_0326 - Real motherboard + SSD area</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LISTING 6: Gaming PC -->
+        <div class="card-panel">
+            <div class="panel-header" style="background: #fefce8;">
+                <h5><i class="fas fa-gamepad me-2 text-warning"></i> Listing 6: Gaming PC Repair & Builds (Performance)</h5>
+                <span class="badge-status" style="background:#fef3c7; color:#92400e;">Niche Audience</span>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                            <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">MARKETPLACE LISTING</div>
+                            <div style="font-weight:700; font-size:18px; color:#1e293b; margin-bottom:4px;">Gaming PC Repair, Upgrades & Custom Builds - FPS Boost</div>
+                            <div style="font-size:14px; color:#22c55e; font-weight:600; margin-bottom:8px;">$1 &middot; Electronics > Computers &middot; Used - Good</div>
+                            <div style="font-size:13px; line-height:1.6; color:#1e293b; white-space:pre-line; max-height:200px; overflow-y:auto;">LOW FPS? OVERHEATING? GAMING PC CRASHING?
+
+LB Computer Help - your local expert for custom rigs and gaming laptop repair.
+
+Gaming Services: Overheating Fix (liquid cooling, AIO, thermal paste), GPU installation (RTX 30/40 series), CPU swaps, RAM upgrades, Custom Builds (you buy parts, we build with clean cable management), Crash-to-desktop troubleshooting.
+
+Don't let a potato PC ruin your K/D ratio. We speak gamer.
+
+Located in Anaheim, serving all OC gamers.</div>
+                            <div style="margin-top:8px; font-size:11px; color:#94a3b8;">Keywords: gaming PC, custom PC build, RTX, graphics card, overheating PC, low FPS, PC gamer, gaming laptop</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 style="font-size:12px; margin-bottom:8px;">Suggested Photos</h6>
+                        <img src="assets/real-photos/IMG_1810.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Dusty RTX">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:8px;">IMG_1810 - RTX 2080 (gamers love this)</div>
+                        <img src="assets/real-photos/IMG_1786.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Dusty motherboard">
+                        <div style="font-size:11px; color:#64748b;">IMG_1786 - Aorus X570 gaming board</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LISTING 7: WiFi & Mesh -->
+        <div class="card-panel">
+            <div class="panel-header" style="background: #ecfdf5;">
+                <h5><i class="fas fa-wifi me-2 text-success"></i> Listing 7: WiFi & Mesh Network Setup (Home)</h5>
+                <span class="badge-status" style="background:#dcfce7; color:#166534;">Recurring Revenue</span>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                            <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">MARKETPLACE LISTING</div>
+                            <div style="font-weight:700; font-size:18px; color:#1e293b; margin-bottom:4px;">Home WiFi Repair & Mesh Network Setup - Fix Dead Zones</div>
+                            <div style="font-size:14px; color:#22c55e; font-weight:600; margin-bottom:8px;">$1 &middot; Electronics > Networking &middot; New</div>
+                            <div style="font-size:13px; line-height:1.6; color:#1e293b; white-space:pre-line; max-height:200px; overflow-y:auto;">INTERNET KEEPS DROPPING? WIFI WON'T REACH THE BEDROOM?
+
+Spectrum and AT&T modems often aren't strong enough. We install Mesh WiFi (Eero, Orbi, Google Nest) that blankets your entire home.
+
+We help with: Eliminating WiFi dead zones, Router and Modem setup, "Connected, No Internet" errors, Ethernet cabling for home offices, Network security from neighbors.
+
+Stop fighting with your router. Smooth streaming and lag-free Zoom today.
+
+Serving: Anaheim, Fullerton, Garden Grove, Santa Ana, Irvine, Huntington Beach, Costa Mesa, Tustin, Orange, Yorba Linda.</div>
+                            <div style="margin-top:8px; font-size:11px; color:#94a3b8;">Keywords: wifi repair, network setup, mesh wifi, internet help, slow internet, router setup, dead zones</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 style="font-size:12px; margin-bottom:8px;">Suggested Photos</h6>
+                        <img src="assets/ai-photos/ai_mesh_wifi.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px; border:2px solid #8b5cf6;" alt="AI Mesh WiFi">
+                        <div style="font-size:11px; color:#7c3aed; margin-bottom:8px;">AI Generated - Mesh network setup</div>
+                        <img src="assets/real-photos/IMG_0262.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Google WiFi">
+                        <div style="font-size:11px; color:#64748b;">IMG_0262 - Real Google WiFi setup</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LISTING 8: Printer & Smart Home -->
+        <div class="card-panel">
+            <div class="panel-header" style="background: #ecfdf5;">
+                <h5><i class="fas fa-print me-2 text-success"></i> Listing 8: Printer & Smart Home Setup (Home)</h5>
+                <span class="badge-status" style="background:#dcfce7; color:#166534;">Easy Upsell</span>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                            <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">MARKETPLACE LISTING</div>
+                            <div style="font-weight:700; font-size:18px; color:#1e293b; margin-bottom:4px;">Printer Setup & Smart Home Installation Help - Anaheim</div>
+                            <div style="font-size:14px; color:#22c55e; font-weight:600; margin-bottom:8px;">$1 &middot; Electronics > Printers &middot; Used - Good</div>
+                            <div style="font-size:13px; line-height:1.6; color:#1e293b; white-space:pre-line; max-height:200px; overflow-y:auto;">PRINTER WON'T CONNECT? NEED HELP WITH SMART DEVICES?
+
+We troubleshoot HP, Canon, Epson, Brother wireless connection issues.
+
+Smart Home Setup: Ring Doorbell & security cameras, Smart thermostat (Nest/Ecobee), Smart TV mounting and setup, Alexa/Google Home integration.
+
+Friendly local tech who makes everything talk to each other. No geek speak, just results.
+
+Service Area: Anaheim, Fullerton, Garden Grove, Santa Ana, Irvine, Huntington Beach, Costa Mesa, Tustin.</div>
+                            <div style="margin-top:8px; font-size:11px; color:#94a3b8;">Keywords: printer repair, printer setup, smart home, ring doorbell, tech help, wireless printer, IT support</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 style="font-size:12px; margin-bottom:8px;">Suggested Photos</h6>
+                        <img src="assets/real-photos/IMG_0314.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Linksys switch">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:8px;">IMG_0314 - Tech equipment in hand</div>
+                        <img src="assets/real-photos/IMG_0039.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Brandon headset">
+                        <div style="font-size:11px; color:#64748b;">IMG_0039 - Personal trust photo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LISTING 9: Business IT -->
+        <div class="card-panel">
+            <div class="panel-header" style="background: #f0f9ff;">
+                <h5><i class="fas fa-building me-2 text-info"></i> Listing 9: Small Business IT Support (Business)</h5>
+                <span class="badge-status" style="background:#cffafe; color:#155e75;">High LTV</span>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                            <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">MARKETPLACE LISTING</div>
+                            <div style="font-weight:700; font-size:18px; color:#1e293b; margin-bottom:4px;">Small Business IT Support & Network Administration</div>
+                            <div style="font-size:14px; color:#22c55e; font-weight:600; margin-bottom:8px;">$1 &middot; Electronics > Computers &middot;</div>
+                            <div style="font-size:13px; line-height:1.6; color:#1e293b; white-space:pre-line; max-height:200px; overflow-y:auto;">NEED AN IT GUY FOR YOUR ANAHEIM BUSINESS?
+
+LB Computer Help provides professional IT support for small businesses in Orange County. You don't need a full-time employee.
+
+Business Services: New employee workstation setup, Office 365/G-Suite email management, Network security and firewall, Data backup (Local & Cloud), On-site emergency troubleshooting.
+
+Fast response, professional service. We understand OC small business needs. Message us for monthly plan or one-time fix.
+
+Serving: Anaheim, Fullerton, Garden Grove, Santa Ana, Irvine, Huntington Beach, Costa Mesa, Tustin.</div>
+                            <div style="margin-top:8px; font-size:11px; color:#94a3b8;">Keywords: business IT, IT support, network admin, office network, managed services, tech support, small business</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 style="font-size:12px; margin-bottom:8px;">Suggested Photos</h6>
+                        <img src="assets/real-photos/IMG_1308.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Cisco rack">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:8px;">IMG_1308 - Enterprise Cisco rack</div>
+                        <img src="assets/ai-photos/ai_server_rack.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px; border:2px solid #8b5cf6;" alt="AI Server rack">
+                        <div style="font-size:11px; color:#7c3aed;">AI Generated - Professional server rack</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LISTING 10: Network Cabling -->
+        <div class="card-panel">
+            <div class="panel-header" style="background: #f0f9ff;">
+                <h5><i class="fas fa-ethernet me-2 text-info"></i> Listing 10: Office Network Cabling (Business)</h5>
+                <span class="badge-status" style="background:#cffafe; color:#155e75;">B2B Lead Gen</span>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                            <div style="font-size:11px; color:#94a3b8; margin-bottom:4px;">MARKETPLACE LISTING</div>
+                            <div style="font-weight:700; font-size:18px; color:#1e293b; margin-bottom:4px;">Office Network Cabling & Server Maintenance Services</div>
+                            <div style="font-size:14px; color:#22c55e; font-weight:600; margin-bottom:8px;">$1 &middot; Electronics > Networking &middot;</div>
+                            <div style="font-size:13px; line-height:1.6; color:#1e293b; white-space:pre-line; max-height:200px; overflow-y:auto;">OFFICE MOVING? NEED ETHERNET DROPS INSTALLED?
+
+WiFi is great, but for business, hardwired Ethernet (Cat5e/Cat6) is king. We provide clean, professional cabling.
+
+Infrastructure Services: Running Ethernet through walls/ceilings, Patch panel termination and testing, Server rack cable management, Switch and router configuration, Server maintenance (Windows Server, hardware).
+
+Don't let a messy server closet cause downtime. Fast, organized, reliable.
+
+Serving: Anaheim, Fullerton, Garden Grove, Santa Ana, Irvine, Huntington Beach, Costa Mesa.</div>
+                            <div style="margin-top:8px; font-size:11px; color:#94a3b8;">Keywords: ethernet cabling, network installation, low voltage, server repair, structured cabling, Cat6, office setup</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 style="font-size:12px; margin-bottom:8px;">Suggested Photos</h6>
+                        <img src="assets/real-photos/IMG_1309.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Fortinet firewall">
+                        <div style="font-size:11px; color:#64748b; margin-bottom:8px;">IMG_1309 - Fortinet patch panel</div>
+                        <img src="assets/real-photos/IMG_1393.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:8px; margin-bottom:4px;" alt="Cable mess before">
+                        <div style="font-size:11px; color:#64748b;">IMG_1393 - "Before" cable spaghetti</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
     <!-- PHOTOS SECTION -->
     <section id="photos" class="content-section">
         <div class="page-header">
             <h1>Photo Assets</h1>
-            <p>18 categorized photos ready for posting</p>
+            <p>18 real photos + 5 AI-generated images for posting</p>
         </div>
 
         <div class="card-panel">
@@ -1143,16 +2195,14 @@
                 <h5><i class="fas fa-fan me-2"></i> Dusty PC Photos (2)</h5>
             </div>
             <div class="panel-body">
-                <div class="photo-grid">
-                    <div class="photo-item">
-                        <div class="filename">IMG_1810.jpg</div>
-                        <div class="category">dusty</div>
-                        <div class="desc">RTX 2080 Super with dust/pet hair, compressed air visible</div>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <img src="assets/real-photos/IMG_1810.jpg" style="width:100%; height:200px; object-fit:cover; border-radius:8px;" alt="Dusty RTX 2080">
+                        <div style="font-size:12px; margin-top:4px;"><strong>IMG_1810.jpg</strong> - RTX 2080 Super with dust/pet hair</div>
                     </div>
-                    <div class="photo-item">
-                        <div class="filename">IMG_1786.jpg</div>
-                        <div class="category">dusty</div>
-                        <div class="desc">Gigabyte Aorus X570 with cobwebs</div>
+                    <div class="col-md-6">
+                        <img src="assets/real-photos/IMG_1786.jpg" style="width:100%; height:200px; object-fit:cover; border-radius:8px;" alt="Dusty Aorus X570">
+                        <div style="font-size:12px; margin-top:4px;"><strong>IMG_1786.jpg</strong> - Gigabyte Aorus X570 with cobwebs</div>
                     </div>
                 </div>
             </div>
@@ -1163,36 +2213,30 @@
                 <h5><i class="fas fa-network-wired me-2"></i> Network Infrastructure (6)</h5>
             </div>
             <div class="panel-body">
-                <div class="photo-grid">
-                    <div class="photo-item">
-                        <div class="filename">IMG_1308.jpg</div>
-                        <div class="category">network</div>
-                        <div class="desc">Network rack with Cisco equipment</div>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <img src="assets/real-photos/IMG_1308.jpg" style="width:100%; height:160px; object-fit:cover; border-radius:8px;" alt="Cisco rack">
+                        <div style="font-size:12px; margin-top:4px;"><strong>IMG_1308</strong> - Cisco network rack</div>
                     </div>
-                    <div class="photo-item">
-                        <div class="filename">IMG_1309.jpg</div>
-                        <div class="category">network</div>
-                        <div class="desc">Fortinet FortiGate 60F firewall</div>
+                    <div class="col-md-4">
+                        <img src="assets/real-photos/IMG_1309.jpg" style="width:100%; height:160px; object-fit:cover; border-radius:8px;" alt="Fortinet firewall">
+                        <div style="font-size:12px; margin-top:4px;"><strong>IMG_1309</strong> - Fortinet FortiGate 60F</div>
                     </div>
-                    <div class="photo-item">
-                        <div class="filename">IMG_1393.jpg</div>
-                        <div class="category">network</div>
-                        <div class="desc">Cable spaghetti - great BEFORE photo</div>
+                    <div class="col-md-4">
+                        <img src="assets/real-photos/IMG_1393.jpg" style="width:100%; height:160px; object-fit:cover; border-radius:8px;" alt="Cable mess">
+                        <div style="font-size:12px; margin-top:4px;"><strong>IMG_1393</strong> - Cable spaghetti (BEFORE)</div>
                     </div>
-                    <div class="photo-item">
-                        <div class="filename">IMG_0311.jpg</div>
-                        <div class="category">network</div>
-                        <div class="desc">Cybera gateway stacked equipment</div>
+                    <div class="col-md-4">
+                        <img src="assets/real-photos/IMG_0311.jpg" style="width:100%; height:160px; object-fit:cover; border-radius:8px;" alt="Cybera gateway">
+                        <div style="font-size:12px; margin-top:4px;"><strong>IMG_0311</strong> - Cybera gateway</div>
                     </div>
-                    <div class="photo-item">
-                        <div class="filename">IMG_0262.jpg</div>
-                        <div class="category">network</div>
-                        <div class="desc">Home networking with Google Wifi</div>
+                    <div class="col-md-4">
+                        <img src="assets/real-photos/IMG_0262.jpg" style="width:100%; height:160px; object-fit:cover; border-radius:8px;" alt="Google Wifi">
+                        <div style="font-size:12px; margin-top:4px;"><strong>IMG_0262</strong> - Google Wifi node</div>
                     </div>
-                    <div class="photo-item">
-                        <div class="filename">IMG_0314.jpg</div>
-                        <div class="category">network</div>
-                        <div class="desc">Linksys switch with ethernet cables</div>
+                    <div class="col-md-4">
+                        <img src="assets/real-photos/IMG_0314.jpg" style="width:100%; height:160px; object-fit:cover; border-radius:8px;" alt="Linksys switch">
+                        <div style="font-size:12px; margin-top:4px;"><strong>IMG_0314</strong> - Linksys switch</div>
                     </div>
                 </div>
             </div>
@@ -1203,35 +2247,38 @@
                 <h5><i class="fas fa-tools me-2"></i> Hardware Repairs (8)</h5>
             </div>
             <div class="panel-body">
-                <div class="photo-grid">
-                    <div class="photo-item">
-                        <div class="filename">IMG_0333.jpg</div>
-                        <div class="category">repairs</div>
-                        <div class="desc">Damaged USB 3.0 port with bent pins</div>
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <img src="assets/real-photos/IMG_0333.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px;" alt="Damaged USB">
+                        <div style="font-size:11px; margin-top:4px;"><strong>IMG_0333</strong> - Damaged USB port</div>
                     </div>
-                    <div class="photo-item">
-                        <div class="filename">IMG_1362.jpg</div>
-                        <div class="category">repairs</div>
-                        <div class="desc">Motherboard cleaning with cotton swab</div>
+                    <div class="col-md-3">
+                        <img src="assets/real-photos/IMG_1362.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px;" alt="Motherboard cleaning">
+                        <div style="font-size:11px; margin-top:4px;"><strong>IMG_1362</strong> - Motherboard cleaning</div>
                     </div>
-                    <div class="photo-item">
-                        <div class="filename">IMG_0867.jpg</div>
-                        <div class="category">repairs</div>
-                        <div class="desc">Dell laptop thermal system</div>
+                    <div class="col-md-3">
+                        <img src="assets/real-photos/IMG_0867.JPG" style="width:100%; height:140px; object-fit:cover; border-radius:8px;" alt="Dell laptop thermal">
+                        <div style="font-size:11px; margin-top:4px;"><strong>IMG_0867</strong> - Dell laptop thermal</div>
                     </div>
-                    <div class="photo-item">
-                        <div class="filename">IMG_0040.jpg</div>
-                        <div class="category">repairs</div>
-                        <div class="desc">iPhone screen replacement</div>
+                    <div class="col-md-3">
+                        <img src="assets/real-photos/IMG_0040.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px;" alt="iPhone screen">
+                        <div style="font-size:11px; margin-top:4px;"><strong>IMG_0040</strong> - iPhone screen repair</div>
                     </div>
-                    <div class="photo-item">
-                        <div class="filename">IMG_0690.jpg</div>
-                        <div class="category">repairs</div>
-                        <div class="desc">Mac mini opened for service</div>
+                    <div class="col-md-3">
+                        <img src="assets/real-photos/IMG_0690.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px;" alt="Mac mini open">
+                        <div style="font-size:11px; margin-top:4px;"><strong>IMG_0690</strong> - Mac mini open</div>
                     </div>
-                    <div class="photo-item">
-                        <div class="filename">+ 3 more</div>
-                        <div class="desc">See photos_manifest.yaml</div>
+                    <div class="col-md-3">
+                        <img src="assets/real-photos/IMG_0691.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px;" alt="Mac mini internals">
+                        <div style="font-size:11px; margin-top:4px;"><strong>IMG_0691</strong> - Mac mini internals</div>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="assets/real-photos/IMG_0326.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px;" alt="ASRock X570">
+                        <div style="font-size:11px; margin-top:4px;"><strong>IMG_0326</strong> - ASRock X570 board</div>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="assets/real-photos/IMG_1394.jpg" style="width:100%; height:140px; object-fit:cover; border-radius:8px;" alt="Dell troubleshooting">
+                        <div style="font-size:11px; margin-top:4px;"><strong>IMG_1394</strong> - Dell troubleshooting</div>
                     </div>
                 </div>
             </div>
@@ -1242,16 +2289,44 @@
                 <h5><i class="fas fa-user me-2"></i> Personal Brand (2)</h5>
             </div>
             <div class="panel-body">
-                <div class="photo-grid">
-                    <div class="photo-item">
-                        <div class="filename">IMG_0039.jpg</div>
-                        <div class="category">brand</div>
-                        <div class="desc">Brandon with magnifying headset - precision work</div>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <img src="assets/real-photos/IMG_0039.jpg" style="width:100%; height:200px; object-fit:cover; border-radius:8px; border:3px solid #22c55e;" alt="Brandon headset">
+                        <div style="font-size:12px; margin-top:4px;"><strong>IMG_0039.jpg</strong> - Brandon with magnifying headset (PRIMARY trust photo)</div>
                     </div>
-                    <div class="photo-item">
-                        <div class="filename">IMG_0038.jpg</div>
-                        <div class="category">brand</div>
-                        <div class="desc">Precision work setup</div>
+                    <div class="col-md-6">
+                        <img src="assets/real-photos/IMG_0038.jpg" style="width:100%; height:200px; object-fit:cover; border-radius:8px;" alt="Precision work">
+                        <div style="font-size:12px; margin-top:4px;"><strong>IMG_0038.jpg</strong> - Precision work setup</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel">
+            <div class="panel-header">
+                <h5><i class="fas fa-robot me-2" style="color:#8b5cf6;"></i> AI-Generated Images (5)</h5>
+            </div>
+            <div class="panel-body">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <img src="assets/ai-photos/ai_repair_workstation.jpg" style="width:100%; height:160px; object-fit:cover; border-radius:8px; border:2px solid #8b5cf6;" alt="AI Repair Workstation">
+                        <div style="font-size:12px; margin-top:4px; color:#7c3aed;"><strong>AI</strong> - Repair workstation</div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="assets/ai-photos/ai_ssd_upgrade.jpg" style="width:100%; height:160px; object-fit:cover; border-radius:8px; border:2px solid #8b5cf6;" alt="AI SSD Upgrade">
+                        <div style="font-size:12px; margin-top:4px; color:#7c3aed;"><strong>AI</strong> - SSD upgrade with speed chart</div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="assets/ai-photos/ai_mesh_wifi.jpg" style="width:100%; height:160px; object-fit:cover; border-radius:8px; border:2px solid #8b5cf6;" alt="AI Mesh WiFi">
+                        <div style="font-size:12px; margin-top:4px; color:#7c3aed;"><strong>AI</strong> - Mesh WiFi setup</div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="assets/ai-photos/ai_virus_removal.jpg" style="width:100%; height:160px; object-fit:cover; border-radius:8px; border:2px solid #8b5cf6;" alt="AI Virus Removal">
+                        <div style="font-size:12px; margin-top:4px; color:#7c3aed;"><strong>AI</strong> - Virus removal scene</div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="assets/ai-photos/ai_server_rack.jpg" style="width:100%; height:160px; object-fit:cover; border-radius:8px; border:2px solid #8b5cf6;" alt="AI Server Rack">
+                        <div style="font-size:12px; margin-top:4px; color:#7c3aed;"><strong>AI</strong> - Server rack (B2B)</div>
                     </div>
                 </div>
             </div>

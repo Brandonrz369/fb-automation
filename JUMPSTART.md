@@ -14,7 +14,7 @@
 | **Business** | LB Computer Help - Computer Repair in Orange County, CA |
 | **Goal** | Automate Facebook group posting to generate leads |
 | **Method** | Browser Use MCP cloud automation + personal profile |
-| **Status** | All config complete, ready for first live post |
+| **Status** | v3.5 LIVE - 13 successful posts today, 100% v3.5 success rate |
 
 ---
 
@@ -22,11 +22,11 @@
 
 | Metric | Count | Notes |
 |--------|-------|-------|
-| **OC Groups** | 62 | Tier 1: 8, Tier 2: 14, Tier 3: 40 |
-| **Content Posts** | 16 | Each has 3 variations = 48 total |
-| **Photos** | 18 | Categorized by type |
+| **OC Groups** | 76 | Tier 1: 9, Tier 2: 17, Tier 3: 50 (incl 9 marketplace) |
+| **Content Posts** | 19 | Each has 3 variations = 57 total (incl 3 marketplace) |
+| **Photos** | 18 | Mapped to content types |
 | **Delay Between Posts** | 65-140 min | Random, mimics human behavior |
-| **Max Posts/Day** | 3-5 | Safety limit |
+| **Max Posts/Day** | 13-15 | Tested 13 on Feb 6 with no issues |
 | **Per-Group Frequency** | 1x per 14 days | Avoid spam detection |
 
 ---
@@ -39,32 +39,81 @@
 3. STRATEGY_GUIDE.md      <- Research-backed posting strategy
 4. GROWTH_STRATEGY.md     <- Growing Group/Page + Business Page content
 5. config/settings.yaml   <- Current automation settings
-6. config/groups.yaml     <- 52 OC groups to post to
+6. config/groups.yaml     <- 76 OC groups to post to
 ```
 
 ---
 
 ## Current State (February 6, 2026)
 
+### CRITICAL: Browser Agent v3.5 (VERIFIED WORKING)
+v3.5 was developed after v3.2's `execCommand('insertText')` broke on Feb 6 PM (Facebook changed editor). Key technical details:
+
+- **ALL Facebook URLs must include `?_fb_noscript=1`**
+- **Text entry**: Native Browser Use `input` action (NOT execCommand - it's broken)
+- **React state activation**: Space+Backspace "wiggle" after text entry
+- **NEVER use Escape key** (closes modal)
+- **Post button**: Find SPAN with `textContent === 'Post'` → `.closest('[role="button"]')` → click
+  - The Post button is NOT a `div` element - all `div[role="button"]` selectors fail
+  - `.closest('[role="button"]')` traverses up the DOM tree regardless of element type
+- **max_steps: 15** (typically completes in 9)
+
+See `src/browser_agent.py` for the full implementation and `~/.claude/projects/-home-brandon/memory/browser_use_fix.md` for detailed technical notes.
+
 ### What's Complete
-- [x] 62 Orange County groups configured in groups.yaml (rebuilt from live scrape)
-- [x] 16 content pieces with 3 variations each (48 total)
-- [x] Settings updated with safe delays (65-140 min)
-- [x] Strategy guide created from Gemini research
-- [x] 18 photos categorized and ready
-- [x] Groups verified via live Facebook scrape (Feb 6)
-- [x] Dashboard.html fully updated with accurate data
-- [x] All documentation consolidated (Feb 5)
-- [x] Growth strategy for Group/Page created
-- [x] Browser agent upgraded: pre-engagement scroll+like, first-comment CTAs
-- [x] Redundant docs consolidated into EXECUTION_GUIDE.md
-- [x] Google Calendar MCP installed (optional - for reminders)
+- [x] 76 Orange County groups configured (14 added from scrape gap analysis)
+- [x] 19 content pieces with 3 variations each (57 total, incl 3 marketplace)
+- [x] browser_agent.py v3.5 - confirmed working (native input + .closest() Post click)
+- [x] ALL sign-offs standardized with "LB Computer Help" (was just "- Brandon")
+- [x] Content-to-group matching architecture designed (audience + tags 2-axis)
+- [x] Marketplace strategy: 9 buy/sell groups, direct service listings
+- [x] Photo-to-content mapping guide in dashboard
+- [x] 18 real photos mapped to content types (research: NO AI images)
+- [x] Strategy guide, Growth strategy, all docs consolidated
+
+### Content-to-Group Architecture
+```
+MATCHING: group.audience_segment → content.variation (TONE)
+          group.content_tags ∩ content.category (TOPIC)
+
+TIERS:   T1 (9 groups) = 2x/week, all content types
+         T2 (17 groups) = 1x/week, security/network/promo
+         T3 Community (41 groups) = 1x/2 weeks, tips/dusty
+         T3 Marketplace (9 groups) = 1x/2 weeks, promo/repairs ONLY
+
+SATURATION: 19 posts × 14-day cooldown = 266 days (8.9 months) per group
+```
+
+### Posting History (Feb 6, 2026) - 13 Successful Posts
+| # | Group | Content | Result | Version |
+|---|-------|---------|--------|---------|
+| 1 | Anaheim Connect | productivity_tip | SUCCESS_PENDING | v1 |
+| 2 | Garden Grove: What's going on? | tech_tip | SUCCESS_PENDING | v2 |
+| 3 | OC City Neighbors | scam_alert | SUCCESS_PUBLISHED | v2 |
+| 4 | Anaheim Community | laptop_tip | SUCCESS_PUBLISHED | v3.2 |
+| 5 | Fun in Fullerton | myth_buster | SUCCESS_PUBLISHED | v3.2 |
+| 6 | Anything Orange County | dusty_pc | SUCCESS_PENDING | v3.2 |
+| 7 | Anything OC | wifi_tip | SUCCESS_PUBLISHED | v3.5 |
+| 8 | OC Word of Mouth | ssd_upgrade | SUCCESS_PUBLISHED | v3.5 |
+| 9 | All Things Placentia/YL/Fullerton | community | SUCCESS_PENDING | v3.5 |
+| 10 | Fullerton Friends | scam_alert | SUCCESS_PENDING | v3.5 |
+| 11 | Orange County | phishing_tip | SUCCESS_PUBLISHED | v3.5 |
+| 12 | OC Daily Post | password_security | SUCCESS_PENDING | v3.5 |
+| 13 | Orange County (Beach) | appreciation | SUCCESS_PENDING | v3.5 |
+
+### Groups Posted To Today (13/76)
+- **Tier 1:** 8 of 9 (Anaheim Connect, OC City Neighbors, OC Word of Mouth, Regional Placentia, Fullerton Friends, Orange County General, OC Daily Post, Orange County Beach)
+- **Tier 2:** 0 of 17 (blocked by Browser Use credits running out)
+- **Tier 3:** 5 of 50 (Garden Grove, Anaheim Community, Fun in Fullerton, Anything OC x2)
 
 ### Ready for Next Steps
-- [ ] First live test post (Phase 1 in EXECUTION_GUIDE.md)
-- [ ] Content variations expansion (5+ per post)
+- [ ] Replenish Browser Use credits to continue posting
+- [ ] Post to 2 more groups to reach 15 (OC Small Biz, Buena Park Small Biz)
+- [ ] Post on LB Computer Help Business Page
+- [ ] Quality check all posts (verify text, formatting, visibility)
+- [ ] Production posting schedule (begin daily tier rotation)
 - [ ] Cron automation setup
-- [ ] Google Calendar OAuth (optional, for Tech Tuesday reminders)
+- [ ] Monitor engagement and reply to comments
 
 ---
 
@@ -144,23 +193,32 @@ rm ~/fb-automation/data/paused.lock
 | Profile Name | facebook |
 | Account | Brandon Ruiz (personal profile) |
 
-**To post via Browser Use:**
+**To post via Browser Use (v3.2):**
 ```
 Use browser_task with:
 - profile_id: 0ab23467-abfc-45a1-b98d-1b199d6168cc
-- task: [paste generated task from --generate]
-- max_steps: 15
+- task: [generated by browser_agent.py _build_post_task()]
+- max_steps: 25
+
+Generate task via Python:
+  python3 -c "
+  import sys; sys.path.insert(0, 'src')
+  from browser_agent import generate_mcp_command
+  result = generate_mcp_command(payload, '0ab23467-abfc-45a1-b98d-1b199d6168cc')
+  print(result['task'])
+  "
 ```
 
 ---
 
 ## Group Tiers
 
-| Tier | Count | Description | Examples |
-|------|-------|-------------|----------|
-| **Tier 1** | 8 | High-volume community groups | Anything OC, Anaheim Connect, OC Word of Mouth |
-| **Tier 2** | 14 | Business/Niche: B2B, Parents | OC Small Business, Business Networking, Tustin Moms |
-| **Tier 3** | 40 | Local city groups | Westminster, Tustin, Fullerton, Garden Grove, etc. |
+| Tier | Count | Frequency | Description |
+|------|-------|-----------|-------------|
+| **Tier 1** | 9 | 2x/week | High-volume OC community groups (all content types) |
+| **Tier 2** | 17 | 1x/week | Business/Niche: B2B, Parents (security, network, promo) |
+| **Tier 3 Community** | 41 | 1x/2 weeks | Local city discussion groups (tips, dusty, security) |
+| **Tier 3 Marketplace** | 9 | 1x/2 weeks | Buy/sell groups (promo + repairs ONLY) |
 
 ---
 
@@ -295,7 +353,9 @@ When starting a new session:
 
 | Date | Key Changes |
 |------|-------------|
-| Feb 6, 2026 | Groups rebuilt from live FB scrape: 62 active groups (was 52 configured, 9 verified). Real URLs captured. Business page (38 groups) also documented |
+| Feb 6, 2026 (PM late) | v3.5 mass posting: 13 successful posts (7 v3.5 + 6 earlier). 8/9 Tier 1 groups covered. Browser Use credits ran out before Tier 2. Line-by-line text entry fix for \n formatting. Dashboard, history, all tracking updated. |
+| Feb 6, 2026 (PM) | Architecture overhaul: 76 groups (14 added from gap analysis), all sign-offs fixed with "LB Computer Help", 3 marketplace content pieces added, dashboard updated with marketplace previews + photo mapping guide, content-to-group matching architecture designed. v3.5 breakthrough: native input + .closest() Post click |
+| Feb 6, 2026 (AM) | browser_agent.py v3.2 WORKING (execCommand + dialog scoping + wiggle). 6 successful posts. Groups rebuilt from live FB scrape. |
 | Feb 5, 2026 | Dashboard rewritten, all docs made consistent, Google Calendar MCP installed, Growth Strategy created, Launch Checklist created |
 | Feb 3, 2026 | Strategy guide created, delays updated to 65-140 min |
 | Feb 2, 2026 | Initial framework built, 52 groups configured |

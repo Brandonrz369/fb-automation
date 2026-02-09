@@ -2,5 +2,205 @@
   "_meta": {
     "created": "2026-02-02",
     "description": "Posting history - tracks what content was posted to which groups"
-  }
+  },
+  "anaheim_connect": [
+    {
+      "post_id": "week1_day1_productivity_tip",
+      "timestamp": "2026-02-06T03:45:00",
+      "success": true,
+      "notes": "First live test post - pending admin approval. Only confirmed post from first batch."
+    }
+  ],
+  "oc_city_neighbors": [
+    {
+      "post_id": "week1_day1_productivity_tip",
+      "timestamp": "2026-02-06T04:09:00",
+      "success": false,
+      "notes": "GHOST POST - Agent reported success but diagnostic confirmed NO post by Brandon in group feed. Modal likely had loading placeholder issue."
+    }
+  ],
+  "oc_word_of_mouth": [
+    {
+      "post_id": "week1_day2_scam_alert",
+      "timestamp": "2026-02-06T04:30:00",
+      "success": false,
+      "notes": "GHOST POST - Agent reported success but post not found. Text had formatting issues. React state likely never updated."
+    }
+  ],
+  "regional_placentia": [
+    {
+      "post_id": "week1_day4_wifi_tip",
+      "timestamp": "2026-02-06T04:31:00",
+      "success": false,
+      "notes": "GHOST POST - Agent reported success but post not found. Modal loading placeholder issue likely."
+    }
+  ],
+  "fullerton_friends": [
+    {
+      "post_id": "week1_day3_dusty_pc",
+      "timestamp": "2026-02-06T04:33:00",
+      "success": false,
+      "notes": "GHOST POST - Agent reported success but post not found. Modal loading placeholder issue likely."
+    }
+  ],
+  "orange_county_general": [
+    {
+      "post_id": "week2_day8_security",
+      "timestamp": "2026-02-06T04:37:00",
+      "success": false,
+      "notes": "FAILED - JS querySelector grabbed comment textbox instead of post modal editor. 3 empty posts created. NEEDS MANUAL CLEANUP."
+    }
+  ],
+  "oc_daily_post": [
+    {
+      "post_id": "week2_day9_phishing",
+      "timestamp": "2026-02-06T04:39:00",
+      "success": false,
+      "notes": "FAILED - Facebook refused to load (stuck on loading logo). Rate-limited after rapid posting."
+    }
+  ],
+  "garden_grove_whats_going_on": [
+    {
+      "post_id": "diagnostic_test_tech_tip",
+      "timestamp": "2026-02-06T05:18:00",
+      "success": true,
+      "notes": "VERIFIED SUCCESS - Used ?_fb_noscript=1 fix. Post submitted, confirmed 'pending admin approval'. Text entered correctly, Post button activated, JS click worked. First post using fixed approach."
+    }
+  ],
+  "oc_city_neighbors_v2": [
+    {
+      "post_id": "scam_alert_popup",
+      "timestamp": "2026-02-06T05:36:00",
+      "success": true,
+      "notes": "SUCCESS_PUBLISHED - Post visible in feed (not pending). Used ?_fb_noscript=1 + JS Post click. Text has literal backslash-n formatting issue - Browser Use input action does not convert backslash-n to newlines. Line-by-line Shift+Enter approach worked but agent ran out of steps and fell back to single input. NEEDS: delete and repost with proper formatting."
+    }
+  ],
+  "anaheim_community": [
+    {
+      "post_id": "week2_day11_laptop_tip",
+      "timestamp": "2026-02-06T06:07:00",
+      "success": true,
+      "notes": "SUCCESS_PUBLISHED - v3.2 first test. Post visible in feed. 10 steps, no fallbacks."
+    }
+  ],
+  "fun_in_fullerton": [
+    {
+      "post_id": "extra_myth_buster_battery",
+      "timestamp": "2026-02-06T06:14:00",
+      "success": true,
+      "notes": "SUCCESS_PUBLISHED - v3.2 second test. Same group where v3.0 FAILED. Post visible in feed. 10 steps, no fallbacks. Handled popup overlay (Woman's Club of Fullerton) gracefully."
+    }
+  ],
+  "anything_orange_county": [
+    {
+      "post_id": "week1_day3_dusty_pc",
+      "timestamp": "2026-02-06T19:22:00",
+      "success": true,
+      "notes": "SUCCESS_PENDING - v3.2. Post submitted, pending admin approval. Agent handled Participation Review modal (new member questions) automatically. 22 steps total (JS IIFE wrapper issues caused retries, but text inserted and Post clicked successfully)."
+    }
+  ],
+  "orange_county_beach": [
+    {
+      "post_id": "week1_day2_scam_alert",
+      "timestamp": "2026-02-06T19:40:00",
+      "success": false,
+      "notes": "LIKELY GHOST POST - Agent reported success but TEXT LENGTH was only 9 chars (expected 400+). execCommand('insertText') failed ~12 times in retry loop. Text never appeared in editor. Modal closed after Post click but post content almost certainly empty/wrong. Welcome modal for new member may have interfered. NEEDS MANUAL CHECK - delete any empty post if found."
+    }
+  ],
+  "oc_word_of_mouth_v2": [
+    {
+      "post_id": "week2_day13_ssd_upgrade",
+      "timestamp": "2026-02-06T19:46:00",
+      "success": false,
+      "notes": "FAILED - execCommand('insertText') completely broken. 16+ steps of retries, text never appeared in editor. Same issue as orange_county_beach. Facebook may have changed editor implementation breaking execCommand approach. Need to switch to ClipboardEvent or native typing."
+    }
+  ],
+  "regional_placentia_v2": [
+    {
+      "post_id": "week2_day13_ssd_upgrade",
+      "timestamp": "2026-02-06T19:49:00",
+      "success": false,
+      "notes": "FAILED - v3.3 test. Native input action typed text SUCCESSFULLY but JS Post button click returned POST_NOT_FOUND repeatedly. querySelector('div[role=\"dialog\"]') can't find Post button. Facebook changed DOM structure. 20 steps, all Post click attempts failed."
+    }
+  ],
+  "fullerton_friends_v2": [
+    {
+      "post_id": "week2_day13_ssd_upgrade",
+      "timestamp": "2026-02-06T19:54:00",
+      "success": false,
+      "notes": "FAILED - v3.3 test (no JS). Native input typed text OK. Agent tried clicking Post button by index but kept hitting 'Add to your post' icons instead. Index 10921 = 'Add to your post', NOT the submit button. Post button identification is the bottleneck. 15 steps burned on wrong clicks."
+    }
+  ],
+  "oc_daily_post_v2": [
+    {
+      "post_id": "week2_day13_ssd_upgrade",
+      "timestamp": "2026-02-06T19:58:00",
+      "success": false,
+      "notes": "FAILED - v3.4 test. Native input typed text OK. JS with aria-label='Create post' + height>100 filter still returned NOT_FOUND. Issue: div[role='button'] selector wrong - Post button is NOT a div element. Direct click fallback kept hitting 'Add to your post'. Agent claimed success but modal was still open."
+    }
+  ],
+  "anything_oc": [
+    {
+      "post_id": "week1_day4_wifi_tip",
+      "timestamp": "2026-02-06T20:01:00",
+      "success": true,
+      "notes": "SUCCESS_PUBLISHED - v3.5 BREAKTHROUGH! Used native input for text + .closest('[role=button]') JS for Post click. JS returned BUTTON_CLICKED, 'Posting' spinner appeared, modal closed, post visible in feed under Featured. 9 steps total. Key fix: find SPAN with 'Post' text then .closest() to button ancestor (button is NOT a div)."
+    }
+  ],
+  "oc_word_of_mouth_v3": [
+    {
+      "post_id": "week2_day13_ssd_upgrade",
+      "timestamp": "2026-02-06T21:24:00",
+      "success": true,
+      "notes": "SUCCESS_PUBLISHED - v3.5. Post visible in feed under Brandon Ruiz, 'Just now' timestamp. 11 steps. Mention dropdown appeared but agent dismissed it, navigated back from 'Add to your post' sub-menu, then JS .closest() Post click worked perfectly."
+    }
+  ],
+  "regional_placentia_v3": [
+    {
+      "post_id": "week1_day7_community",
+      "timestamp": "2026-02-06T21:27:00",
+      "success": true,
+      "notes": "SUCCESS_PENDING - v3.5. Post submitted, pending admin approval. Agent had to retype line-by-line (\\n typed literally on first attempt). 14 steps. JS .closest() Post click worked, Posting spinner confirmed."
+    }
+  ],
+  "fullerton_friends_v3": [
+    {
+      "post_id": "week1_day2_scam_alert",
+      "timestamp": "2026-02-06T21:29:00",
+      "success": true,
+      "notes": "SUCCESS_PENDING - v3.5. Post submitted, pending admin approval. 'Thanks for your post!' toast visible. 11 steps. Text has literal \\n characters - formatting issue with input action. JS .closest() Post click worked."
+    }
+  ],
+  "orange_county_general_v2": [
+    {
+      "post_id": "week2_day9_phishing",
+      "timestamp": "2026-02-06T21:31:00",
+      "success": true,
+      "notes": "SUCCESS_PUBLISHED - v3.5. Post visible in feed. 14 steps. Line-by-line typing with Enter keys = proper formatting. Mention dropdown dismissed by clicking modal header. JS .closest() Post click worked."
+    }
+  ],
+  "oc_daily_post_v3": [
+    {
+      "post_id": "week2_day8_security",
+      "timestamp": "2026-02-06T21:34:00",
+      "success": true,
+      "notes": "SUCCESS_PENDING - v3.5. Post submitted, pending admin approval. 13 steps. Clean line-by-line entry. JS returned BUTTON_CLICKED, Posting spinner confirmed."
+    }
+  ],
+  "orange_county_beach_v2": [
+    {
+      "post_id": "week2_day14_appreciation",
+      "timestamp": "2026-02-06T21:36:00",
+      "success": true,
+      "notes": "SUCCESS_PENDING - v3.5. Post submitted, pending admin approval. 12 steps. Clean formatting."
+    }
+  ],
+  "oc_small_business": [
+    {
+      "post_id": "extra_cable_management",
+      "timestamp": "2026-02-06T21:38:00",
+      "success": false,
+      "notes": "FAILED - Browser Use credits ran out after 2 steps. Agent navigated to group but couldn't proceed. Need to retry when credits are replenished."
+    }
+  ]
 }

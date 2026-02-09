@@ -1,0 +1,263 @@
+# ============================================================
+# LB Computer Help - Facebook Business Page Content Calendar
+# 4 weeks / 3 posts per week (Mon, Wed, Fri) = 12 posts
+# ============================================================
+# Pattern:
+#   Monday    -> Horror Photo / Dusty PC / Before-After
+#   Wednesday -> Scam Alert / Security Tip / Quick Tech Tip
+#   Friday    -> Behind the Scenes / Week Wrap / Personal Story
+# ============================================================
+
+posts:
+
+  # ===================== WEEK 1 =====================
+
+  - id: "bp_week1_mon"
+    day_of_week: "monday"
+    week: 1
+    category: "horror_photo"
+    suggested_photo: "IMG_1810.jpg"
+    text: |
+      This RTX 2080 came in "running a little hot" 😅
+
+      I opened it up and found what can only be described as a fur blanket made of dust, pet hair, and broken dreams. The thermal paste had turned into concrete. Fan bearings were screaming for mercy.
+
+      Two hours of careful cleaning, fresh thermal paste, and new thermal pads later — temps dropped from 97°C to 68°C under load. This card got a second life today.
+
+      If your PC sounds like a jet engine or shuts down during games, don't wait until it cooks itself. Bring it by and I'll get it breathing again.
+
+      #OrangeCounty #ComputerRepair #LBComputerHelp #PCMasterRace #DustyPC #GPUCleaning #Anaheim
+    cta_comment: "Free diagnostics, no appointment needed. DM me or check out lbcomputerhelp.com for hours and location 👍"
+
+  - id: "bp_week1_wed"
+    day_of_week: "wednesday"
+    week: 1
+    category: "scam_alert"
+    suggested_photo: "none"
+    text: |
+      🚨 SCAM ALERT for Orange County folks 🚨
+
+      I've had THREE customers this week come in after getting the "Microsoft Security Alert" pop-up that locks your browser and tells you to call a 1-800 number. One person already paid $400 to the scammers before coming to me.
+
+      Here's what you need to know:
+      - Microsoft will NEVER pop up a phone number on your screen
+      - If your browser locks up, just force-close it (Ctrl+Alt+Delete → End Task)
+      - NEVER give remote access to someone who cold-called you
+      - NEVER pay with gift cards — that's always a scam
+
+      If you've already fallen for one of these, bring your computer in ASAP. I can check for anything the scammers installed and make sure your accounts are secure.
+
+      Share this with your parents and grandparents — they're the #1 target.
+
+      #ScamAlert #OrangeCounty #TechScam #ComputerRepair #LBComputerHelp #CyberSecurity #AnaCalifornia
+    cta_comment: "If you or someone you know got hit by one of these scams, I do a full cleanup and security check for $75. DM me or visit lbcomputerhelp.com"
+
+  - id: "bp_week1_fri"
+    day_of_week: "friday"
+    week: 1
+    category: "behind_scenes"
+    suggested_photo: "IMG_0039.jpg"
+    text: |
+      Friday wrap-up from the bench 🔧
+
+      This week I worked on 6 desktops, 3 laptops, and one iPad that a toddler tried to feed oatmeal to (yes, through the charging port). Every week is different and honestly that's why I love this work.
+
+      I started LB Computer Help because I got tired of seeing people get overcharged at big box stores for simple fixes. A $40 RAM upgrade shouldn't cost $200 in labor. A virus removal shouldn't take 2 weeks.
+
+      If you're in the Anaheim area and need tech help, I'm the guy who actually picks up the phone.
+
+      Happy Friday, OC. Go enjoy the weekend. 🍻
+
+      - Brandon, LB Computer Help
+
+      #FridayVibes #SmallBusiness #OrangeCounty #Anaheim #ComputerRepair #LBComputerHelp #ShopLocal
+    cta_comment: "Open Monday through Saturday. DM me anytime or book at lbcomputerhelp.com — have a great weekend everyone!"
+
+  # ===================== WEEK 2 =====================
+
+  - id: "bp_week2_mon"
+    day_of_week: "monday"
+    week: 2
+    category: "horror_photo"
+    suggested_photo: "IMG_1786.jpg"
+    text: |
+      "I built this PC three years ago and never cleaned it."
+
+      Brother... I can tell. 💀
+
+      This Aorus X570 motherboard was buried under so much dust that I couldn't even read the model number. The M.2 heatsink was basically an insulation blanket. CPU temps were hitting 95°C on idle.
+
+      Compressed air, isopropyl alcohol, and about 45 minutes of patience brought this thing back from the grave. Owner said it feels like a brand new build.
+
+      PSA: Clean your PC at least once a year. If you have pets, make it every 6 months. Your components will thank you.
+
+      #DustyPC #PCBuilds #ComputerRepair #OrangeCounty #LBComputerHelp #X570 #TechHorror #Anaheim
+    cta_comment: "I do full cleaning + thermal repaste for $65. DM me or visit lbcomputerhelp.com to schedule 🧹"
+
+  - id: "bp_week2_wed"
+    day_of_week: "wednesday"
+    week: 2
+    category: "tip"
+    suggested_photo: "none"
+    text: |
+      Quick tip that'll save you money 💰
+
+      If your laptop is slow, DON'T buy a new one yet. 90% of the "slow laptops" I see just need two things:
+
+      1. An SSD upgrade (swap the old hard drive for a solid state drive) — takes about 30 minutes and makes the laptop feel 5x faster
+      2. A RAM upgrade — if you're running 4GB in 2026, that's your bottleneck
+
+      I've turned $200 laptops into perfectly usable daily machines for under $100 in parts + labor. A new laptop would cost you $500-800 for the same performance.
+
+      Don't throw away a perfectly good machine. Upgrade it.
+
+      #TechTips #LaptopRepair #SSD #ComputerRepair #OrangeCounty #LBComputerHelp #SaveMoney #AnaCalifornia
+    cta_comment: "SSD upgrades start at $85 including the drive and data transfer. DM me or check lbcomputerhelp.com for details!"
+
+  - id: "bp_week2_fri"
+    day_of_week: "friday"
+    week: 2
+    category: "behind_scenes"
+    suggested_photo: "IMG_0040.jpg"
+    text: |
+      Real talk Friday.
+
+      A lady brought in her iPhone this week with a shattered screen. She was almost in tears because all her photos of her late husband were on it and she was afraid they were gone.
+
+      Screen was destroyed but the phone still worked. Replaced the display in about 40 minutes, backed up all her photos to iCloud and a USB drive (because you should always have two copies), and she left with everything safe.
+
+      This is the part of the job they don't teach you in any certification course — sometimes you're not just fixing hardware, you're saving memories. That's the stuff that makes it worth it.
+
+      - Brandon, LB Computer Help
+
+      #SmallBusiness #iPhoneRepair #OrangeCounty #Anaheim #LBComputerHelp #DataRecovery #RealTalk
+    cta_comment: "iPhone screen repairs done same-day, most models. DM me or visit lbcomputerhelp.com 📱"
+
+  # ===================== WEEK 3 =====================
+
+  - id: "bp_week3_mon"
+    day_of_week: "monday"
+    week: 3
+    category: "horror_photo"
+    suggested_photo: "IMG_0333.jpg"
+    text: |
+      "My USB port stopped working."
+
+      Yeah... I can see why. 🫠
+
+      Someone forced a USB-C cable into a USB-A port until the pins bent, then kept using it. By the time it got to me the port was completely mangled and had shorted a trace on the board.
+
+      Good news: I was able to replace the port and patch the trace. Bad news: this could've been a simple $30 fix if they'd stopped when it didn't fit.
+
+      Rule of thumb — if the cable doesn't slide in smoothly, STOP. Check which port you're plugging into. USB-C and USB-A are NOT interchangeable without an adapter.
+
+      #USBFail #ComputerRepair #TechFail #OrangeCounty #LBComputerHelp #HardwareRepair #Anaheim
+    cta_comment: "Port repairs, board-level work, and diagnostics available. DM me or visit lbcomputerhelp.com 🔧"
+
+  - id: "bp_week3_wed"
+    day_of_week: "wednesday"
+    week: 3
+    category: "scam_alert"
+    suggested_photo: "none"
+    text: |
+      🚨 New phishing scam hitting OC inboxes 🚨
+
+      If you get an email saying your "Netflix account has been suspended" or your "Amazon order can't be delivered" — DO NOT click the link. Here's how to spot the fake:
+
+      ✅ Check the sender's email address (it won't be from netflix.com or amazon.com)
+      ✅ Hover over any links WITHOUT clicking — the URL will look sketchy
+      ✅ Real companies never ask for your password via email
+      ✅ Look for weird grammar and generic greetings like "Dear Customer"
+
+      When in doubt, open a new browser tab and go directly to the website yourself. Never click email links for account issues.
+
+      I just cleaned up a customer's PC this week that had malware from one of these fake Netflix emails. It had installed a keylogger that was recording everything they typed — including passwords and credit card numbers. Scary stuff.
+
+      #PhishingScam #CyberSecurity #ScamAlert #OrangeCounty #LBComputerHelp #OnlineSafety #TechTips
+    cta_comment: "Think you clicked a bad link? Bring your computer in for a malware scan. Fast turnaround, fair pricing. lbcomputerhelp.com"
+
+  - id: "bp_week3_fri"
+    day_of_week: "friday"
+    week: 3
+    category: "behind_scenes"
+    suggested_photo: "IMG_1308.jpg"
+    text: |
+      Not every job is a dusty PC or a cracked screen.
+
+      This week I set up a full network for a small business here in Anaheim — Cisco switches, access points, cable management, the works. Took a full day but the owner went from spotty WiFi and random disconnects to rock-solid connectivity across their entire office.
+
+      Small businesses are my favorite clients because I know the struggle. When your internet goes down, you're losing money. You can't wait 3 days for "corporate IT" to show up.
+
+      I do residential AND commercial. Networking, servers, workstations, security cameras — if it plugs in or connects to WiFi, I can help.
+
+      - Brandon, LB Computer Help
+
+      #SmallBusiness #Networking #Cisco #OrangeCounty #Anaheim #LBComputerHelp #ITSupport #BusinessIT
+    cta_comment: "Need IT help for your business? I offer same-week service for commercial clients. DM me or visit lbcomputerhelp.com"
+
+  # ===================== WEEK 4 =====================
+
+  - id: "bp_week4_mon"
+    day_of_week: "monday"
+    week: 4
+    category: "horror_photo"
+    suggested_photo: "IMG_0867.JPG"
+    text: |
+      Customer said this Dell laptop was "getting a little warm on their lap." 🔥
+
+      A LITTLE warm?? The fan was completely clogged, the heatsink was packed solid, and the thermal paste had the consistency of dried toothpaste. I'm surprised this thing didn't catch fire.
+
+      Laptops need love too. Most people never think about cleaning them because there's no glass side panel to peek through. But they run hotter than desktops because everything is crammed together, and they NEED airflow to survive.
+
+      Signs your laptop needs a cleaning:
+      - Fan runs constantly at full speed
+      - Bottom of the laptop is hot to the touch
+      - It shuts down randomly during heavy use
+      - Performance drops after 20-30 minutes
+
+      Don't let your laptop cook itself. Bring it in before it's too late.
+
+      #LaptopRepair #DellLaptop #DustyPC #ComputerRepair #OrangeCounty #LBComputerHelp #ThermalPaste #Anaheim
+    cta_comment: "Laptop cleaning and thermal service starting at $55. DM me or book at lbcomputerhelp.com 💻"
+
+  - id: "bp_week4_wed"
+    day_of_week: "wednesday"
+    week: 4
+    category: "tip"
+    suggested_photo: "none"
+    text: |
+      5 things you can do RIGHT NOW to make your computer faster (for free):
+
+      1️⃣ Uninstall programs you don't use — go to Settings → Apps and start removing bloat
+      2️⃣ Disable startup programs — Task Manager → Startup tab → disable anything you don't need immediately
+      3️⃣ Clear your browser — if you have 47 tabs open and 12 extensions, that's your problem
+      4️⃣ Run Disk Cleanup — search for it in the Start menu, check all boxes, delete
+      5️⃣ Restart your PC — seriously, some of you haven't restarted in 3 weeks. Close those 200 Chrome tabs and reboot.
+
+      If none of that helps, then it's probably a hardware issue (dying hard drive, not enough RAM, overheating). That's when you bring it to me.
+
+      Try these first though. I'd rather teach you to fix it yourself than charge you for something simple. 🤝
+
+      #TechTips #FreeAdvice #ComputerRepair #Windows #OrangeCounty #LBComputerHelp #PCTips #AnaCalifornia
+    cta_comment: "Still slow after all that? Bring it in for a free diagnostic. lbcomputerhelp.com or DM me anytime."
+
+  - id: "bp_week4_fri"
+    day_of_week: "friday"
+    week: 4
+    category: "behind_scenes"
+    suggested_photo: "IMG_0690.jpg"
+    text: |
+      Month-end Friday thoughts. 🧠
+
+      This little Mac Mini came in this week from a college student who couldn't afford a new machine. Apple wanted $300+ just to diagnose it. I replaced the thermal paste, upgraded the RAM, and swapped in an SSD for under $120 total. It runs like new.
+
+      I got into this business because I believe tech repair should be affordable and honest. No upselling you a new machine when yours can be fixed. No mysterious "diagnostic fees" that cost more than the repair. No holding your computer hostage for two weeks.
+
+      Thanks to everyone who's trusted me with their machines this month. Every referral, every review, every share means the world to a one-man shop.
+
+      Here's to another month of keeping OC's computers alive. 🍻
+
+      - Brandon, LB Computer Help
+
+      #SmallBusiness #MacRepair #AppleRepair #OrangeCounty #Anaheim #LBComputerHelp #ShopLocal #SupportSmallBusiness
+    cta_comment: "If I've helped you out, a Google review means more than you know. Link in bio. Have an awesome weekend, OC! 🙏"

@@ -37,14 +37,14 @@ anything_oc:
 oc_city_neighbors:
   name: "Orange County/City Neighbors"
   url: "https://www.facebook.com/groups/469434236561202/"
-  rules_captured: false
-  captured_date: null
-  admin_approval: null
-  promo_allowed: null
+  rules_captured: true
+  captured_date: "2026-02-06"
+  admin_approval: unknown
+  promo_allowed: true
   promo_days: null
   post_frequency: null
   special_restrictions: null
-  notes: null
+  notes: "Very laid back group - 'All topics are allowed', 'almost everything is welcome'. No formal numbered rules. Anonymous posts available via PM to admin."
 
 anaheim_connect:
   name: "Anaheim Connect"

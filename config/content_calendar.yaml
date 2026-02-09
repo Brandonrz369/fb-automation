@@ -56,7 +56,7 @@
       3. Force shut down (hold power button)
 
       Stay safe out there!
-      - Brandon
+      - Brandon, LB Computer Help
 
     b2b: |
       Security Alert for Business Owners:
@@ -79,7 +79,7 @@
       Teach your kids: NEVER call those numbers. Just hold the power button to shut down.
 
       If it happens, message me - I can make sure nothing was compromised.
-      - Brandon, your local tech helper
+      - Brandon, LB Computer Help
 
 - id: "week1_day3_dusty_pc"
   day: 3
@@ -114,7 +114,7 @@
       Quick tip: Keep computers off carpet and away from pet areas. Dust builds up fast!
 
       If your home PC needs a cleaning, I'm local and can help same-day.
-      - Brandon
+      - Brandon, LB Computer Help
 
 - id: "week1_day4_wifi_tip"
   day: 4
@@ -129,7 +129,7 @@
       It sounds like a cliche ("Have you tried turning it off and on again?"), but it actually clears the cache and solves about 50% of connection issues.
 
       Let me know if that helps!
-      - Brandon, your local IT guy
+      - Brandon, LB Computer Help
 
     b2b: |
       Network troubleshooting 101:
@@ -149,7 +149,7 @@
       I know "turn it off and on again" sounds like a joke, but it really works about half the time!
 
       Still having issues? I do house calls and can sort out your home network.
-      - Brandon
+      - Brandon, LB Computer Help
 
 - id: "week1_day5_soft_promo"
   day: 5
@@ -206,7 +206,7 @@
       Make sure you check your WiFi signal at the OUTSIDE of your door before you drill holes! If the signal is weak, your video will lag.
 
       Need help with smart home setup (or hiding those ugly wires)? Give me a shout.
-      - Brandon
+      - Brandon, LB Computer Help
 
     b2b: |
       Installing security cameras at your business location?
@@ -222,7 +222,7 @@
       Quick tip: Check your WiFi signal where you want to put the camera BEFORE you install it. Weak signal = choppy video.
 
       Need help setting up parental controls or smart home devices? That's my specialty!
-      - Brandon
+      - Brandon, LB Computer Help
 
 - id: "week1_day7_community"
   day: 7
@@ -235,7 +235,7 @@
       I'm spending the day organizing cables (my version of relaxing) and getting ready for the week.
 
       Does anyone else have a drawer full of random cables they're afraid to throw away "just in case"?
-      - Brandon
+      - Brandon, LB Computer Help
 
     b2b: |
       Sunday prep: Reviewing my client equipment maintenance schedule for the week.
@@ -249,7 +249,7 @@
       Anyone else have a drawer of mystery cables? "What does this even go to??"
 
       Enjoy your Sunday, everyone!
-      - Brandon
+      - Brandon, LB Computer Help
 
 # ============================================
 # WEEK 2: DEMONSTRATING VALUE & SOLUTIONS
@@ -268,6 +268,7 @@
       If one site gets hacked, the bad guys try that password everywhere else.
 
       Recommendation: Use a Password Manager (like Bitwarden - it's free). You only remember one master password, and it generates secure ones for everything else.
+      - Brandon, LB Computer Help
 
     b2b: |
       Security reminder for business owners:
@@ -291,7 +292,7 @@
       Solution: Password manager apps. The whole family can use one - even the kids' gaming accounts.
 
       Need help setting one up? Message me!
-      - Brandon
+      - Brandon, LB Computer Help
 
 - id: "week2_day9_phishing"
   day: 9
@@ -308,7 +309,7 @@
       If it says "amazon-security-update.xyz.com" instead of just "amazon.com" - delete it immediately!
 
       Stay safe!
-      - Brandon
+      - Brandon, LB Computer Help
 
     b2b: |
       Phishing awareness for your team:
@@ -329,7 +330,7 @@
       Show your kids the "hover test" - put your mouse over a link WITHOUT clicking. See the real website address pop up.
 
       If it looks weird (like netflix-secure.xyz.com), it's fake!
-      - Brandon
+      - Brandon, LB Computer Help
 
 - id: "week2_day10_data_recovery"
   day: 10
@@ -344,7 +345,7 @@
       After some advanced data recovery work, we got 100% of the files back. The relief on their face was worth everything.
 
       Please back up your data today! Message me if you need help setting up automatic backups.
-      - Brandon
+      - Brandon, LB Computer Help
 
     b2b: |
       Data recovery success story:
@@ -365,7 +366,7 @@
       We got it all back.
 
       Please, please back up your photos! Cloud storage is cheap. Message me if you need help setting it up.
-      - Brandon
+      - Brandon, LB Computer Help
 
 - id: "week2_day11_laptop_tip"
   day: 11
@@ -388,7 +389,7 @@
       Overheating = thermal throttling = slower performance = frustrated workers.
 
       Simple fix: Laptop stand or even a book underneath.
-      - Brandon Ruiz
+      - Brandon Ruiz, LB Computer Help
 
     parent: |
       Parents: Are your kids doing homework on the laptop in bed?
@@ -398,7 +399,7 @@
       Simple fix: Put a book or tray underneath!
 
       Already running hot? I can clean out the dust and fans.
-      - Brandon
+      - Brandon, LB Computer Help
 
 - id: "week2_day12_msp_promo"
   day: 12
@@ -456,7 +457,7 @@
       It's like getting a new computer for a fraction of the price.
 
       I do these upgrades all the time - it's the best bang for your buck in tech!
-      - Brandon
+      - Brandon, LB Computer Help
 
     b2b: |
       IT budget tip:
@@ -478,7 +479,7 @@
       Way cheaper than a new computer!
 
       I can do the upgrade and transfer all their files safely.
-      - Brandon
+      - Brandon, LB Computer Help
 
 - id: "week2_day14_appreciation"
   day: 14
@@ -509,7 +510,7 @@
       Thanks to all the local families who have trusted me with their home tech this month. From gaming PCs to WiFi fixes - it's been great meeting everyone.
 
       Enjoy your family time!
-      - Brandon
+      - Brandon, LB Computer Help
 
 # ============================================
 # ADDITIONAL CONTENT (Weeks 3-4 rotation)
@@ -528,7 +529,7 @@
       TRUTH: Modern lithium batteries actually prefer partial charges. Plug in whenever you want - you won't hurt it!
 
       This "full drain" myth was true for old nickel batteries, but those haven't been used in laptops for 15+ years.
-      - Brandon
+      - Brandon, LB Computer Help
 
     b2b: |
       Quick IT myth to share with your team:
@@ -536,7 +537,7 @@
       There's no need to fully drain laptop batteries before charging. Modern lithium-ion batteries prefer partial charging cycles.
 
       Let employees charge whenever convenient - it won't damage equipment.
-      - Brandon Ruiz
+      - Brandon Ruiz, LB Computer Help
 
     parent: |
       Quick myth buster for the family:
@@ -544,7 +545,7 @@
       You do NOT need to drain the laptop battery completely before charging! That was true for old batteries, not anymore.
 
       Tell the kids: plug in whenever you want!
-      - Brandon
+      - Brandon, LB Computer Help
 
 - id: "extra_cable_management"
   day: 16
@@ -559,7 +560,7 @@
       Good cable management isn't just about looks - it improves airflow and makes troubleshooting SO much easier.
 
       Need help with your cable situation? I do cleanups!
-      - Brandon
+      - Brandon, LB Computer Help
 
     b2b: |
       Professional cable management matters.
@@ -583,4 +584,172 @@
       Pro tip: Velcro cable ties are your friend (not zip ties - those are a pain to remove later).
 
       Need help taming your cables? I do house calls!
-      - Brandon
+      - Brandon, LB Computer Help
+
+# ============================================
+# MARKETPLACE POSTS (for Buy/Sell groups)
+# ============================================
+
+- id: "marketplace_repair_listing"
+  day: 17
+  category: "promo"
+  suggested_photos: ["IMG_0039.jpg", "IMG_0867.jpg", "IMG_1362.jpg"]
+  variations:
+    community: |
+      Computer Repair - Anaheim / All OC
+
+      Tired of a slow, crashing, or overheating computer? I fix it same-day.
+
+      Services:
+      - Virus/malware removal
+      - Screen replacement (laptop & phone)
+      - SSD upgrade (makes old PCs feel brand new)
+      - Data recovery from dead drives
+      - WiFi/network setup & troubleshooting
+
+      $99 diagnostic (applied toward repair cost)
+      90-day warranty on all work
+
+      I'm a solo tech in Anaheim, not a big chain - you deal directly with me.
+
+      - Brandon, LB Computer Help
+      Comment "INFO" or DM me for a quote!
+
+    b2b: |
+      IT Services for Small Businesses - Orange County
+
+      Are you the "IT department" for your own office? Let me handle it.
+
+      Services:
+      - Managed IT support ($299/mo)
+      - Network setup & troubleshooting
+      - Security audits & employee training
+      - Cloud backup management
+      - Hardware procurement & setup
+
+      Same-day support. One point of contact. No contracts required.
+
+      - Brandon Ruiz, LB Computer Help
+      DM me to discuss your business needs.
+
+    parent: |
+      Computer Repair - Family-Friendly Service in Anaheim
+
+      Is the family computer acting up? Kids' laptop running slow? WiFi not reaching their rooms?
+
+      I fix it all:
+      - Slow computers & virus removal
+      - Screen replacement (laptops & phones)
+      - WiFi setup that reaches every room
+      - Data recovery (photos, homework, everything)
+
+      $99 diagnostic (applied toward repair)
+      Patient with questions - I explain everything in plain English.
+
+      - Brandon, LB Computer Help
+      DM me or comment below for help!
+
+- id: "marketplace_ssd_upgrade"
+  day: 18
+  category: "repairs"
+  suggested_photos: ["IMG_0326.jpg", "IMG_0867.jpg"]
+  variations:
+    community: |
+      Make Your Old Computer Fast Again - SSD Upgrade
+
+      Is your computer taking forever to start up? Apps loading slow? Don't buy a new one yet.
+
+      An SSD upgrade makes 5+ year old computers feel brand new. Literally 10x faster.
+
+      What you get:
+      - New 500GB SSD installed
+      - Windows reinstalled fresh
+      - All your files, photos, and bookmarks transferred
+      - 90-day warranty
+
+      Most upgrades done same-day. Serving Anaheim and all of Orange County.
+
+      - Brandon, LB Computer Help
+      Comment "UPGRADE" or DM me to book!
+
+    b2b: |
+      Extend Your Office Hardware Life - Bulk SSD Upgrades
+
+      Before replacing slow workstations, consider SSD upgrades.
+
+      A $100-150 SSD upgrade can extend the life of 5-year-old hardware by 3+ years while dramatically improving employee productivity.
+
+      ROI: Usually pays for itself in 2-3 months of reduced wait times.
+
+      I do bulk SSD upgrades for offices - volume pricing available.
+
+      - Brandon Ruiz, LB Computer Help
+      DM me for a quote on your office fleet.
+
+    parent: |
+      Kids Complaining Their Computer Is Slow?
+
+      Before buying a new one, try an SSD upgrade. It makes old computers feel brand new - seriously, 10x faster for games, homework, and streaming.
+
+      What you get:
+      - New SSD installed
+      - All their files and games transferred
+      - 90-day warranty
+
+      Way cheaper than a new computer! Same-day service in OC.
+
+      - Brandon, LB Computer Help
+      Comment or DM me - happy to answer questions!
+
+- id: "marketplace_data_recovery"
+  day: 19
+  category: "repairs"
+  suggested_photos: ["IMG_0333.jpg", "IMG_0690.jpg"]
+  variations:
+    community: |
+      Lost Photos? Dead Hard Drive? Data Recovery Available
+
+      Before you throw away that old computer or hard drive - the data might still be recoverable.
+
+      I've recovered:
+      - 5+ years of family photos from dead drives
+      - Business files from crashed systems
+      - School projects from corrupted USB drives
+
+      Free evaluation - I'll tell you if it's recoverable before you pay anything.
+
+      Serving Anaheim and all of Orange County. House calls available.
+
+      - Brandon, LB Computer Help
+      DM me with what happened and I'll let you know your options.
+
+    b2b: |
+      Business Data Recovery & Backup Solutions
+
+      Lost critical business files? Server crashed? Don't panic.
+
+      Data recovery services:
+      - Failed hard drive recovery
+      - RAID/server data recovery
+      - Ransomware file recovery
+
+      Plus: Automated cloud backup setup ($10/mo) so this never happens again.
+
+      Free evaluation on all recovery jobs.
+
+      - Brandon Ruiz, LB Computer Help
+      DM me for emergency data recovery.
+
+    parent: |
+      Don't Throw Away That Old Computer - Your Photos Might Be Saved!
+
+      Just recovered 5 years of family photos from a broken hard drive. The family thought everything was gone - birthdays, vacations, first days of school.
+
+      We got it all back.
+
+      If you have an old computer or hard drive collecting dust, the memories inside might be recoverable.
+
+      Free evaluation - I'll tell you before you pay anything.
+
+      - Brandon, LB Computer Help
+      DM me with what happened!

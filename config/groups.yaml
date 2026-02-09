@@ -549,17 +549,131 @@
   tier: 3
   active: true
 
+# --- Additional Groups (added from scraped list) ---
+
+- id: "cypress_community_original"
+  name: "Cypress Community Group (Original)"
+  url: "https://www.facebook.com/groups/862363850485442/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security"]
+  tier: 3
+  active: true
+
+- id: "oc_buy_sell_trade"
+  name: "Orange County Ca, Buy, Sell, trade."
+  url: "https://www.facebook.com/groups/252604718266565/"
+  audience_segment: "marketplace"
+  content_tags: ["promo", "repairs"]
+  tier: 3
+  active: true
+
+- id: "city_of_orange"
+  name: "City of Orange Community Group"
+  url: "https://www.facebook.com/groups/1747774665287439/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security"]
+  tier: 3
+  active: true
+
+- id: "support_small_biz_oc"
+  name: "Support Small Businesses In Orange County CA"
+  url: "https://www.facebook.com/groups/868246767781420/"
+  audience_segment: "b2b"
+  content_tags: ["network", "security", "promo", "repairs"]
+  tier: 2
+  active: true
+
+- id: "hb_business_network"
+  name: "Huntington Beach Business Network Community"
+  url: "https://www.facebook.com/groups/1678652125691030/"
+  audience_segment: "b2b"
+  content_tags: ["network", "security", "promo"]
+  tier: 2
+  active: true
+
+- id: "my_anaheim"
+  name: "My Anaheim"
+  url: "https://www.facebook.com/groups/MemoriesOfAnaheim/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "grew_up_anaheim"
+  name: "You know you grew up in Anaheim if..."
+  url: "https://www.facebook.com/groups/130782153682804/"
+  audience_segment: "community"
+  content_tags: ["dusty", "tips"]
+  tier: 3
+  active: true
+
+- id: "anaheim_community_group"
+  name: "Anaheim Community Group"
+  url: "https://www.facebook.com/groups/9771648952962597/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security"]
+  tier: 3
+  active: true
+
+- id: "anaheim_hills_buzzkill"
+  name: "Anaheim Hills Buzzkill"
+  url: "https://www.facebook.com/groups/2296973900578373/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "anaheim_hills_neighbors"
+  name: "Anaheim Hills Neighbors Group"
+  url: "https://www.facebook.com/groups/1943156025741976/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security"]
+  tier: 3
+  active: true
+
+- id: "oc_community_multi_city"
+  name: "O.C. Community Group Anaheim,Placentia,Fullerton, Brea,Yorba Linda"
+  url: "https://www.facebook.com/groups/1675907003063099/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "promo"]
+  tier: 2
+  active: true
+
+- id: "vecinos_anaheim"
+  name: "Vecinos en Anaheim CA"
+  url: "https://www.facebook.com/groups/900238494631250/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "crosspointe_anaheim"
+  name: "Crosspointe Anaheim Buzz"
+  url: "https://www.facebook.com/groups/crosspointeanaheim/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+
+- id: "orange_county_beach"
+  name: "Orange County"
+  url: "https://www.facebook.com/groups/2200032550/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security", "promo"]
+  tier: 1
+  active: true
+
 # ============================================
 # CONFIGURATION NOTES
 # ============================================
 #
-# Total Personal Groups: 62 (active, excludes 2 personal interest groups)
+# Total Personal Groups: 76 (active, excludes 2 personal interest groups)
 # Source: Live Facebook scrape of /groups/joins/ on Feb 6, 2026
 #
 # Tier Distribution:
-#   - Tier 1 (high volume): 8 groups
-#   - Tier 2 (business/niche): 14 groups
-#   - Tier 3 (local city rotation): 40 groups
+#   - Tier 1 (high volume): 9 groups
+#   - Tier 2 (business/niche): 17 groups
+#   - Tier 3 (local city rotation): 50 groups
 #
 # Also available on Business Page (LB Computer Help): 38 groups
 # 27 of those are NOT on personal profile - URLs provided separately
