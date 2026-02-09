@@ -1,7 +1,7 @@
 # LB Computer Help - Facebook Groups Configuration
 # =================================================
-# UPDATED: February 6, 2026 - Rebuilt from live Facebook scrape (64 personal groups)
-# SOURCE: Browser Use scrape of /groups/joins/ page
+# UPDATED: February 9, 2026 - Synced with user's 92-group /groups/joins/ list
+# SOURCE: User-provided group list from /groups/joins/ + Browser Use scrape history
 #
 # audience_segment: Determines which text variation to use
 #   - community: Friendly neighbor tone
@@ -221,7 +221,7 @@
   audience_segment: "community"
   content_tags: ["dusty", "repairs", "tips", "security"]
   tier: 3
-  active: true
+  active: false  # NOT in user's Feb 9 group list - may have left/been removed
 
 - id: "westminster_westside"
   name: "Westminster CA Westside Community Discussion Group"
@@ -229,7 +229,7 @@
   audience_segment: "community"
   content_tags: ["dusty", "repairs", "tips"]
   tier: 3
-  active: true
+  active: false  # NOT in user's Feb 9 group list - may have left/been removed
 
 - id: "westminster_residents"
   name: "Westminster CA Residents CommUNITY"
@@ -237,7 +237,7 @@
   audience_segment: "community"
   content_tags: ["dusty", "repairs", "tips"]
   tier: 3
-  active: true
+  active: false  # NOT in user's Feb 9 group list - may have left/been removed
 
 - id: "westminster_community"
   name: "Westminster Community"
@@ -303,7 +303,7 @@
   audience_segment: "community"
   content_tags: ["dusty", "repairs", "tips"]
   tier: 3
-  active: true
+  active: false  # NOT in user's Feb 9 group list - may have left/been removed
 
 # --- Anaheim Hills / Yorba Linda ---
 
@@ -331,7 +331,7 @@
   audience_segment: "community"
   content_tags: ["dusty", "repairs", "tips", "smart_home"]
   tier: 3
-  active: true
+  active: false  # NOT in user's Feb 9 group list - may have left/been removed
 
 # --- Costa Mesa ---
 
@@ -383,7 +383,7 @@
   audience_segment: "marketplace"
   content_tags: ["promo", "repairs"]
   tier: 3
-  active: true
+  active: false  # NOT in user's Feb 9 group list - may have left/been removed
 
 # --- Fullerton / Placentia ---
 
@@ -664,16 +664,226 @@
   active: true
 
 # ============================================
+# NEW GROUPS (Added Feb 9, 2026 - from updated /groups/joins/ scrape)
+# ============================================
+
+# --- Business Networking (NEW) ---
+
+- id: "contractor_connection_oc"
+  name: "Contractor Connection - Orange County, Ca"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "b2b"
+  content_tags: ["network", "promo", "repairs"]
+  tier: 2
+  active: true
+  notes: "URL needs to be scraped from Facebook"
+
+- id: "s_oc_business_networking"
+  name: "South Orange County Business Networking"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "b2b"
+  content_tags: ["network", "security", "promo", "repairs"]
+  tier: 2
+  active: true
+  notes: "URL needs to be scraped from Facebook"
+
+- id: "n_oc_business_networking"
+  name: "North Orange County Business Networking"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "b2b"
+  content_tags: ["network", "security", "promo", "repairs"]
+  tier: 2
+  active: true
+  notes: "URL needs to be scraped from Facebook"
+
+- id: "oc_small_biz_networking"
+  name: "Orange County Small Business Networking Group"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "b2b"
+  content_tags: ["network", "security", "promo", "repairs"]
+  tier: 2
+  active: true
+  notes: "URL needs to be scraped from Facebook"
+
+# --- Community Groups (NEW) ---
+
+- id: "anaheim_community_2"
+  name: "Anaheim Community"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped - different from Anaheim Community Group"
+
+- id: "orange_buzz_ii"
+  name: "Orange Buzz II"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped from Facebook"
+
+- id: "orange_county_dot"
+  name: "ORANGE COUNTY:."
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "promo"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped from Facebook"
+
+- id: "orange_county_ca_dot"
+  name: "ORANGE COUNTY, CA."
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "promo"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped from Facebook"
+
+- id: "grew_up_orange"
+  name: "You probably grew up in Orange California if...."
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "community"
+  content_tags: ["dusty", "tips"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped from Facebook"
+
+- id: "anaheim_residents"
+  name: "Anaheim Residents Group"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped from Facebook"
+
+- id: "anaheim_neighborhood_watch"
+  name: "Anaheim Neighborhood Watch"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "community"
+  content_tags: ["security", "tips"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped from Facebook"
+
+- id: "neighbors_santa_ana"
+  name: "Neighbors of Santa Ana"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "community"
+  content_tags: ["dusty", "repairs", "tips", "security"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped from Facebook"
+
+# --- Marketplace / Buy-Sell Groups (NEW) ---
+
+- id: "oc_craigslist_2"
+  name: "Orange County Craiglist"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "marketplace"
+  content_tags: ["promo", "repairs"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped - different from Craigslist Orange, Santa Ana, Anaheim"
+
+- id: "craigslist_anaheim_multi"
+  name: "craiglist of anaheim, Santa Ana. Garden Grove. Orange.Fullerton"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "marketplace"
+  content_tags: ["promo", "repairs"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped from Facebook"
+
+- id: "buy_sell_anaheim_2"
+  name: "Buy and sell Anaheim"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "marketplace"
+  content_tags: ["promo", "repairs"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped - DIFFERENT from Buy /sell Anaheim, California"
+
+- id: "sell_everything_anaheim"
+  name: "Sell Everything in Anaheim Only"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "marketplace"
+  content_tags: ["promo", "repairs"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped from Facebook"
+
+- id: "anaheim_marketplace"
+  name: "Anaheim, California (CA) | Marketplace, Buy & Sell, Jobs & Services"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "marketplace"
+  content_tags: ["promo", "repairs"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped from Facebook"
+
+- id: "anaheim_yard_sale"
+  name: "Anaheim Community Annual Yard Sale"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "marketplace"
+  content_tags: ["promo", "repairs"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped from Facebook"
+
+# --- Jobs/Hiring Groups (NEW) ---
+
+- id: "jobs_oc"
+  name: "Jobs in Orange County"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "community"
+  content_tags: ["promo"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped - jobs group, limited posting scope"
+
+- id: "hiring_anaheim"
+  name: "HIRING IN ANAHEIM"
+  url: "https://www.facebook.com/groups/PENDING_URL/"
+  audience_segment: "community"
+  content_tags: ["promo"]
+  tier: 3
+  active: true
+  notes: "URL needs to be scraped - hiring group, limited posting scope"
+
+# ============================================
 # CONFIGURATION NOTES
 # ============================================
 #
-# Total Personal Groups: 76 (active, excludes 2 personal interest groups)
-# Source: Live Facebook scrape of /groups/joins/ on Feb 6, 2026
+# UPDATED: February 9, 2026 - Synced with user's /groups/joins/ (92 total groups)
 #
-# Tier Distribution:
+# Total Entries: 96 (90 active + 6 inactive)
+# Active Groups: 90 (excludes 2 personal interest groups + 6 possibly-left groups)
+# Source: User-provided group list from /groups/joins/ on Feb 9, 2026
+#
+# Tier Distribution (active only):
 #   - Tier 1 (high volume): 9 groups
-#   - Tier 2 (business/niche): 17 groups
-#   - Tier 3 (local city rotation): 50 groups
+#   - Tier 2 (business/niche): 22 groups (+4 new, was 18)
+#   - Tier 3 (local city rotation): 59 groups (+16 new, -6 left, was 49)
+#
+# New Groups Added (Feb 9): 20 total
+#   - 4 business networking (tier 2)
+#   - 8 community (tier 3)
+#   - 6 marketplace/buy-sell (tier 3)
+#   - 2 jobs/hiring (tier 3)
+#   NOTE: All 20 new groups have PENDING_URL - need Browser Use scrape to get URLs
+#
+# Possibly Left/Removed (6 groups, marked active: false):
+#   - Westminster California Community Forum
+#   - Westminster CA Westside Community Discussion Group
+#   - Westminster CA Residents CommUNITY
+#   - Tustin Community
+#   - Irvine Community Forum
+#   - EL TIANGUIS DE SANTA ANA
 #
 # Also available on Business Page (LB Computer Help): 38 groups
 # 27 of those are NOT on personal profile - URLs provided separately
