@@ -5,7 +5,7 @@
 browser_use:
   profile_id: "0ab23467-abfc-45a1-b98d-1b199d6168cc"
   profile_name: "facebook"
-  max_steps_per_task: 15
+  max_steps_per_task: 18
 
 # Posting Configuration
 posting:

@@ -1,0 +1,748 @@
+{
+  "metadata": {
+    "compiled": "2026-02-11",
+    "source": "Browser Use scraping batches 1-10",
+    "total_groups_scraped": 72,
+    "notes": "Comprehensive rules database for all Facebook groups in groups.yaml"
+  },
+  "groups": {
+    "oc_word_of_mouth": {
+      "name": "Orange County Word Of Mouth",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No rules section found",
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "regional_placentia": {
+      "name": "All Things Placentia/Yorba Linda/Fullerton/Brea/Anaheim Hills",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "1 ad per week",
+      "special_restrictions": "Banned if more than 1 ad per week",
+      "notes": null,
+      "posting_category": "frequency_limited",
+      "scrape_status": "success"
+    },
+    "fullerton_friends": {
+      "name": "Fullerton Friends",
+      "promo_allowed": "yes",
+      "promo_days": "Wed+Thu only",
+      "post_frequency": "1 ad per day max",
+      "special_restrictions": "Must be Fullerton-related; no repost within month",
+      "notes": null,
+      "posting_category": "day_restricted",
+      "scrape_status": "success"
+    },
+    "orange_county_general": {
+      "name": "Orange County",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": "Zero tolerance for spam",
+      "notes": null,
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "oc_daily_post": {
+      "name": "Orange County (Daily Post)",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Encourages business sharing",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "oc_small_business": {
+      "name": "OC Small Business Owners",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Networking group",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "buena_park_small_business": {
+      "name": "Buena Park Small Business",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": "Only businesses near Buena Park",
+      "notes": null,
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "oc_business_networking_1": {
+      "name": "Orange County Business Networking",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "no duplicates",
+      "special_restrictions": "English only; no politics/religion",
+      "notes": null,
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "oc_business_networking_2": {
+      "name": "Orange County Business Networking",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "All welcome to promote",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "oc_business_networking_3": {
+      "name": "Orange County Business Networking",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": "Networking content welcome",
+      "notes": null,
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "oc_business_networking_experts": {
+      "name": "Orange County Business Networking Experts",
+      "promo_allowed": "yes",
+      "promo_days": "specific schedule",
+      "post_frequency": "unknown",
+      "special_restrictions": "Restrictions on marketers",
+      "notes": null,
+      "posting_category": "day_restricted",
+      "scrape_status": "success"
+    },
+    "ca_business_entrepreneurs": {
+      "name": "Business | Entrepreneurs | Startups Owners California USA",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No rules section found",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "ca_entrepreneurs": {
+      "name": "Entrepreneurs & Business Owners California",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No rules section found",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "s_oc_business": {
+      "name": "S. Orange County Business",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": "Business posts only",
+      "notes": null,
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "supporting_small_biz_socal": {
+      "name": "Supporting Small Businesses SoCal",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Post local deals",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "oc_la_business_networking": {
+      "name": "Orange County / Los Angeles Business Networking Group",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Connect and promote locally",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "socal_business_networking": {
+      "name": "SoCal Business Networking | oGoing",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "Self-promotion explicitly banned",
+      "notes": null,
+      "posting_category": "banned",
+      "scrape_status": "success"
+    },
+    "oc_contractors": {
+      "name": "Contractors, Handymen & Home Improvement Suppliers in OC",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "No self-promotion (rules in Vietnamese)",
+      "notes": null,
+      "posting_category": "banned",
+      "scrape_status": "success"
+    },
+    "cerritos_business": {
+      "name": "Open for Business! Cerritos",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Run by Chamber of Commerce; encourages business updates",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "tustin_moms": {
+      "name": "Tustin Moms",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Tustin/mama-related content encouraged",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "westminster_community_forum_1": {
+      "name": "Westminster California Community Forum",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "Politics-free and ad-free",
+      "notes": null,
+      "posting_category": "banned",
+      "scrape_status": "success"
+    },
+    "westminster_westside": {
+      "name": "Westminster CA Westside Community Discussion Group",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "Must live in Area 1, use true name; Rule 6 bans self-promotion",
+      "notes": null,
+      "posting_category": "banned",
+      "scrape_status": "success"
+    },
+    "westminster_residents": {
+      "name": "Westminster CA Residents CommUNITY",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Loading failed on both scrape attempts",
+      "posting_category": "caution",
+      "scrape_status": "loading_failed"
+    },
+    "westminster_community": {
+      "name": "Westminster Community",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Parent support network",
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "westminster_community_forum_2": {
+      "name": "Westminster Community Forum",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "No promos",
+      "notes": null,
+      "posting_category": "banned",
+      "scrape_status": "success"
+    },
+    "explore_westminster": {
+      "name": "Explore Westminster",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "No promos",
+      "notes": null,
+      "posting_category": "banned",
+      "scrape_status": "success"
+    },
+    "westminster_buy_sell": {
+      "name": "Westminster CommUNITY Buy n Sell",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": "Buy/sell format required; admin approval required",
+      "notes": null,
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "talk_of_tustin": {
+      "name": "Talk of Tustin - What's The Buzz?",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "No business promos, non-profit only, posting paused",
+      "notes": null,
+      "posting_category": "banned",
+      "scrape_status": "success"
+    },
+    "tustin_camino_real": {
+      "name": "Communities @ Camino Real Park Tustin, Ca",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Community posts, no formal rules",
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "tustin_trash_treasure": {
+      "name": "Tustin Trash & Treasure Community",
+      "promo_allowed": "yes",
+      "promo_days": "Fridays only",
+      "post_frequency": "unknown",
+      "special_restrictions": "Promos on FRIDAYS ONLY",
+      "notes": null,
+      "posting_category": "day_restricted",
+      "scrape_status": "success"
+    },
+    "tustin_community": {
+      "name": "Tustin Community",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Content unavailable - group may be deleted or private",
+      "posting_category": "inactive",
+      "scrape_status": "loading_failed"
+    },
+    "anaheim_hills_buzz": {
+      "name": "Anaheim Hills Buzz ll",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No formal rules found",
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "yorba_linda_community": {
+      "name": "Yorba Linda Community Post",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "Minimal rules - be kind",
+      "notes": null,
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "irvine_community": {
+      "name": "Irvine Community Forum",
+      "promo_allowed": "restricted",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "No spam/promoting likely restricted",
+      "notes": null,
+      "posting_category": "tips_only",
+      "scrape_status": "success"
+    },
+    "costa_mesa_buzz": {
+      "name": "Costa Mesa Buzz",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "1x per week",
+      "special_restrictions": "Promos 1x/week, admin moderation",
+      "notes": null,
+      "posting_category": "frequency_limited",
+      "scrape_status": "success"
+    },
+    "santa_ana_california": {
+      "name": "Santa Ana California",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No rules, high activity (491 posts/day)",
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "santa_ana_vecinos": {
+      "name": "Santa ana y sus Vecinos",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Likely allowed - anunciar lo que gustes",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "santa_ana_better_community": {
+      "name": "Santa Ana Residents for a Better Community",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No rules found",
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "santa_ana_costa_mesa": {
+      "name": "Santa Ana and Costa Mesa Neighborhood",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No explicit rules; has Buy and Sell tab",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "el_tianguis_santa_ana": {
+      "name": "EL TIANGUIS DE SANTA ANA",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": "No animal sales, no fake jobs/housing",
+      "notes": "Rules focus on preventing scams; general promo allowed",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "orange_county_beach": {
+      "name": "Orange County (beach group)",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "Rule 6 explicitly bans self-promotion and spam",
+      "notes": "Job listings must be vetted",
+      "posting_category": "banned",
+      "scrape_status": "success"
+    },
+    "fun_in_fullerton": {
+      "name": "Fun in Fullerton",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "NO ads, events only",
+      "notes": null,
+      "posting_category": "banned",
+      "scrape_status": "success"
+    },
+    "real_fullerton_buzz": {
+      "name": "The Real Fullerton Buzz",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No rules found",
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "fullerton_community_post": {
+      "name": "Fullerton Community Post",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "Minimal rules - be kind",
+      "notes": null,
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "placentia_news": {
+      "name": "Placentia News You Can Use",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No rules, community events/news",
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "real_placentia_buzz": {
+      "name": "The Real Placentia Buzz",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No rules found",
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "buena_park_friends": {
+      "name": "Buena Park Friends",
+      "promo_allowed": "yes",
+      "promo_days": "Wed+Thu only",
+      "post_frequency": "1 ad per day max",
+      "special_restrictions": "Admin approves all posts",
+      "notes": null,
+      "posting_category": "day_restricted",
+      "scrape_status": "success"
+    },
+    "buena_park_police": {
+      "name": "Buena Park Police Department Community Page",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No rules found - police community page, use tips/security only",
+      "posting_category": "tips_only",
+      "scrape_status": "success"
+    },
+    "garden_grove_neighbors": {
+      "name": "Garden Grove Neighbors & Friends",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No rules found",
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "garden_grove_crime": {
+      "name": "Garden Grove Crime Blog & Safe Community Initiative",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "Crime/safety content only",
+      "notes": null,
+      "posting_category": "tips_only",
+      "scrape_status": "success"
+    },
+    "garden_grove_whats_going_on": {
+      "name": "Garden Grove: What's going on?",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Description mentions business; promos likely allowed",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "cypress_buy_sell": {
+      "name": "Cypress CA buy & sell",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Buy/sell group",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "whats_up_cypress": {
+      "name": "What's Up Cypress?",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Feel free to advertise as you wish!",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "cypress_neighborhood": {
+      "name": "Cypress, California Neighborhood Group",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Mentions garage sales; community group",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "oc_south": {
+      "name": "Orange County, California (South)",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "Rule 3 forbids sales/trades",
+      "notes": null,
+      "posting_category": "banned",
+      "scrape_status": "success"
+    },
+    "oc_regional_mix": {
+      "name": "OC ORANGE RIVERSIDE LOS ANGELES etc",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Marketplace-style group",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "buena_park_buy_sell": {
+      "name": "Buena Park, La Habra, La Mirada, Anaheim and Fullerton buy or sell",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "Rules prohibit business advertising despite marketplace name",
+      "notes": null,
+      "posting_category": "banned",
+      "scrape_status": "success"
+    },
+    "craigslist_oc": {
+      "name": "Craigslist Orange, Santa Ana, Anaheim",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Description says Buy * Sell * Trade * Advertise",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "buy_sell_anaheim": {
+      "name": "Buy /sell Anaheim, California",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No rules. Locations include Las Vegas/Houston - suspicious group",
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "craigslist_westminster_gg": {
+      "name": "Craigslist Westminster, Midway City, Stanton Garden Grove",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Description says Buy and Sell",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "cypress_community_original": {
+      "name": "Cypress Community Group (Original)",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "1 post per week",
+      "special_restrictions": "No Real Estate ads; Cypress/nearby businesses only; positive reviews only",
+      "notes": "Small business ads allowed once a week. Must be local.",
+      "posting_category": "frequency_limited",
+      "scrape_status": "success"
+    },
+    "oc_buy_sell_trade": {
+      "name": "Orange County Ca, Buy, Sell, trade.",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "No business-style posts despite group name",
+      "notes": "Explicitly forbids business-style posts",
+      "posting_category": "banned",
+      "scrape_status": "success"
+    },
+    "city_of_orange": {
+      "name": "City of Orange Community Group",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No rules found; general community group",
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "support_small_biz_oc": {
+      "name": "Support Small Businesses In Orange County CA",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "Feel free to post your small business here too",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "hb_business_network": {
+      "name": "Huntington Beach Business Network Community",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": "Positive mindset focused",
+      "notes": "Explicitly allows product sharing and promotions",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "my_anaheim": {
+      "name": "My Anaheim",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "Photos must include proper citation; no political/religious posts",
+      "notes": "Admins highlight businesses but no member promos allowed",
+      "posting_category": "tips_only",
+      "scrape_status": "success"
+    },
+    "grew_up_anaheim": {
+      "name": "You know you grew up in Anaheim if...",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "Rule 3: No promotions or spam",
+      "notes": "Nostalgia group",
+      "posting_category": "banned",
+      "scrape_status": "success"
+    },
+    "anaheim_community_group": {
+      "name": "Anaheim Community Group",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "Rule 3: No promotions or spam; no GoFundMe",
+      "notes": null,
+      "posting_category": "banned",
+      "scrape_status": "success"
+    },
+    "anaheim_hills_buzzkill": {
+      "name": "Anaheim Hills Buzzkill",
+      "promo_allowed": "yes",
+      "promo_days": "any",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No rules; description says free and less-restrictive",
+      "posting_category": "allowed",
+      "scrape_status": "success"
+    },
+    "anaheim_hills_neighbors": {
+      "name": "Anaheim Hills Neighbors Group",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No rules found",
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "oc_community_multi_city": {
+      "name": "O.C. Community Group Anaheim,Placentia,Fullerton, Brea,Yorba Linda",
+      "promo_allowed": "unknown",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": null,
+      "notes": "No rules found; community and neighborhood watch",
+      "posting_category": "caution",
+      "scrape_status": "success"
+    },
+    "vecinos_anaheim": {
+      "name": "Vecinos en Anaheim CA",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "No scams",
+      "notes": "Description warns against scams; anti-commercial tone",
+      "posting_category": "banned",
+      "scrape_status": "success"
+    },
+    "crosspointe_anaheim": {
+      "name": "Crosspointe Anaheim Buzz",
+      "promo_allowed": "no",
+      "promo_days": "unknown",
+      "post_frequency": "unknown",
+      "special_restrictions": "Rule 3: No promotions or spam",
+      "notes": null,
+      "posting_category": "banned",
+      "scrape_status": "success"
+    }
+  },
+  "posting_categories": {
+    "banned": "Do NOT post promos. Deactivate or use only pure tips/security content (no CTA, no business name)",
+    "tips_only": "Only post helpful tips and security alerts. No business promotion, no CTA. Subtle brand mention OK",
+    "day_restricted": "Promos allowed but ONLY on specific days of the week",
+    "frequency_limited": "Promos allowed but with strict frequency limits (usually 1/week)",
+    "allowed": "Promos freely allowed - post any content type",
+    "caution": "No rules found - proceed with community/tips content, occasional soft promo"
+  }
+}

@@ -19,16 +19,21 @@ For VPS deployment, run via cron:
 import argparse
 import json
 import logging
+import os
 import random
 import sys
 import time
 from datetime import datetime
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Add src to path for imports
 sys.path.insert(0, str(Path(__file__).parent))
 
-from content_manager import ContentManager
+# Load .env from project root
+load_dotenv(Path(__file__).parent.parent / ".env")
+
+from content_manager import ContentManager, SOFT_CTAS
 from browser_agent import BrowserAgent, generate_mcp_command
 
 # Setup paths
@@ -96,12 +101,40 @@ def run_daily_cycle(cm: ContentManager, agent: BrowserAgent, logger: logging.Log
     # Process each group
     success_count = 0
     failure_count = 0
+    used_post_ids = set()  # Track content used THIS run to avoid duplicate text
 
     for i, group in enumerate(groups):
         logger.info(f"\n--- Processing group {i+1}/{len(groups)}: {group['name']} ---")
 
-        # Generate payload
-        payload = cm.generate_post_payload(group)
+        # Generate payload, skipping content already used this run
+        payload = None
+        for candidate in cm.get_eligible_content(group):
+            if candidate['id'] not in used_post_ids:
+                audience = group.get('audience_segment', 'community')
+                text = cm.get_text_for_audience(candidate, audience)
+                photo = cm.select_photo_for_post(candidate)
+                photo_path = None
+                if photo:
+                    base_path = cm.settings['photos']['base_path']
+                    photo_path = f"{base_path}/{photo['filename']}"
+                first_comment = random.choice(SOFT_CTAS)
+                group_id = group['id']
+                rules_entry = cm.group_rules.get(group_id, {})
+                needs_rules = not rules_entry.get('rules_captured', False)
+                payload = {
+                    'group_id': group_id,
+                    'group_name': group['name'],
+                    'group_url': group['url'],
+                    'post_id': candidate['id'],
+                    'text': text,
+                    'photo_path': photo_path,
+                    'photo_filename': photo['filename'] if photo else None,
+                    'audience_segment': audience,
+                    'category': candidate.get('category'),
+                    'first_comment': first_comment,
+                    'capture_rules': needs_rules,
+                }
+                break
 
         if not payload:
             logger.warning(f"No eligible content for {group['name']} - skipping")
@@ -117,6 +150,7 @@ def run_daily_cycle(cm: ContentManager, agent: BrowserAgent, logger: logging.Log
         if result.success:
             logger.info(f"SUCCESS: {result.message}")
             success_count += 1
+            used_post_ids.add(payload['post_id'])
 
             # Record in history (only if not dry run)
             if not agent.dry_run:
@@ -147,10 +181,69 @@ def run_daily_cycle(cm: ContentManager, agent: BrowserAgent, logger: logging.Log
             if not agent.dry_run:
                 time.sleep(delay)
 
+    # Business Page posting (Mon/Wed/Fri)
+    page = cm.select_page_for_today()
+    if page:
+        logger.info("\n--- Business Page: %s ---", page['name'])
+        page_payload = cm.generate_page_post_payload(page)
+        if page_payload:
+            logger.info(f"Page content: {page_payload['post_id']} ({page_payload.get('category')})")
+            result = agent.execute_post(page_payload)
+            if result.success:
+                logger.info(f"PAGE SUCCESS: {result.message}")
+                success_count += 1
+                if not agent.dry_run:
+                    cm.record_post(page['id'], page_payload['post_id'], success=True)
+                    if page_payload.get('photo_filename'):
+                        cm.increment_photo_usage(page_payload['photo_filename'])
+            else:
+                logger.error(f"PAGE FAILED: {result.message}")
+                failure_count += 1
+        else:
+            logger.info("No eligible page content for today")
+    else:
+        logger.info("Not a Business Page posting day (Mon/Wed/Fri only)")
+
     # Summary
     logger.info("\n" + "=" * 50)
     logger.info(f"Daily cycle complete: {success_count} success, {failure_count} failed")
     logger.info("=" * 50)
+
+
+def run_page_only(cm: ContentManager, agent: BrowserAgent, logger: logging.Logger):
+    """Post only to the Business Page (Mon/Wed/Fri schedule)."""
+    logger.info("=" * 50)
+    logger.info("Business Page posting cycle")
+    logger.info("=" * 50)
+
+    if check_pause_file(cm.settings):
+        logger.warning("Automation is PAUSED. Exiting.")
+        return
+
+    page = cm.select_page_for_today()
+    if not page:
+        logger.info("Not a Business Page posting day (Mon/Wed/Fri only)")
+        return
+
+    payload = cm.generate_page_post_payload(page)
+    if not payload:
+        logger.warning("No eligible page content for today")
+        return
+
+    logger.info(f"Page: {page['name']}")
+    logger.info(f"Content: {payload['post_id']} ({payload.get('category')})")
+
+    result = agent.execute_post(payload)
+
+    if result.success:
+        logger.info(f"SUCCESS: {result.message}")
+        if not agent.dry_run:
+            cm.record_post(page['id'], payload['post_id'], success=True)
+            if payload.get('photo_filename'):
+                cm.increment_photo_usage(payload['photo_filename'])
+    else:
+        logger.error(f"FAILED: {result.message}")
+        logger.error(f"Error: {result.error}")
 
 
 def generate_posts_for_manual_execution(cm: ContentManager, logger: logging.Logger):
@@ -289,6 +382,10 @@ def main():
     parser.add_argument('--log-level', type=str, default='INFO',
                        choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'],
                        help='Logging level')
+    parser.add_argument('--api', action='store_true',
+                       help='Use Browser Use Cloud API (for VPS/cron)')
+    parser.add_argument('--page-only', action='store_true',
+                       help='Only post to Business Page (Mon/Wed/Fri)')
 
     args = parser.parse_args()
 
@@ -301,11 +398,20 @@ def main():
     # Check for dry_run override from settings
     dry_run = args.dry_run or cm.settings['safety']['dry_run']
 
+    # Determine mode: API (autonomous) or MCP (Claude-assisted)
+    mode = 'api' if args.api else 'mcp'
+    api_key = os.environ.get('BROWSER_USE_API_KEY', '')
+
+    if mode == 'api' and not api_key and not dry_run:
+        logger.error("API mode requires BROWSER_USE_API_KEY in .env")
+        sys.exit(1)
+
     # Initialize browser agent
     agent = BrowserAgent(
         profile_id=cm.settings['browser_use']['profile_id'],
-        mode='mcp',
-        dry_run=dry_run
+        mode=mode,
+        dry_run=dry_run,
+        api_key=api_key,
     )
 
     # Execute requested action
@@ -315,6 +421,8 @@ def main():
         generate_posts_for_manual_execution(cm, logger)
     elif args.post:
         post_to_specific_group(cm, agent, args.post, logger)
+    elif args.page_only:
+        run_page_only(cm, agent, logger)
     else:
         run_daily_cycle(cm, agent, logger)
 

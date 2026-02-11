@@ -1,0 +1,98 @@
+[
+  {
+    "id": "orange_county_beach",
+    "name": "Orange County (beach group)",
+    "batch": 10,
+    "status": "success",
+    "admin_approval": "unknown",
+    "promo_allowed": "no",
+    "promo_days": "unknown",
+    "post_frequency": "unknown",
+    "special_restrictions": "Rule 6 explicitly bans self-promotion and spam",
+    "notes": "Job listings must be vetted"
+  },
+  {
+    "id": "cerritos_business",
+    "name": "Open for Business! Cerritos",
+    "batch": 10,
+    "status": "success",
+    "admin_approval": "unknown",
+    "promo_allowed": "yes",
+    "promo_days": "any",
+    "post_frequency": "unknown",
+    "special_restrictions": null,
+    "notes": "Run by Chamber of Commerce; encourages business updates"
+  },
+  {
+    "id": "tustin_moms",
+    "name": "Tustin Moms",
+    "batch": 10,
+    "status": "success",
+    "admin_approval": "unknown",
+    "promo_allowed": "yes",
+    "promo_days": "any",
+    "post_frequency": "unknown",
+    "special_restrictions": null,
+    "notes": "Description encourages Tustin/mama-related content/events"
+  },
+  {
+    "id": "westminster_westside",
+    "name": "Westminster CA Westside Community Discussion Group",
+    "batch": 10,
+    "status": "success",
+    "admin_approval": "unknown",
+    "promo_allowed": "no",
+    "promo_days": "unknown",
+    "post_frequency": "unknown",
+    "special_restrictions": "Must live in Area 1, use true name; Rule 6 bans self-promotion",
+    "notes": null
+  },
+  {
+    "id": "westminster_residents",
+    "name": "Westminster CA Residents CommUNITY",
+    "batch": 10,
+    "status": "loading_failed",
+    "admin_approval": "unknown",
+    "promo_allowed": "unknown",
+    "promo_days": "unknown",
+    "post_frequency": "unknown",
+    "special_restrictions": null,
+    "notes": "Loading failed on both scrape attempts"
+  },
+  {
+    "id": "tustin_community",
+    "name": "Tustin Community",
+    "batch": 10,
+    "status": "loading_failed",
+    "admin_approval": "unknown",
+    "promo_allowed": "unknown",
+    "promo_days": "unknown",
+    "post_frequency": "unknown",
+    "special_restrictions": null,
+    "notes": "Content unavailable - group may be deleted or private"
+  },
+  {
+    "id": "santa_ana_costa_mesa",
+    "name": "Santa Ana and Costa Mesa Neighborhood",
+    "batch": 10,
+    "status": "success",
+    "admin_approval": "unknown",
+    "promo_allowed": "yes",
+    "promo_days": "any",
+    "post_frequency": "unknown",
+    "special_restrictions": null,
+    "notes": "No explicit rules; has Buy and Sell tab"
+  },
+  {
+    "id": "el_tianguis_santa_ana",
+    "name": "EL TIANGUIS DE SANTA ANA",
+    "batch": 10,
+    "status": "success",
+    "admin_approval": "unknown",
+    "promo_allowed": "yes",
+    "promo_days": "any",
+    "post_frequency": "unknown",
+    "special_restrictions": "No animal sales, no fake jobs/housing",
+    "notes": "Rules focus on preventing scams; general promo allowed"
+  }
+]

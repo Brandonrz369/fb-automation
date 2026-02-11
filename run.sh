@@ -3,15 +3,12 @@
 # LB Computer Help - Facebook Automation Runner
 # ============================================
 #
-# This script is designed to be called by cron for automated execution.
-#
-# Cron example (runs daily at 9 AM):
+# Cron examples:
+#   # Daily group posting at 9 AM PT
 #   0 9 * * * /home/brandon/fb-automation/run.sh
 #
-# For VPS deployment, you may need to:
-#   1. Set up a Python virtual environment
-#   2. Configure any necessary display for headed browser
-#   3. Set environment variables for API keys
+#   # Business Page posts: Mon/Wed/Fri at 10 AM PT
+#   0 10 * * 1,3,5 /home/brandon/fb-automation/run.sh --page-only
 #
 
 # Navigate to project directory
@@ -31,10 +28,11 @@ LOG_FILE="data/logs/run_${TIMESTAMP}.log"
 
 echo "============================================" >> "$LOG_FILE"
 echo "FB Automation Run: $TIMESTAMP" >> "$LOG_FILE"
+echo "Args: $@" >> "$LOG_FILE"
 echo "============================================" >> "$LOG_FILE"
 
-# Run the main script
-python3 src/main.py >> "$LOG_FILE" 2>&1
+# Run the main script in API mode (autonomous)
+python3 src/main.py --api "$@" >> "$LOG_FILE" 2>&1
 
 # Capture exit code
 EXIT_CODE=$?
@@ -46,11 +44,5 @@ else
 fi
 
 echo "============================================" >> "$LOG_FILE"
-
-# Optional: Send notification on failure
-# if [ $EXIT_CODE -ne 0 ]; then
-#     # Send email, Slack message, etc.
-#     echo "Automation failed!" | mail -s "FB Automation Error" your@email.com
-# fi
 
 exit $EXIT_CODE

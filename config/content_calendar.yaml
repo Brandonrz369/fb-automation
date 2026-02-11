@@ -740,3 +740,133 @@
       Your recovered photos delivered on a USB drive. Free evaluation first - I'll tell you what's recoverable before you pay anything.
 
       - Brandon, LB Computer Help
+
+# ============================================
+# BUSINESS PAGE POSTS (2-week rotation)
+# Mon = Horror Photo, Wed = Scam/Tip, Fri = BTS
+# ============================================
+
+- id: "page_week1_monday_horror"
+  day: 20
+  category: "page_content"
+  content_type: "page"
+  schedule_day: "monday"
+  suggested_photos: ["IMG_1810.jpg", "IMG_1786.jpg"]
+  variations:
+    page: |
+      Opened up a laptop from a client in Anaheim today.
+
+      This is what 2 years of never cleaning does to your cooling fan!
+
+      Heat is the #1 killer of electronics. If your laptop sounds like a jet engine, this might be why.
+
+      Quick cleaning and it runs whisper quiet now.
+
+      #OrangeCounty #ComputerRepair #LBComputerHelp
+
+- id: "page_week1_wednesday_scam"
+  day: 21
+  category: "page_content"
+  content_type: "page"
+  schedule_day: "wednesday"
+  suggested_photos: []
+  variations:
+    page: |
+      SCAM ALERT for Orange County
+
+      Seeing a new "Spectrum Bill Overdue" email hitting inboxes this week.
+
+      Red flags:
+      - Sender email is "spectrum-billing@randomdomain.com" (not spectrum.net)
+      - Urgency language ("Account suspended in 24 hours!")
+      - Link goes to a fake login page
+
+      If you got this, DELETE IT. If you clicked the link, change your Spectrum password immediately.
+
+      Share to protect your neighbors!
+
+      #ScamAlert #OrangeCounty #CyberSecurity
+
+- id: "page_week1_friday_bts"
+  day: 22
+  category: "page_content"
+  content_type: "page"
+  schedule_day: "friday"
+  suggested_photos: ["IMG_0039.jpg", "IMG_0867.jpg"]
+  variations:
+    page: |
+      Friday wrap-up!
+
+      Another batch of happy computers heading home for the weekend.
+
+      This week:
+      - 3 dust cleanings (including one that was basically a fur coat)
+      - 2 virus removals
+      - 1 data recovery save (5 years of family photos!)
+      - 1 new gaming PC build
+
+      Love bringing these machines back to life. Have a great weekend, OC!
+
+      #FridayFeeling #ComputerRepair #OrangeCounty
+
+- id: "page_week2_monday_horror"
+  day: 23
+  category: "page_content"
+  content_type: "page"
+  schedule_day: "monday"
+  suggested_photos: ["IMG_1362.jpg", "IMG_0867.jpg"]
+  variations:
+    page: |
+      Coffee + laptop = this.
+
+      Client in Anaheim spilled their morning coffee right into the keyboard.
+
+      Good news: We caught it in time! Disassembled, cleaned every component, replaced the keyboard.
+
+      Bad news: Their laptop now judges them every time they bring a drink nearby.
+
+      Pro tip: Keep drinks to the LEFT of your laptop (most people are right-handed, so spills go right).
+
+      #LaptopRepair #OrangeCounty #TechTips
+
+- id: "page_week2_wednesday_tip"
+  day: 24
+  category: "page_content"
+  content_type: "page"
+  schedule_day: "wednesday"
+  suggested_photos: []
+  variations:
+    page: |
+      Free speed boost for your computer:
+
+      Press Ctrl + Shift + Esc to open Task Manager.
+      Click "Startup" tab.
+      Disable anything you don't need starting automatically.
+
+      I just did this for a client - cut their boot time from 3 minutes to 45 seconds.
+
+      You're welcome.
+
+      #TechTips #ComputerHelp #OrangeCounty
+
+- id: "page_week2_friday_bts"
+  day: 25
+  category: "page_content"
+  content_type: "page"
+  schedule_day: "friday"
+  suggested_photos: ["IMG_0039.jpg", "IMG_0038.jpg"]
+  variations:
+    page: |
+      This heatwave in Orange County is brutal - and not just for us.
+
+      Your computer feels it too. Heat = slower performance + shorter lifespan.
+
+      Quick tips:
+      - Keep your PC off carpet (blocks airflow)
+      - Clean dust from vents every few months
+      - Don't leave laptops in hot cars
+      - Consider a laptop cooling pad ($20-30)
+
+      Stay cool out there, OC!
+
+      #OrangeCounty #SummerTips #ComputerCare

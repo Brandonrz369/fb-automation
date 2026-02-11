@@ -2,7 +2,7 @@
 
 ## For New Claude Sessions - READ THIS FIRST
 
-**Last Updated:** February 6, 2026
+**Last Updated:** February 10, 2026
 **Purpose:** Enable any Claude session to immediately understand and continue this project
 
 ---
@@ -14,7 +14,7 @@
 | **Business** | LB Computer Help - Computer Repair in Orange County, CA |
 | **Goal** | Automate Facebook group posting to generate leads |
 | **Method** | Browser Use MCP cloud automation + personal profile |
-| **Status** | v3.5 LIVE - 13 successful posts today, 100% v3.5 success rate |
+| **Status** | v3.6 LIVE - 25/25 success (12 today + 13 prev). Autonomous API mode built. |
 
 ---
 
@@ -22,8 +22,8 @@
 
 | Metric | Count | Notes |
 |--------|-------|-------|
-| **OC Groups** | 76 | Tier 1: 9, Tier 2: 17, Tier 3: 50 (incl 9 marketplace) |
-| **Content Posts** | 19 | Each has 3 variations = 57 total (incl 3 marketplace) |
+| **OC Groups** | 76 + 1 Page | Tier 1: 9, Tier 2: 17, Tier 3: 50 (incl 9 marketplace) + Business Page |
+| **Content Posts** | 25 | 19 group posts (3 variations each) + 6 Business Page posts |
 | **Photos** | 18 | Mapped to content types |
 | **Delay Between Posts** | 65-140 min | Random, mimics human behavior |
 | **Max Posts/Day** | 13-15 | Tested 13 on Feb 6 with no issues |
@@ -46,17 +46,24 @@
 
 ## Current State (February 6, 2026)
 
-### CRITICAL: Browser Agent v3.5 (VERIFIED WORKING)
-v3.5 was developed after v3.2's `execCommand('insertText')` broke on Feb 6 PM (Facebook changed editor). Key technical details:
+### CRITICAL: Browser Agent v3.6 (VERIFIED WORKING - Feb 10, 2026)
+v3.6 upgraded text entry from native input (typed `\n` literally) to JS ClipboardEvent paste.
 
 - **ALL Facebook URLs must include `?_fb_noscript=1`**
-- **Text entry**: Native Browser Use `input` action (NOT execCommand - it's broken)
+- **Text entry**: JS ClipboardEvent paste - entire post in one call, handles newlines properly
 - **React state activation**: Space+Backspace "wiggle" after text entry
 - **NEVER use Escape key** (closes modal)
 - **Post button**: Find SPAN with `textContent === 'Post'` → `.closest('[role="button"]')` → click
-  - The Post button is NOT a `div` element - all `div[role="button"]` selectors fail
-  - `.closest('[role="button"]')` traverses up the DOM tree regardless of element type
-- **max_steps: 15** (typically completes in 9)
+- **max_steps: 18** (typically completes in 7-8)
+- **Two modes**: `mcp` (Claude-assisted) or `api` (autonomous VPS/cron)
+
+### Autonomous API Mode (NEW - Feb 10, 2026)
+The system can now run fully autonomous on a VPS via cron:
+- `browser_agent.py` calls Browser Use Cloud REST API directly
+- `main.py --api` flag enables API mode (requires `BROWSER_USE_API_KEY` in `.env`)
+- `--page-only` flag for Business Page only (Mon/Wed/Fri at 10 AM)
+- Run-level content deduplication prevents same text going to multiple groups
+- Auto-pause after 3 failures (creates `data/paused.lock`)
 
 See `src/browser_agent.py` for the full implementation and `~/.claude/projects/-home-brandon/memory/browser_use_fix.md` for detailed technical notes.
 
@@ -84,35 +91,49 @@ TIERS:   T1 (9 groups) = 2x/week, all content types
 SATURATION: 19 posts × 14-day cooldown = 266 days (8.9 months) per group
 ```
 
-### Posting History (Feb 6, 2026) - 13 Successful Posts
-| # | Group | Content | Result | Version |
-|---|-------|---------|--------|---------|
-| 1 | Anaheim Connect | productivity_tip | SUCCESS_PENDING | v1 |
-| 2 | Garden Grove: What's going on? | tech_tip | SUCCESS_PENDING | v2 |
-| 3 | OC City Neighbors | scam_alert | SUCCESS_PUBLISHED | v2 |
-| 4 | Anaheim Community | laptop_tip | SUCCESS_PUBLISHED | v3.2 |
-| 5 | Fun in Fullerton | myth_buster | SUCCESS_PUBLISHED | v3.2 |
-| 6 | Anything Orange County | dusty_pc | SUCCESS_PENDING | v3.2 |
-| 7 | Anything OC | wifi_tip | SUCCESS_PUBLISHED | v3.5 |
-| 8 | OC Word of Mouth | ssd_upgrade | SUCCESS_PUBLISHED | v3.5 |
-| 9 | All Things Placentia/YL/Fullerton | community | SUCCESS_PENDING | v3.5 |
-| 10 | Fullerton Friends | scam_alert | SUCCESS_PENDING | v3.5 |
-| 11 | Orange County | phishing_tip | SUCCESS_PUBLISHED | v3.5 |
-| 12 | OC Daily Post | password_security | SUCCESS_PENDING | v3.5 |
-| 13 | Orange County (Beach) | appreciation | SUCCESS_PENDING | v3.5 |
+### Posting History (Feb 10, 2026) - 14 Successful Posts (v3.6 ClipboardEvent Paste)
+| # | Group | Content | Result |
+|---|-------|---------|--------|
+| 1 | OC Small Business Owners | extra_cable_management b2b | SUCCESS |
+| 2 | Buena Park Small Business | week2_day12_msp_promo b2b | SUCCESS_PUBLISHED |
+| 3 | OC Business Networking #1 | week2_day8_security b2b | SUCCESS |
+| 4 | OC Business Networking #2 | week2_day9_phishing b2b | SUCCESS |
+| 5 | OC Business Networking #3 | week1_day2_scam_alert b2b | SUCCESS (messy fmt) |
+| 6 | OC Biz Networking Experts | week1_day5_soft_promo b2b | SUCCESS_PENDING |
+| 7 | CA Business Entrepreneurs | marketplace_repair_listing b2b | SUCCESS |
+| 8 | CA Entrepreneurs | week2_day10_data_recovery b2b | SUCCESS |
+| 9 | S OC Business | week2_day13_ssd_upgrade b2b | SUCCESS |
+| 10 | Supporting Small Biz SoCal | marketplace_ssd_upgrade b2b | SUCCESS |
+| 11 | OC/LA Business Networking | week1_day6_smart_home b2b | SUCCESS_PENDING |
+| 12 | SoCal Business Networking | week1_day7_community b2b | SUCCESS |
+| 13 | OC Contractors/Handyman | marketplace_data_recovery b2b | SUCCESS |
+| 14 | Cerritos Business | week2_day11_laptop_tip b2b | SUCCESS |
 
-### Groups Posted To Today (13/76)
-- **Tier 1:** 8 of 9 (Anaheim Connect, OC City Neighbors, OC Word of Mouth, Regional Placentia, Fullerton Friends, Orange County General, OC Daily Post, Orange County Beach)
-- **Tier 2:** 0 of 17 (blocked by Browser Use credits running out)
-- **Tier 3:** 5 of 50 (Garden Grove, Anaheim Community, Fun in Fullerton, Anything OC x2)
+### Previous Session (Feb 6, 2026) - 13 Successful Posts (v3.5)
+| # | Group | Content | Result |
+|---|-------|---------|--------|
+| 1-6 | Anaheim Connect, Garden Grove, OC City Neighbors, Anaheim Community, Fun in Fullerton, Anything OC | various | SUCCESS (v1-v3.2) |
+| 7-13 | Anything OC, OC Word of Mouth, Placentia, Fullerton Friends, Orange County, OC Daily Post, OC Beach | various | SUCCESS (v3.5) |
 
-### Ready for Next Steps
-- [ ] Replenish Browser Use credits to continue posting
-- [ ] Post to 2 more groups to reach 15 (OC Small Biz, Buena Park Small Biz)
-- [ ] Post on LB Computer Help Business Page
-- [ ] Quality check all posts (verify text, formatting, visibility)
-- [ ] Production posting schedule (begin daily tier rotation)
-- [ ] Cron automation setup
+### Current Group Coverage (27/76 posted)
+- **Tier 1:** 8 of 9
+- **Tier 2 b2b:** 14 of 16 (2 remaining: support_small_biz_oc, hb_business_network)
+- **Tier 2 parent:** 0 of 2 (tustin_moms, oc_community_multi_city)
+- **Tier 3:** 5 of 50
+
+### Next Steps (Priority Order)
+- [x] Build autonomous API mode (browser_agent.py + main.py --api)
+- [x] Add Business Page content to content_calendar.yaml (6 posts, 2-week rotation)
+- [x] Fix content deduplication (same text was going to multiple groups)
+- [ ] **Add BROWSER_USE_API_KEY to .env** (get from https://cloud.browser-use.com/dashboard)
+- [ ] **Set `dry_run: false` in settings.yaml** when ready to go live
+- [ ] **Transfer to VPS** (rsync to 5.161.45.43, set up cron)
+- [ ] Finish last 2 Tier 2 b2b groups
+- [ ] Quality audit of Feb 10 posts (check formatting)
+- [ ] Post to Tier 2 parent groups (2 groups)
+- [ ] Post to Tier 3 community groups (45 remaining)
+- [ ] Set up first-comment CTAs
+- [ ] Clarify blog post strategy with user
 - [ ] Monitor engagement and reply to comments
 
 ---
@@ -167,20 +188,35 @@ Then:
 # Check system status
 python3 ~/fb-automation/src/main.py --status
 
-# Preview what would be posted (safe)
-python3 ~/fb-automation/src/main.py --dry-run
+# Preview what would be posted (safe dry run)
+python3 ~/fb-automation/src/main.py --dry-run --api
 
-# Generate Browser Use task prompts
+# Run daily cycle via API (autonomous - requires BROWSER_USE_API_KEY)
+python3 ~/fb-automation/src/main.py --api
+
+# Post to Business Page only (Mon/Wed/Fri)
+python3 ~/fb-automation/src/main.py --api --page-only
+
+# Post to a specific group
+python3 ~/fb-automation/src/main.py --api --post GROUP_ID
+
+# Generate Browser Use task prompts (for Claude-assisted mode)
 python3 ~/fb-automation/src/main.py --generate
-
-# View dashboard
-firefox ~/fb-automation/dashboard.html
 
 # Pause all automation
 touch ~/fb-automation/data/paused.lock
 
 # Resume automation
 rm ~/fb-automation/data/paused.lock
+```
+
+### Cron Setup (VPS)
+```bash
+# Daily group posting at 9 AM PT
+0 9 * * * /home/brandon/fb-automation/run.sh
+
+# Business Page posts: Mon/Wed/Fri at 10 AM PT
+0 10 * * 1,3,5 /home/brandon/fb-automation/run.sh --page-only
 ```
 
 ---
@@ -353,6 +389,7 @@ When starting a new session:
 
 | Date | Key Changes |
 |------|-------------|
+| Feb 10, 2026 | v3.6 ClipboardEvent paste: 12/12 Tier 2 b2b posts. Built autonomous API mode (browser_agent.py + main.py --api). Added Business Page content (6 posts). Fixed content dedup bug. Ready for VPS deployment. |
 | Feb 6, 2026 (PM late) | v3.5 mass posting: 13 successful posts (7 v3.5 + 6 earlier). 8/9 Tier 1 groups covered. Browser Use credits ran out before Tier 2. Line-by-line text entry fix for \n formatting. Dashboard, history, all tracking updated. |
 | Feb 6, 2026 (PM) | Architecture overhaul: 76 groups (14 added from gap analysis), all sign-offs fixed with "LB Computer Help", 3 marketplace content pieces added, dashboard updated with marketplace previews + photo mapping guide, content-to-group matching architecture designed. v3.5 breakthrough: native input + .closest() Post click |
 | Feb 6, 2026 (AM) | browser_agent.py v3.2 WORKING (execCommand + dialog scoping + wiggle). 6 successful posts. Groups rebuilt from live FB scrape. |

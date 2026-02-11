@@ -1,23 +1,30 @@
 """
-LB Computer Help - Browser Agent v3.5
+LB Computer Help - Browser Agent v3.6
 ======================================
-Interface to Browser Use MCP for Facebook automation.
+Interface to Browser Use for Facebook automation.
+
+v3.6 CHANGES (Feb 10, 2026):
+- Text entry: JS ClipboardEvent paste (replaces native input which typed \\n literally)
+- Single JS call inserts entire post with proper newlines
+- Posts complete in 7-8 steps instead of 15+
+- API mode: Real Browser Use Cloud API integration for autonomous VPS operation
 
 v3.5 CHANGES (Feb 6, 2026 PM):
-- Text entry: Native Browser Use `input` action (execCommand BROKEN as of Feb 6 PM)
 - Post button: Find SPAN with 'Post' text → .closest('[role="button"]') → click
-  The Post button is NOT a div element - all div[role="button"] selectors fail.
-- max_steps reduced to 15 (v3.5 typically completes in 9)
+- max_steps: 18 (v3.6 typically completes in 7-8)
 
 STILL REQUIRED:
 - All Facebook URLs MUST include ?_fb_noscript=1
 - Space+Backspace "wiggle" after text entry for React state reconciliation
 - NEVER use Escape key - it closes Facebook modals
+- "LB Computer Help" triggers mention dropdown - dismiss by clicking modal header
 """
 
-import base64
 import json
 import logging
+import os
+import time
+import requests
 from pathlib import Path
 from typing import Dict, Optional
 from dataclasses import dataclass
@@ -27,12 +34,14 @@ logger = logging.getLogger(__name__)
 # Facebook noscript parameter - REQUIRED for reliable loading in Browser Use
 FB_NOSCRIPT = "?_fb_noscript=1"
 
+# Browser Use Cloud API
+BROWSER_USE_API_BASE = "https://api.browser-use.com/api/v2"
+
 
 def _ensure_noscript_url(url: str) -> str:
     """Ensure Facebook URL has the ?_fb_noscript=1 parameter."""
     if not url:
         return url
-    # Strip trailing slash for clean append
     url = url.rstrip('/')
     if '?_fb_noscript=1' in url:
         return url
@@ -48,9 +57,14 @@ def _ensure_trailing_slash(url: str) -> str:
     return url
 
 
-def _text_to_b64(text: str) -> str:
-    """Encode text to Base64 for safe JS transport. Eliminates all escaping issues."""
-    return base64.b64encode(text.encode('utf-8')).decode('ascii')
+def _escape_js_string(text: str) -> str:
+    """Escape text for safe embedding in a JS string literal."""
+    return (text
+            .replace('\\', '\\\\')
+            .replace('"', '\\"')
+            .replace("'", "\\'")
+            .replace('\n', '\\n')
+            .replace('\r', ''))
 
 
 @dataclass
@@ -58,6 +72,7 @@ class PostResult:
     """Result of a posting attempt."""
     success: bool
     message: str
+    task_id: Optional[str] = None
     screenshot_path: Optional[str] = None
     error: Optional[str] = None
 
@@ -68,25 +83,110 @@ class BrowserAgent:
 
     Supports two modes:
     - 'mcp': Direct MCP tool calls (used when running from Claude Code)
-    - 'api': HTTP API calls to Browser Use cloud (used on VPS)
+    - 'api': HTTP API calls to Browser Use cloud (used on VPS/cron)
     """
 
-    def __init__(self, profile_id: str, mode: str = 'mcp', dry_run: bool = True):
+    def __init__(self, profile_id: str, mode: str = 'mcp',
+                 dry_run: bool = True, api_key: Optional[str] = None):
         self.profile_id = profile_id
         self.mode = mode
         self.dry_run = dry_run
+        self.api_key = api_key or os.environ.get('BROWSER_USE_API_KEY', '')
+
+    # ========================================
+    # API Client Methods (for autonomous mode)
+    # ========================================
+
+    def _api_headers(self) -> Dict:
+        """Get headers for Browser Use API calls."""
+        return {
+            "X-Browser-Use-API-Key": self.api_key,
+            "Content-Type": "application/json",
+        }
+
+    def _api_create_session(self) -> str:
+        """Create a Browser Use session with the configured profile."""
+        resp = requests.post(
+            f"{BROWSER_USE_API_BASE}/sessions",
+            headers=self._api_headers(),
+            json={"profileId": self.profile_id},
+            timeout=30,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        session_id = data.get("id") or data.get("sessionId")
+        logger.info(f"Created session: {session_id}")
+        return session_id
+
+    def _api_create_task(self, task: str, max_steps: int = 18,
+                         session_id: Optional[str] = None) -> Dict:
+        """Create a Browser Use task."""
+        payload = {
+            "task": task,
+            "maxSteps": max_steps,
+        }
+        if session_id:
+            payload["sessionId"] = session_id
+
+        resp = requests.post(
+            f"{BROWSER_USE_API_BASE}/tasks",
+            headers=self._api_headers(),
+            json=payload,
+            timeout=30,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        logger.info(f"Created task: {data.get('id', 'unknown')}")
+        return data
+
+    def _api_poll_task(self, task_id: str, timeout: int = 600,
+                       poll_interval: int = 10) -> Dict:
+        """Poll a Browser Use task until completion or timeout."""
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                resp = requests.get(
+                    f"{BROWSER_USE_API_BASE}/tasks/{task_id}",
+                    headers=self._api_headers(),
+                    timeout=30,
+                )
+                resp.raise_for_status()
+                data = resp.json()
+                status = data.get("status", "unknown")
+
+                if status in ("completed", "finished", "done"):
+                    logger.info(f"Task {task_id} completed successfully")
+                    return data
+                elif status in ("failed", "error", "stopped"):
+                    logger.error(f"Task {task_id} failed: {data.get('error', 'unknown')}")
+                    return data
+                else:
+                    logger.debug(f"Task {task_id} status: {status} "
+                                 f"(elapsed: {int(time.time() - start)}s)")
+            except requests.RequestException as e:
+                logger.warning(f"Poll error for {task_id}: {e}")
+
+            time.sleep(poll_interval)
+
+        logger.error(f"Task {task_id} timed out after {timeout}s")
+        return {"status": "timeout", "id": task_id}
+
+    # ========================================
+    # Task Prompt Builders
+    # ========================================
 
     def _build_post_task(self, payload: Dict) -> str:
         """
         Build the natural language task for Browser Use.
 
-        v3.5 approach (Feb 6, 2026 PM):
+        v3.6 approach (Feb 10, 2026):
         1. Navigation with ?_fb_noscript=1
         2. Pre-engagement (scroll + like)
         3. Modal initialization with render verification
-        4. Text entry via native Browser Use `input` action + space/backspace wiggle
-        5. Post submission via .closest('[role="button"]') JS from SPAN
-        6. Post-submission verification
+        4. Text entry via JS ClipboardEvent paste (entire post in one call)
+        5. Dismiss mention dropdown + space/backspace wiggle
+        6. Post submission via .closest('[role="button"]') JS from SPAN
+        7. Post-submission verification
         """
         if not payload or 'group_url' not in payload or 'text' not in payload:
             raise ValueError("Payload must contain 'group_url' and 'text'")
@@ -94,168 +194,85 @@ class BrowserAgent:
         group_url = payload['group_url']
         group_url_noscript = _ensure_noscript_url(group_url)
         text = payload['text']
-        photo_path = payload.get('photo_path')
-        capture_rules = payload.get('capture_rules', False)
+        text_js = _escape_js_string(text)
 
-        # Build rules-capture step
-        rules_step = ""
-        if capture_rules:
-            about_url = _ensure_noscript_url(
-                _ensure_trailing_slash(group_url) + 'about'
-            )
-            rules_step = f"""PHASE 0 - CAPTURE GROUP RULES:
-Navigate to {about_url}
-Wait for the page to load completely.
-Look for and record ALL of the following:
-- "Group rules" section (numbered rules)
-- Any mentions of allowed posting days
-- Whether admin approval is required for posts
-- Whether business/promotional posts are allowed or restricted
-- Any posting frequency limits
-- Any special restrictions or requirements
+        # Determine if this is a Business Page or Group
+        is_page = payload.get('is_page', False)
+        write_prompt = '"Create a post" or "Create post"' if is_page else '"Write something..."'
 
-After recording rules, proceed to Phase 1.
+        # Build the ClipboardEvent paste JS
+        paste_js = (
+            '(function(){'
+            ' var editor = document.querySelector(\'div[role="dialog"] div[contenteditable="true"][role="textbox"]\');'
+            ' if(!editor) editor = document.querySelector(\'div[contenteditable="true"][role="textbox"]\');'
+            ' if(!editor) return \'NO_EDITOR\';'
+            ' editor.focus();'
+            f' var text = "{text_js}";'
+            ' var dt = new DataTransfer();'
+            " dt.setData('text/plain', text);"
+            " var pe = new ClipboardEvent('paste', {clipboardData: dt, bubbles: true, cancelable: true});"
+            ' editor.dispatchEvent(pe);'
+            " return 'PASTED';"
+            '})()'
+        )
 
-"""
+        # Post button JS
+        post_button_js = (
+            "(function(){"
+            "var spans=document.querySelectorAll('span');"
+            "for(var i=spans.length-1;i>=0;i--){"
+            "if(spans[i].textContent.trim()==='Post'&&spans[i].offsetWidth>0){"
+            "var btn=spans[i].closest('[role=\"button\"]');"
+            "if(btn&&btn.getAttribute('aria-disabled')!=='true'){"
+            "btn.click();return 'BUTTON_CLICKED';}"
+            "if(btn){return 'BUTTON_DISABLED';}"
+            "spans[i].click();return 'SPAN_CLICKED';}}"
+            "return 'NOT_FOUND';})()"
+        )
 
-        # Build photo upload step
-        photo_step = ""
-        if photo_path:
-            photo_step = """
-OPTIONAL - PHOTO UPLOAD:
-Look for a photo/image button in the post creation modal. Click it.
-If a file picker appears, try to upload the image.
-If upload fails or is not possible, proceed with text only - do NOT abort the post.
+        task = f"""You are a Facebook group posting bot. Follow these phases EXACTLY:
 
-"""
+PHASE 1 - NAVIGATE:
+Go to {group_url_noscript}
+Wait for the page to fully load. If stuck on splash screen, try navigating to https://www.facebook.com first, wait for it to load, then navigate back to the group URL.
 
-        # Build first-comment step with pending-post awareness
-        first_comment = payload.get('first_comment', '')
-        comment_step = ""
-        if first_comment:
-            comment_b64 = _text_to_b64(first_comment)
-            comment_step = f"""
-PHASE 6 - FIRST COMMENT (only if post is visible, NOT pending):
-If the post shows "pending admin approval", SKIP this phase entirely.
-If the post is visible in the feed:
-1. Navigate to {group_url_noscript} (reload the page)
-2. Find your post (look for text "Just now" or "1 min" near your post content)
-3. Click the "Comment" area on YOUR post
-4. Wait 2 seconds for the comment box to be focused
-5. Type the comment text using the input action:
-{first_comment}
-6. Press Enter or click the comment submit button
-7. Verify the comment appears
-
-If you cannot find your post or commenting fails, report it but still count the POST as successful.
-"""
-
-        # The main task prompt - v3.5 approach
-        task = f"""{rules_step}PHASE 1 - NAVIGATION:
-Navigate to {group_url_noscript}
-IMPORTANT: The URL MUST contain ?_fb_noscript=1 - this is required for the page to load.
-Wait for the page to fully load. You should see the group name and a "Write something..." area.
-If the page shows only a Facebook logo/splash screen after 10 seconds, try refreshing.
-
-PRE-CHECKS before proceeding:
-- Can you see "Write something..." or a post creation area? If NO, check if you need to "Join Group" first - if so, ABORT and report "Not a member".
-- Close any popup modals (cookie consent, notifications, etc.) that may be blocking the view.
-
-PHASE 2 - PRE-ENGAGEMENT (humanize the session):
-Scroll down the group feed slowly for about 10-15 seconds.
-Find a recent post from another member and click the Like (thumbs up) reaction on it.
-Wait 2 seconds, then scroll back to the top of the page.
+PHASE 2 - PRE-ENGAGE:
+Scroll down 1-2 pages, like one post if possible, wait 3 seconds, scroll back to top.
 
 PHASE 3 - OPEN POST EDITOR:
-Click on the "Write something..." or "Create a public post..." input area.
-Wait 3 seconds for the post creation modal to FULLY render.
-
-CRITICAL VERIFICATION: The modal must show a text input area (NOT shimmering/loading placeholders).
-- If you see shimmer/loading bars inside the modal, wait up to 10 more seconds.
-- If the modal is STILL showing loading placeholders after 15 seconds total, close the modal, navigate to {group_url_noscript} again, and retry from Phase 3.
-- If it fails a second time, ABORT and report "Modal failed to load".
+Click {write_prompt} to open the post modal. Wait 3 seconds for modal to render.
 
 PHASE 4 - ENTER TEXT:
-Click on the text editor area inside the modal to focus it.
-Wait 1 second for focus.
+Click inside the editor to focus it, then run this JavaScript to paste text:
+{paste_js}
 
-STEP 4A - TYPE TEXT using the native input action:
-Type the following text into the editor (use the input action, NOT JavaScript):
+PHASE 5 - DISMISS MENTION DROPDOWN + REACT WIGGLE:
+"LB Computer Help" triggers a mention dropdown. Click the "Create post" modal header text to dismiss it. Then press Space followed by Backspace to activate React state.
 
-{text}
-
-STEP 4B - REACT STATE ACTIVATION (required after typing):
-Wait 1 second after typing completes.
-Then type a single SPACE character.
-Then IMMEDIATELY type a single BACKSPACE character.
-This "wiggle" forces React to reconcile its state with the actual DOM content.
-The space+backspace leaves NO extra characters in the text.
-
-STEP 4C - VERIFY text is visible in the editor and the Post button appears active (not grayed out).
-If the Post button is still disabled after the wiggle, click the editor area again and try typing one more space then backspace.
-{photo_step}
-PHASE 5 - SUBMIT POST:
-DO NOT press Escape - it will close the modal! If a dropdown menu or mention suggestion is covering the Post button, click somewhere else in the modal to dismiss it first.
-
-Click the Post button using this JavaScript (finds the Post SPAN and traverses up to the clickable button):
-(function(){{var spans=document.querySelectorAll('span');for(var i=spans.length-1;i>=0;i--){{if(spans[i].textContent.trim()==='Post'&&spans[i].offsetWidth>0){{var btn=spans[i].closest('[role="button"]');if(btn&&btn.getAttribute('aria-disabled')!=='true'){{btn.click();return 'BUTTON_CLICKED';}}if(btn){{return 'BUTTON_DISABLED';}}spans[i].click();return 'SPAN_CLICKED';}}}}return 'NOT_FOUND';}})()
-
-Check the result:
-- BUTTON_CLICKED = Success, proceed to verification
-- BUTTON_DISABLED = Post button is disabled, text may not have registered. Go back to Step 4B and try the wiggle again, then retry this JS.
-- SPAN_CLICKED = Fallback click on span directly, may or may not work. Wait and check.
-- NOT_FOUND = Post button not found. Try clicking the Post button directly by visual position as fallback.
-
+PHASE 6 - SUBMIT:
+Run this JavaScript to click the Post button:
+{post_button_js}
 Wait 5 seconds after clicking.
 
-VERIFICATION - Check for ONE of these success indicators:
-a) A "Posting" spinner appeared and the modal closed = SUCCESS
-b) A message saying "pending" or "awaiting admin approval" = SUCCESS (post submitted, waiting for mod review)
-c) Your post text visible in the group feed = SUCCESS (post published)
-d) The "Create post" modal disappeared and "Write something..." is visible again = LIKELY SUCCESS
-e) The modal is still open with your text = FAILED (Post button click did not work)
-f) An error message appeared = FAILED (report the error text)
+PHASE 7 - CONFIRM:
+Verify the modal is gone and the post appears in the feed. Report success or failure.
 
-{comment_step}
-FINAL REPORT:
-Report the outcome clearly:
+FINAL REPORT - Report one of:
 - SUCCESS_PENDING: Post submitted but pending admin approval
 - SUCCESS_PUBLISHED: Post visible in feed
 - SUCCESS_MODAL_CLOSED: Modal closed (assumed success)
 - FAILED_MODAL_LOAD: Post editor never loaded
-- FAILED_TEXT_ENTRY: Text could not be entered / Post button stayed disabled
+- FAILED_TEXT_ENTRY: Text could not be entered
 - FAILED_POST_CLICK: Post button click had no effect
 - FAILED_NOT_MEMBER: Not a member of this group
-- FAILED_BLOCKED: Facebook security check or posting block encountered
-- FAILED_OTHER: Any other failure (describe what happened)"""
+- FAILED_BLOCKED: Facebook security check encountered
+- FAILED_OTHER: Any other failure (describe)"""
 
         return task.strip()
 
-    def _build_monitor_task(self, group_url: str, keywords: list = None) -> str:
-        """Build task to monitor a group for opportunities."""
-        if keywords is None:
-            keywords = ["computer", "laptop", "slow", "broken", "help", "IT", "tech"]
-
-        keywords_str = ", ".join(f'"{k}"' for k in keywords)
-        group_url_noscript = _ensure_noscript_url(group_url)
-
-        task = f"""
-Navigate to {group_url_noscript}
-
-Wait for the page to fully load.
-
-Use the group's search function to search for any of these keywords: {keywords_str}
-
-Look at posts from the past 24-48 hours.
-
-For each relevant post where someone is asking for tech help:
-- Note the poster's name
-- Summarize what they need help with
-- Note approximately how old the post is
-
-Return a summary of opportunities found.
-"""
-        return task.strip()
+    # ========================================
+    # Execution Methods
+    # ========================================
 
     def execute_post(self, payload: Dict) -> PostResult:
         """
@@ -277,7 +294,6 @@ Return a summary of opportunities found.
                 message=f"[DRY RUN] Would post '{payload['post_id']}' to '{payload['group_name']}'"
             )
 
-        # Actual execution
         if self.mode == 'mcp':
             return self._execute_mcp(task, payload)
         else:
@@ -287,8 +303,7 @@ Return a summary of opportunities found.
         """
         Execute via MCP (when running from Claude Code).
 
-        Note: This returns the task details for Claude to execute,
-        as MCP calls need to go through the Claude interface.
+        Returns the task details for Claude to execute via browser_task tool.
         """
         logger.info("MCP mode: Generating task for Claude execution")
 
@@ -298,7 +313,7 @@ Return a summary of opportunities found.
             error=json.dumps({
                 'task': task,
                 'profile_id': self.profile_id,
-                'max_steps': 25,
+                'max_steps': 18,
                 'group_name': payload.get('group_name', 'Unknown'),
             })
         )
@@ -307,26 +322,105 @@ Return a summary of opportunities found.
         """
         Execute via Browser Use Cloud API.
 
-        For VPS deployment, this would make HTTP calls to Browser Use cloud.
+        For VPS/cron deployment. Creates a session, runs the task,
+        polls for completion, and returns the result.
         """
-        try:
-            logger.info(f"API mode: Would execute task for {payload.get('group_name', 'Unknown')}")
-            return PostResult(
-                success=True,
-                message="API execution placeholder - implement with Browser Use SDK"
-            )
-
-        except Exception as e:
-            logger.error(f"API execution failed: {e}")
+        if not self.api_key:
             return PostResult(
                 success=False,
-                message="API execution failed",
+                message="No API key configured",
+                error="Set BROWSER_USE_API_KEY in .env or environment"
+            )
+
+        group_name = payload.get('group_name', 'Unknown')
+        logger.info(f"API mode: Executing post to {group_name}")
+
+        try:
+            # Step 1: Create session with profile
+            session_id = self._api_create_session()
+
+            # Step 2: Create task
+            task_data = self._api_create_task(
+                task=task,
+                max_steps=18,
+                session_id=session_id,
+            )
+            task_id = task_data.get("id") or task_data.get("task_id")
+
+            if not task_id:
+                return PostResult(
+                    success=False,
+                    message=f"Failed to create task for {group_name}",
+                    error=f"No task_id in response: {task_data}"
+                )
+
+            logger.info(f"Task {task_id} created for {group_name}, polling...")
+
+            # Step 3: Poll for completion (10 min timeout)
+            result = self._api_poll_task(task_id, timeout=600)
+            status = result.get("status", "unknown")
+
+            # Step 4: Interpret result
+            task_output = result.get("output") or result.get("task_output") or ""
+            is_success = result.get("is_success", False)
+
+            if status in ("completed", "finished", "done") or is_success:
+                # Check if the output indicates actual posting success
+                success_indicators = [
+                    "SUCCESS", "BUTTON_CLICKED", "published",
+                    "posted", "visible in feed", "modal closed"
+                ]
+                post_success = any(
+                    ind.lower() in str(task_output).lower()
+                    for ind in success_indicators
+                )
+
+                return PostResult(
+                    success=post_success,
+                    message=f"{'SUCCESS' if post_success else 'COMPLETED_BUT_UNCERTAIN'}: {group_name}",
+                    task_id=task_id,
+                    error=None if post_success else f"Output: {task_output[:500]}"
+                )
+            else:
+                return PostResult(
+                    success=False,
+                    message=f"FAILED: {group_name} (status: {status})",
+                    task_id=task_id,
+                    error=f"Status: {status}, Output: {str(task_output)[:500]}"
+                )
+
+        except requests.RequestException as e:
+            logger.error(f"API request failed for {group_name}: {e}")
+            return PostResult(
+                success=False,
+                message=f"API error for {group_name}",
+                error=str(e)
+            )
+        except Exception as e:
+            logger.error(f"Unexpected error for {group_name}: {e}")
+            return PostResult(
+                success=False,
+                message=f"Error posting to {group_name}",
                 error=str(e)
             )
 
     def monitor_group(self, group_url: str, group_name: str) -> PostResult:
         """Monitor a group for posting opportunities."""
-        task = self._build_monitor_task(group_url)
+        keywords = ["computer", "laptop", "slow", "broken", "help", "IT", "tech"]
+        keywords_str = ", ".join(f'"{k}"' for k in keywords)
+        group_url_noscript = _ensure_noscript_url(group_url)
+
+        task = f"""
+Navigate to {group_url_noscript}
+Wait for the page to fully load.
+Use the group's search function to search for any of these keywords: {keywords_str}
+Look at posts from the past 24-48 hours.
+For each relevant post where someone is asking for tech help:
+- Note the poster's name
+- Summarize what they need help with
+- Note approximately how old the post is
+Return a summary of opportunities found.
+""".strip()
 
         if self.dry_run:
             logger.info(f"[DRY RUN] Would monitor: {group_name}")
@@ -359,13 +453,9 @@ def generate_mcp_command(payload: Dict, profile_id: str) -> Dict:
     agent = BrowserAgent(profile_id, mode='mcp', dry_run=False)
     task = agent._build_post_task(payload)
 
-    # Calculate steps: base(15) + comment(5) + rules_capture(8)
-    # v3.5: 15 base steps is sufficient (typically completes in 9)
-    max_steps = 15
+    max_steps = 18
     if payload.get('first_comment'):
         max_steps += 5
-    if payload.get('capture_rules'):
-        max_steps += 8
 
     return {
         'task': task,

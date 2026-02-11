@@ -56,44 +56,182 @@ class ContentManager:
         with open(self.history_file, 'w') as f:
             json.dump(self.history, f, indent=2, default=str)
 
+    # Day name mapping for posting_rules.promo_days
+    DAY_NAMES = {
+        0: "monday", 1: "tuesday", 2: "wednesday",
+        3: "thursday", 4: "friday", 5: "saturday", 6: "sunday"
+    }
+
     def get_active_groups(self, tier: Optional[int] = None) -> List[Dict]:
         """Get all active groups, optionally filtered by tier."""
         groups = [g for g in self.groups if g.get('active', False)]
+        # Exclude Business Page entries
+        groups = [g for g in groups if g.get('type') != 'page']
         if tier:
             groups = [g for g in groups if g.get('tier') == tier]
         return groups
 
+    def _is_allowed_today(self, group: Dict) -> bool:
+        """Check if a group allows posting today based on posting_rules.promo_days."""
+        rules = group.get('posting_rules', {})
+        if not rules:
+            return True  # No rules = allowed any day
+
+        promo_days = rules.get('promo_days', ['any'])
+        if not promo_days or 'any' in promo_days:
+            return True
+
+        today_name = self.DAY_NAMES[datetime.now().weekday()]
+        return today_name in promo_days
+
+    def _check_frequency_limit(self, group: Dict) -> bool:
+        """Check if posting to this group would violate its frequency limit.
+        Returns True if posting is OK, False if too soon."""
+        rules = group.get('posting_rules', {})
+        max_freq = rules.get('max_frequency', '')
+
+        if not max_freq:
+            # Default: 14-day cooldown
+            return self._days_since_last_post(group['id']) >= 14
+
+        if '1 per week' in max_freq:
+            return self._days_since_last_post(group['id']) >= 7
+        elif '1 per day' in max_freq:
+            return self._days_since_last_post(group['id']) >= 1
+
+        # Default cooldown
+        return self._days_since_last_post(group['id']) >= 14
+
+    def _days_since_last_post(self, group_id: str) -> int:
+        """Get the number of days since the last post to a group."""
+        group_history = self.history.get(group_id, [])
+        if not group_history:
+            return 999  # Never posted
+
+        last_post = max(group_history, key=lambda h: h['timestamp'])
+        last_time = datetime.fromisoformat(last_post['timestamp'])
+        return (datetime.now() - last_time).days
+
     def select_groups_for_today(self) -> List[Dict]:
         """
-        Select groups to post to today based on tier rotation and history.
-        Returns a randomized list of groups.
+        Select groups to post to today based on tier rotation, history,
+        day-of-week restrictions, and frequency limits from posting_rules.
+        Returns a list of groups (excludes Business Page - see select_page_for_today).
         """
         selected = []
-        today = datetime.now().strftime("%Y-%m-%d")
         day_of_week = datetime.now().weekday()  # 0=Monday, 6=Sunday
 
         # Tier 1: Post to 1-2 high-volume groups daily
-        tier1_groups = self.get_active_groups(tier=1)
+        tier1_groups = [
+            g for g in self.get_active_groups(tier=1)
+            if self._is_allowed_today(g) and self._check_frequency_limit(g)
+        ]
         random.shuffle(tier1_groups)
         selected.extend(tier1_groups[:2])
 
-        # Tier 2: Post to 1 niche group every other day
+        # Tier 2: Post to 1-2 niche groups every other day
         if day_of_week in [0, 2, 4]:  # Mon, Wed, Fri
-            tier2_groups = self.get_active_groups(tier=2)
+            tier2_groups = [
+                g for g in self.get_active_groups(tier=2)
+                if self._is_allowed_today(g) and self._check_frequency_limit(g)
+            ]
             if tier2_groups:
-                selected.append(random.choice(tier2_groups))
+                random.shuffle(tier2_groups)
+                selected.extend(tier2_groups[:2])
 
-        # Tier 3: Rotate through local groups (1 per day)
-        tier3_groups = self.get_active_groups(tier=3)
+        # Tier 3: Rotate through local groups (1-2 per day)
+        tier3_groups = [
+            g for g in self.get_active_groups(tier=3)
+            if self._is_allowed_today(g) and self._check_frequency_limit(g)
+        ]
         if tier3_groups:
-            # Use day of year to rotate through tier 3 groups
             day_of_year = datetime.now().timetuple().tm_yday
             tier3_index = day_of_year % len(tier3_groups)
             selected.append(tier3_groups[tier3_index])
+            # Add a second tier 3 group if available
+            if len(tier3_groups) > 1:
+                tier3_index2 = (day_of_year + len(tier3_groups) // 2) % len(tier3_groups)
+                if tier3_index2 != tier3_index:
+                    selected.append(tier3_groups[tier3_index2])
 
         # Limit to max posts per day
         max_posts = self.settings['posting']['max_posts_per_day']
         return selected[:max_posts]
+
+    def select_page_for_today(self) -> Optional[Dict]:
+        """
+        Check if today is a Business Page posting day (Mon/Wed/Fri).
+        Returns the page config dict if yes, None if no.
+        """
+        day_of_week = datetime.now().weekday()  # 0=Mon, 2=Wed, 4=Fri
+        if day_of_week not in [0, 2, 4]:
+            return None
+
+        # Find the business page entry
+        for g in self.groups:
+            if g.get('type') == 'page' and g.get('active', False):
+                return g
+        return None
+
+    def generate_page_post_payload(self, page: Dict) -> Optional[Dict]:
+        """
+        Generate a post payload for the Business Page.
+        Selects content based on today's day of week (Mon=horror, Wed=scam/tip, Fri=bts).
+        """
+        day_of_week = datetime.now().weekday()
+        day_map = {0: 'monday', 2: 'wednesday', 4: 'friday'}
+        target_day = day_map.get(day_of_week)
+
+        if not target_day:
+            return None
+
+        # Find page content matching today's schedule_day
+        page_id = page['id']
+        page_history = self.history.get(page_id, [])
+        posted_ids = {h['post_id'] for h in page_history}
+
+        eligible = []
+        for post in self.content:
+            if post.get('content_type') != 'page':
+                continue
+            if post.get('schedule_day') != target_day:
+                continue
+            if post['id'] in posted_ids:
+                continue
+            eligible.append(post)
+
+        if not eligible:
+            # All content for this day has been posted - reset by using oldest
+            for post in self.content:
+                if post.get('content_type') == 'page' and post.get('schedule_day') == target_day:
+                    eligible.append(post)
+            if not eligible:
+                return None
+
+        post = eligible[0]
+        text = self.get_text_for_audience(post, 'page')
+
+        photo = self.select_photo_for_post(post)
+        photo_path = None
+        if photo:
+            base_path = self.settings['photos']['base_path']
+            photo_path = f"{base_path}/{photo['filename']}"
+
+        return {
+            'group_id': page_id,
+            'group_name': page['name'],
+            'group_url': page['url'],
+            'post_id': post['id'],
+            'text': text,
+            'photo_path': photo_path,
+            'photo_filename': photo['filename'] if photo else None,
+            'audience_segment': 'page',
+            'category': post.get('category'),
+            'is_page': True,
+        }
+
+    # Categories considered promotional (skip for no-promo groups)
+    PROMO_CATEGORIES = {'promo', 'repairs', 'smart_home', 'data_recovery', 'network'}
 
     def get_eligible_content(self, group: Dict) -> List[Dict]:
         """
@@ -101,9 +239,17 @@ class ContentManager:
         Filters by:
         1. Content category matches group's content_tags
         2. Content hasn't been posted to this group before
+        3. Respects posting_rules.content_only restriction
+        4. Skips promo categories for groups with promo_allowed: false
+        5. Skips page content for group posts
         """
         group_id = group['id']
         group_tags = set(group.get('content_tags', []))
+
+        # Get posting rules
+        rules = group.get('posting_rules', {})
+        promo_allowed = rules.get('promo_allowed', True)
+        content_only = rules.get('content_only', None)
 
         # Get history for this group
         group_history = self.history.get(group_id, [])
@@ -111,12 +257,24 @@ class ContentManager:
 
         eligible = []
         for post in self.content:
+            # Skip page content for group posts
+            if post.get('content_type') == 'page':
+                continue
+
             # Check if content category matches group tags
             if post.get('category') not in group_tags:
                 continue
 
             # Check if already posted to this group
             if post['id'] in posted_content_ids:
+                continue
+
+            # If content_only is set, restrict to that category
+            if content_only and post.get('category') != content_only:
+                continue
+
+            # If promo not allowed, skip promotional categories
+            if not promo_allowed and post.get('category') in self.PROMO_CATEGORIES:
                 continue
 
             eligible.append(post)
@@ -221,6 +379,7 @@ class ContentManager:
         """
         Generate a complete post payload for a group.
         Returns None if no content available.
+        Respects posting_rules: skips CTA comment for no-promo groups.
         """
         # Select content
         post = self.select_content_for_group(group)
@@ -238,8 +397,14 @@ class ContentManager:
             base_path = self.settings['photos']['base_path']
             photo_path = f"{base_path}/{photo['filename']}"
 
-        # Select a soft CTA for the first comment
-        first_comment = random.choice(SOFT_CTAS)
+        # Check posting rules for CTA decisions
+        rules = group.get('posting_rules', {})
+        promo_allowed = rules.get('promo_allowed', True)
+
+        # Only add soft CTA comment if promo is allowed in this group
+        first_comment = None
+        if promo_allowed:
+            first_comment = random.choice(SOFT_CTAS)
 
         # Check if we need to capture rules for this group
         group_id = group['id']

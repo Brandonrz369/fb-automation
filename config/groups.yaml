@@ -1,7 +1,7 @@
 # LB Computer Help - Facebook Groups Configuration
 # =================================================
-# UPDATED: February 9, 2026 - Synced with user's 92-group /groups/joins/ list
-# SOURCE: User-provided group list from /groups/joins/ + Browser Use scrape history
+# UPDATED: February 11, 2026 - Rules-based re-architecture after 10-batch scrape
+# SOURCE: User-provided group list + Browser Use rules scraping (batches 1-10)
 #
 # audience_segment: Determines which text variation to use
 #   - community: Friendly neighbor tone
@@ -16,6 +16,21 @@
 #   - 1: High volume community groups (post first)
 #   - 2: Business/niche groups (moderate frequency)
 #   - 3: Local city groups (rotation)
+#
+# type: "group" (default) or "page" (for Business Page)
+
+# ============================================
+# BUSINESS PAGE (separate from groups - posts Mon/Wed/Fri)
+# ============================================
+
+- id: "lb_computer_help_page"
+  name: "LB Computer Help Business Page"
+  url: "https://www.facebook.com/LBComputerHelp/"
+  audience_segment: "page"
+  content_tags: ["page_content"]
+  tier: 0
+  type: "page"
+  active: true
 
 # ============================================
 # TIER 1: HIGH-VOLUME OC COMMUNITY GROUPS
@@ -60,6 +75,11 @@
   content_tags: ["dusty", "repairs", "tips", "promo"]
   tier: 1
   active: true
+  posting_rules:
+    promo_allowed: true
+    promo_days: ["any"]
+    max_frequency: "1 per week"
+    special: "STRICT - Banned if more than 1 ad per week"
 
 - id: "fullerton_friends"
   name: "Fullerton Friends"
@@ -68,6 +88,11 @@
   content_tags: ["dusty", "repairs", "tips", "security"]
   tier: 1
   active: true
+  posting_rules:
+    promo_allowed: true
+    promo_days: ["wednesday", "thursday"]
+    max_frequency: "1 per day"
+    special: "Must be Fullerton-related; no repost within month; admin approval"
 
 - id: "orange_county_general"
   name: "Orange County"
@@ -76,6 +101,10 @@
   content_tags: ["dusty", "repairs", "tips", "security", "promo"]
   tier: 1
   active: true
+  posting_rules:
+    promo_allowed: true
+    promo_days: ["any"]
+    special: "Zero tolerance for spam - keep posts value-driven"
 
 - id: "oc_daily_post"
   name: "Orange County (Daily Post)"
@@ -104,6 +133,10 @@
   content_tags: ["network", "security", "promo", "repairs"]
   tier: 2
   active: true
+  posting_rules:
+    promo_allowed: true
+    promo_days: ["any"]
+    special: "Only businesses near Buena Park; admin approval"
 
 - id: "oc_business_networking_1"
   name: "Orange County Business Networking"
@@ -112,6 +145,10 @@
   content_tags: ["network", "security", "promo", "repairs"]
   tier: 2
   active: true
+  posting_rules:
+    promo_allowed: true
+    promo_days: ["any"]
+    special: "English only; no politics/religion; no duplicates"
 
 - id: "oc_business_networking_2"
   name: "Orange County Business Networking"
@@ -136,6 +173,10 @@
   content_tags: ["network", "security", "promo", "repairs"]
   tier: 2
   active: true
+  posting_rules:
+    promo_allowed: true
+    promo_days: ["any"]
+    special: "Restrictions on marketers; follow group schedule; be cautious"
 
 - id: "ca_business_entrepreneurs"
   name: "Business | Business Group | Entrepreneurs | Startups Owners California USA"
@@ -181,17 +222,23 @@
   name: "SoCal Business Networking | oGoing"
   url: "https://www.facebook.com/groups/socalbusiness/"
   audience_segment: "b2b"
-  content_tags: ["network", "security", "promo"]
+  content_tags: ["network", "security"]
   tier: 2
-  active: true
+  active: false  # Self-promotion explicitly banned
+  posting_rules:
+    promo_allowed: false
+    reason: "Self-promotion explicitly banned"
 
 - id: "oc_contractors"
   name: "Contractors, Handymen & Home Improvement Suppliers in Orange County, CA"
   url: "https://www.facebook.com/groups/occontractorhandyman/"
   audience_segment: "b2b"
-  content_tags: ["network", "promo", "repairs"]
+  content_tags: ["network"]
   tier: 2
-  active: true
+  active: false  # No self-promotion (rules in Vietnamese)
+  posting_rules:
+    promo_allowed: false
+    reason: "No self-promotion allowed"
 
 - id: "cerritos_business"
   name: "Open for Business! Cerritos"
@@ -200,6 +247,10 @@
   content_tags: ["network", "promo", "repairs"]
   tier: 2
   active: true
+  posting_rules:
+    promo_allowed: true
+    promo_days: ["any"]
+    special: "Run by Chamber of Commerce; encourages business updates"
 
 - id: "tustin_moms"
   name: "Tustin Moms"
@@ -208,6 +259,10 @@
   content_tags: ["tips", "security", "smart_home", "repairs"]
   tier: 2
   active: true
+  posting_rules:
+    promo_allowed: true
+    promo_days: ["any"]
+    special: "Tustin/mama-related content encouraged"
 
 # ============================================
 # TIER 3: LOCAL CITY & COMMUNITY GROUPS
@@ -251,17 +306,23 @@
   name: "Westminster Community Forum"
   url: "https://www.facebook.com/groups/331325404137008/"
   audience_segment: "community"
-  content_tags: ["dusty", "repairs", "tips", "security"]
+  content_tags: ["tips", "security"]
   tier: 3
-  active: true
+  active: false  # No promos allowed
+  posting_rules:
+    promo_allowed: false
+    reason: "No promos"
 
 - id: "explore_westminster"
   name: "Explore Westminster"
   url: "https://www.facebook.com/groups/1036775379839884/"
   audience_segment: "community"
-  content_tags: ["dusty", "repairs", "tips"]
+  content_tags: ["tips"]
   tier: 3
-  active: true
+  active: false  # No promos allowed
+  posting_rules:
+    promo_allowed: false
+    reason: "No promos"
 
 - id: "westminster_buy_sell"
   name: "Westminster CommUNITY Buy n Sell"
@@ -277,9 +338,12 @@
   name: "Talk of Tustin - What's The Buzz?"
   url: "https://www.facebook.com/groups/483423102042355/"
   audience_segment: "community"
-  content_tags: ["dusty", "repairs", "tips"]
+  content_tags: ["tips"]
   tier: 3
-  active: true
+  active: false  # No business promos, non-profit only, posting paused
+  posting_rules:
+    promo_allowed: false
+    reason: "No business promos, non-profit only"
 
 - id: "tustin_camino_real"
   name: "Communities @ Camino Real Park Tustin, Ca"
@@ -296,6 +360,11 @@
   content_tags: ["promo", "repairs"]
   tier: 3
   active: true
+  posting_rules:
+    promo_allowed: true
+    promo_days: ["friday"]
+    max_frequency: "1 per week"
+    special: "Promos on FRIDAYS ONLY"
 
 - id: "tustin_community"
   name: "Tustin Community"
@@ -342,6 +411,11 @@
   content_tags: ["dusty", "repairs", "tips"]
   tier: 3
   active: true
+  posting_rules:
+    promo_allowed: true
+    promo_days: ["any"]
+    max_frequency: "1 per week"
+    special: "Promos 1x/week; admin moderation"
 
 # --- Santa Ana ---
 
@@ -383,7 +457,11 @@
   audience_segment: "marketplace"
   content_tags: ["promo", "repairs"]
   tier: 3
-  active: false  # NOT in user's Feb 9 group list - may have left/been removed
+  active: true  # Confirmed accessible; promos allowed (no animal sales, no fake jobs)
+  posting_rules:
+    promo_allowed: true
+    promo_days: ["any"]
+    special: "No animal sales, no fake jobs/housing"
 
 # --- Fullerton / Placentia ---
 
@@ -391,9 +469,12 @@
   name: "Fun in Fullerton"
   url: "https://www.facebook.com/groups/funinfullerton/"
   audience_segment: "community"
-  content_tags: ["dusty", "repairs", "tips"]
+  content_tags: ["tips"]
   tier: 3
-  active: true
+  active: false  # NO ads, events only
+  posting_rules:
+    promo_allowed: false
+    reason: "NO ads, events only"
 
 - id: "real_fullerton_buzz"
   name: "The Real Fullerton Buzz"
@@ -436,14 +517,23 @@
   content_tags: ["dusty", "repairs", "tips"]
   tier: 3
   active: true
+  posting_rules:
+    promo_allowed: true
+    promo_days: ["wednesday", "thursday"]
+    max_frequency: "1 per day"
+    special: "Admin approves all posts"
 
 - id: "buena_park_police"
   name: "Buena Park Police Department Community Page"
   url: "https://www.facebook.com/groups/BuenaParkPD/"
   audience_segment: "community"
-  content_tags: ["security", "tips"]
+  content_tags: ["security"]
   tier: 3
   active: true
+  posting_rules:
+    promo_allowed: false
+    content_only: "security"
+    reason: "Police community page - security/tips content only"
 
 # --- Garden Grove ---
 
@@ -459,9 +549,13 @@
   name: "Garden Grove Crime Blog & Safe Community Initiative"
   url: "https://www.facebook.com/groups/gardengrovecrimeblog/"
   audience_segment: "community"
-  content_tags: ["security", "tips"]
+  content_tags: ["security"]
   tier: 3
   active: true
+  posting_rules:
+    promo_allowed: false
+    content_only: "security"
+    reason: "Crime/safety content only - security posts welcome"
 
 - id: "garden_grove_whats_going_on"
   name: "Garden Grove: What's going on?"
@@ -503,9 +597,12 @@
   name: "Orange County, California (South)"
   url: "https://www.facebook.com/groups/158014559063/"
   audience_segment: "community"
-  content_tags: ["dusty", "repairs", "tips"]
+  content_tags: ["tips", "security"]
   tier: 3
-  active: true
+  active: false  # Rule 3 forbids sales/trades
+  posting_rules:
+    promo_allowed: false
+    reason: "Rule 3 forbids sales/trades"
 
 - id: "oc_regional_mix"
   name: "OC ORANGE RIVERSIDE LOS ANGELES COSTA MESA SANTA ANA ANAHEIM GARDEN STANTON"
@@ -521,9 +618,12 @@
   name: "Buena Park, La Habra, La Mirada, Anaheim and Fullerton buy or sell online"
   url: "https://www.facebook.com/groups/389706524993519/"
   audience_segment: "marketplace"
-  content_tags: ["promo", "repairs"]
+  content_tags: ["tips"]
   tier: 3
-  active: true
+  active: false  # Rules prohibit business advertising despite marketplace name
+  posting_rules:
+    promo_allowed: false
+    reason: "Rules prohibit business advertising"
 
 - id: "craigslist_oc"
   name: "Craigslist Orange, Santa Ana, Anaheim"
@@ -558,14 +658,22 @@
   content_tags: ["dusty", "repairs", "tips", "security"]
   tier: 3
   active: true
+  posting_rules:
+    promo_allowed: true
+    promo_days: ["any"]
+    max_frequency: "1 per week"
+    special: "No Real Estate; Cypress/nearby only; positive reviews only"
 
 - id: "oc_buy_sell_trade"
   name: "Orange County Ca, Buy, Sell, trade."
   url: "https://www.facebook.com/groups/252604718266565/"
   audience_segment: "marketplace"
-  content_tags: ["promo", "repairs"]
+  content_tags: ["tips"]
   tier: 3
-  active: true
+  active: false  # Explicitly forbids business-style posts despite group name
+  posting_rules:
+    promo_allowed: false
+    reason: "No business-style posts allowed"
 
 - id: "city_of_orange"
   name: "City of Orange Community Group"
@@ -595,25 +703,35 @@
   name: "My Anaheim"
   url: "https://www.facebook.com/groups/MemoriesOfAnaheim/"
   audience_segment: "community"
-  content_tags: ["dusty", "repairs", "tips"]
+  content_tags: ["tips", "security"]
   tier: 3
   active: true
+  posting_rules:
+    promo_allowed: false
+    content_only: "tips"
+    reason: "Admins highlight businesses but no member promos allowed"
 
 - id: "grew_up_anaheim"
   name: "You know you grew up in Anaheim if..."
   url: "https://www.facebook.com/groups/130782153682804/"
   audience_segment: "community"
-  content_tags: ["dusty", "tips"]
+  content_tags: ["tips"]
   tier: 3
-  active: true
+  active: false  # Rule 3: No promotions or spam (nostalgia group)
+  posting_rules:
+    promo_allowed: false
+    reason: "Rule 3: No promotions or spam"
 
 - id: "anaheim_community_group"
   name: "Anaheim Community Group"
   url: "https://www.facebook.com/groups/9771648952962597/"
   audience_segment: "community"
-  content_tags: ["dusty", "repairs", "tips", "security"]
+  content_tags: ["tips", "security"]
   tier: 3
-  active: true
+  active: false  # Rule 3: No promotions or spam; no GoFundMe
+  posting_rules:
+    promo_allowed: false
+    reason: "Rule 3: No promotions or spam"
 
 - id: "anaheim_hills_buzzkill"
   name: "Anaheim Hills Buzzkill"
@@ -643,25 +761,34 @@
   name: "Vecinos en Anaheim CA"
   url: "https://www.facebook.com/groups/900238494631250/"
   audience_segment: "community"
-  content_tags: ["dusty", "repairs", "tips"]
+  content_tags: ["tips"]
   tier: 3
-  active: true
+  active: false  # Anti-commercial tone, no scams warning
+  posting_rules:
+    promo_allowed: false
+    reason: "No scams - anti-commercial tone"
 
 - id: "crosspointe_anaheim"
   name: "Crosspointe Anaheim Buzz"
   url: "https://www.facebook.com/groups/crosspointeanaheim/"
   audience_segment: "community"
-  content_tags: ["dusty", "repairs", "tips"]
+  content_tags: ["tips"]
   tier: 3
-  active: true
+  active: false  # Rule 3: No promotions or spam
+  posting_rules:
+    promo_allowed: false
+    reason: "Rule 3: No promotions or spam"
 
 - id: "orange_county_beach"
   name: "Orange County"
   url: "https://www.facebook.com/groups/2200032550/"
   audience_segment: "community"
-  content_tags: ["dusty", "repairs", "tips", "security", "promo"]
-  tier: 1
-  active: true
+  content_tags: ["tips", "security"]
+  tier: 3
+  active: false  # Rule 6 explicitly bans self-promotion and spam
+  posting_rules:
+    promo_allowed: false
+    reason: "Rule 6: No promotions or spam"
 
 # ============================================
 # NEW GROUPS (Added Feb 9, 2026 - from updated /groups/joins/ scrape)
@@ -859,35 +986,28 @@
 # CONFIGURATION NOTES
 # ============================================
 #
-# UPDATED: February 9, 2026 - Synced with user's /groups/joins/ (92 total groups)
+# UPDATED: February 11, 2026 - Rules-based re-architecture
+# Data: 72 groups scraped via Browser Use (10 batches, $~1.10 total)
 #
-# Total Entries: 96 (90 active + 6 inactive)
-# Active Groups: 90 (excludes 2 personal interest groups + 6 possibly-left groups)
-# Source: User-provided group list from /groups/joins/ on Feb 9, 2026
+# POSTING CATEGORIES (from scraping):
+#   - BANNED (active: false): 16 groups explicitly ban promos
+#   - TIPS ONLY (active: true, security/tips tags only): 3 groups
+#   - DAY RESTRICTED: 3 groups (Wed/Thu: fullerton_friends, buena_park_friends; Fri: tustin_trash_treasure)
+#   - FREQUENCY LIMITED: 3 groups (1/week: regional_placentia, costa_mesa_buzz, cypress_community_original)
+#   - ALLOWED: ~25 groups allow promos freely
+#   - CAUTION (no rules found): ~15 groups - use community/tips content
 #
-# Tier Distribution (active only):
-#   - Tier 1 (high volume): 9 groups
-#   - Tier 2 (business/niche): 22 groups (+4 new, was 18)
-#   - Tier 3 (local city rotation): 59 groups (+16 new, -6 left, was 49)
+# Active Groups: ~73 (was 90 before rules audit)
+# Deactivated: 23 total (16 promo-banned + 5 possibly-left + 2 content-unavailable)
 #
-# New Groups Added (Feb 9): 20 total
-#   - 4 business networking (tier 2)
-#   - 8 community (tier 3)
-#   - 6 marketplace/buy-sell (tier 3)
-#   - 2 jobs/hiring (tier 3)
-#   NOTE: All 20 new groups have PENDING_URL - need Browser Use scrape to get URLs
+# NEW posting_rules field added to groups with known constraints:
+#   promo_allowed: true/false
+#   promo_days: list of allowed days or ["any"]
+#   max_frequency: e.g. "1 per week"
+#   content_only: restriction like "security" or "tips"
+#   special: human-readable notes
 #
-# Possibly Left/Removed (6 groups, marked active: false):
-#   - Westminster California Community Forum
-#   - Westminster CA Westside Community Discussion Group
-#   - Westminster CA Residents CommUNITY
-#   - Tustin Community
-#   - Irvine Community Forum
-#   - EL TIANGUIS DE SANTA ANA
-#
-# Also available on Business Page (LB Computer Help): 38 groups
-# 27 of those are NOT on personal profile - URLs provided separately
-# User can join those on personal profile for expanded reach
+# PENDING_URL groups (20): Still need URL scraping from Facebook
 #
 # Excluded from config (personal interest, not business):
 #   - Monk Fruit (/groups/653396725172763/)
