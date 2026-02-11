@@ -1,0 +1,132 @@
+# LB Computer Help - Bi-Weekly Posting Schedule
+# ===============================================
+# GENERATED: February 10, 2026
+# LOGIC: 77 active groups assigned to 14-day cycle (Week A / Week B)
+#
+# How it works:
+# - Week A starts on an even ISO week number, Week B on odd
+# - Each group appears ONCE per 14-day cycle (except 1/week and day-restricted groups)
+# - Day-restricted groups are ANCHORED to their allowed days
+# - 1/week groups appear in BOTH weeks
+# - Load balanced: 5-6 posts per day
+#
+# To determine current week: ISO week number % 2
+#   Even week = Week A, Odd week = Week B
+#
+# Groups are listed in priority order (Tier 1 first)
+#
+# CHANGES: Edit this file to reassign groups to different days.
+# The schedule generator in content_manager.py reads this file.
+
+week_a:
+  monday:
+    - regional_placentia       # T1, 1/week, community
+    - my_anaheim               # T3, tips-only (no promo)
+    - ca_business_entrepreneurs # T2, b2b
+    - westminster_community    # T3, community
+    - whats_up_cypress         # T3, community
+    - jobs_oc                  # T3, community
+
+  tuesday:
+    - costa_mesa_buzz          # T3, 1/week, community
+    - anything_oc              # T1, community
+    - s_oc_business            # T2, b2b
+    - anaheim_hills_buzz       # T3, community
+    - oc_regional_mix          # T3, community
+    - westminster_buy_sell     # T3, marketplace
+
+  wednesday:
+    - fullerton_friends        # T1, Wed/Thu ONLY
+    - anaheim_connect          # T1, community
+    - oc_la_business_networking # T2, b2b
+    - santa_ana_california     # T3, community
+    - anaheim_hills_buzzkill   # T3, community
+    - cypress_buy_sell         # T3, marketplace
+
+  thursday:
+    - buena_park_friends       # T3, Wed/Thu ONLY
+    - orange_county_general    # T1, community
+    - tustin_moms              # T2, parent
+    - santa_ana_better_community # T3, community
+    - anaheim_community_2      # T3, community
+    - buy_sell_anaheim         # T3, marketplace
+
+  friday:
+    - tustin_trash_treasure    # T3, Fri ONLY, 1/week
+    - oc_small_business        # T2, b2b
+    - hb_business_network      # T2, b2b
+    - real_fullerton_buzz      # T3, community
+    - orange_county_dot        # T3, community
+    - oc_craigslist_2          # T3, marketplace
+
+  saturday:
+    - cypress_community_original # T3, 1/week, community
+    - oc_business_networking_1 # T2, b2b
+    - contractor_connection_oc # T2, b2b
+    - placentia_news           # T3, community
+    - grew_up_orange           # T3, community
+    - buy_sell_anaheim_2       # T3, marketplace
+
+  sunday:
+    - buena_park_police        # T3, security-only (no promo)
+    - oc_business_networking_3 # T2, b2b
+    - n_oc_business_networking # T2, b2b
+    - garden_grove_neighbors   # T3, community
+    - anaheim_neighborhood_watch # T3, community
+    - anaheim_marketplace      # T3, marketplace
+
+week_b:
+  monday:
+    - regional_placentia       # T1, 1/week, community
+    - oc_city_neighbors        # T1, community
+    - supporting_small_biz_socal # T2, b2b
+    - yorba_linda_community    # T3, community
+    - city_of_orange           # T3, community
+    - el_tianguis_santa_ana    # T3, marketplace
+
+  tuesday:
+    - costa_mesa_buzz          # T3, 1/week, community
+    - oc_word_of_mouth         # T1, community
+    - cerritos_business        # T2, b2b
+    - santa_ana_vecinos        # T3, community
+    - anaheim_hills_neighbors  # T3, community
+    - craigslist_oc            # T3, marketplace
+
+  wednesday:
+    - fullerton_friends        # T1, Wed/Thu ONLY
+    - oc_daily_post            # T1, community
+    - support_small_biz_oc     # T2, b2b
+    - santa_ana_costa_mesa     # T3, community
+    - orange_buzz_ii           # T3, community
+    - craigslist_westminster_gg # T3, marketplace
+
+  thursday:
+    - buena_park_friends       # T3, Wed/Thu ONLY
+    - buena_park_small_business # T2, b2b
+    - oc_community_multi_city  # T2, community
+    - fullerton_community_post # T3, community
+    - orange_county_ca_dot     # T3, community
+    - craigslist_anaheim_multi # T3, marketplace
+
+  friday:
+    - tustin_trash_treasure    # T3, Fri ONLY, 1/week
+    - oc_business_networking_2 # T2, b2b
+    - s_oc_business_networking # T2, b2b
+    - real_placentia_buzz      # T3, community
+    - anaheim_residents        # T3, community
+    - sell_everything_anaheim  # T3, marketplace
+
+  saturday:
+    - cypress_community_original # T3, 1/week, community
+    - oc_business_networking_experts # T2, b2b
+    - oc_small_biz_networking  # T2, b2b
+    - garden_grove_whats_going_on # T3, community
+    - neighbors_santa_ana      # T3, community
+    - anaheim_yard_sale        # T3, marketplace
+
+  sunday:
+    - garden_grove_crime       # T3, security-only (no promo)
+    - ca_entrepreneurs         # T2, b2b
+    - tustin_camino_real       # T3, community
+    - cypress_neighborhood     # T3, community
+    - hiring_anaheim           # T3, community

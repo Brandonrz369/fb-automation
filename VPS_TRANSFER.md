@@ -179,20 +179,24 @@ fb-automation/
 
 ### Code Flow
 1. `run.sh` → `main.py --api` → `ContentManager.select_groups_for_today()`
-2. Content manager filters by: active, tier rotation, day restrictions, frequency limits
-3. For each group: `generate_post_payload()` → matches content to group tags + audience
-4. Browser agent posts via Browser Use Cloud API (ClipboardEvent paste + JS post button)
-5. History recorded, next group selected
+2. Content manager reads `weekly_schedule.yaml` to get today's assigned groups
+3. Groups filtered by: active status + 14-day cooldown safety check
+4. For each group: `generate_post_payload()` → matches content to group tags + audience
+5. Browser agent posts via Browser Use Cloud API (ClipboardEvent paste + JS post button)
+6. History recorded, next group selected
 
-### Rules Enforcement (NEW - Feb 10, 2026)
-- `posting_rules.promo_days` → `_is_allowed_today()` checks day-of-week
-- `posting_rules.max_frequency` → `_check_frequency_limit()` checks history
-- `posting_rules.content_only` → `get_eligible_content()` restricts categories
-- `posting_rules.promo_allowed: false` → `generate_post_payload()` skips CTA comment
-- Groups with `active: false` are completely skipped
+### Bi-Weekly Schedule System (NEW - Feb 10, 2026)
+- `config/weekly_schedule.yaml` assigns EVERY active group to a specific day
+- 14-day rotation: Week A (even ISO weeks) / Week B (odd ISO weeks)
+- ~6 posts per day, evenly distributed across all 7 days
+- Day-restricted groups anchored: fullerton_friends (Wed), buena_park_friends (Thu), tustin_trash_treasure (Fri)
+- 1/week groups (regional_placentia, costa_mesa_buzz, cypress_community_original) appear in BOTH weeks
+- Tips-only groups (buena_park_police, garden_grove_crime, my_anaheim) get only security/tips content
+- No-promo groups get no CTA first comment
+- Cooldown safety net: even if scheduled, a group won't post if within 14-day window
 
 ### Key Settings (config/settings.yaml)
-- `posting.max_posts_per_day: 5` (safe limit)
+- `posting.max_posts_per_day: 6` (matches schedule's 6/day target)
 - `posting.dry_run: true` (CHANGE TO false for production)
 - `posting.delays.min_between_posts: 65` (minutes)
 - `posting.delays.max_between_posts: 140` (minutes)

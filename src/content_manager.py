@@ -35,6 +35,12 @@ class ContentManager:
         # Load group rules (personal account)
         self.group_rules = self._load_yaml("group_rules_personal.yaml") or {}
 
+        # Load bi-weekly posting schedule
+        self.weekly_schedule = self._load_yaml("weekly_schedule.yaml") or {}
+
+        # Build group lookup by id
+        self._group_lookup = {g['id']: g for g in self.groups}
+
         # Load posting history
         self.history = self._load_history()
 
@@ -112,47 +118,48 @@ class ContentManager:
         last_time = datetime.fromisoformat(last_post['timestamp'])
         return (datetime.now() - last_time).days
 
+    def _get_current_week(self) -> str:
+        """Determine if we're in Week A or Week B.
+        Even ISO week = Week A, Odd ISO week = Week B."""
+        iso_week = datetime.now().isocalendar()[1]
+        return 'week_a' if iso_week % 2 == 0 else 'week_b'
+
     def select_groups_for_today(self) -> List[Dict]:
         """
-        Select groups to post to today based on tier rotation, history,
-        day-of-week restrictions, and frequency limits from posting_rules.
-        Returns a list of groups (excludes Business Page - see select_page_for_today).
+        Select groups to post to today using the bi-weekly schedule.
+
+        Uses weekly_schedule.yaml which assigns specific groups to specific days
+        in a 14-day rotation (Week A / Week B). This ensures:
+        - Day-restricted groups only appear on their allowed days
+        - 1/week groups appear in both weeks
+        - Even load distribution (~6 posts/day)
+        - Every active group is covered within 14 days
+
+        Falls back to frequency-limit checking as a safety net.
+        Returns a list of group dicts (excludes Business Page).
         """
+        today_name = self.DAY_NAMES[datetime.now().weekday()]
+        current_week = self._get_current_week()
+
+        # Get today's scheduled group IDs from the bi-weekly schedule
+        week_schedule = self.weekly_schedule.get(current_week, {})
+        today_group_ids = week_schedule.get(today_name, [])
+
+        if not today_group_ids:
+            return []
+
+        # Resolve group IDs to full group dicts, with safety checks
         selected = []
-        day_of_week = datetime.now().weekday()  # 0=Monday, 6=Sunday
-
-        # Tier 1: Post to 1-2 high-volume groups daily
-        tier1_groups = [
-            g for g in self.get_active_groups(tier=1)
-            if self._is_allowed_today(g) and self._check_frequency_limit(g)
-        ]
-        random.shuffle(tier1_groups)
-        selected.extend(tier1_groups[:2])
-
-        # Tier 2: Post to 1-2 niche groups every other day
-        if day_of_week in [0, 2, 4]:  # Mon, Wed, Fri
-            tier2_groups = [
-                g for g in self.get_active_groups(tier=2)
-                if self._is_allowed_today(g) and self._check_frequency_limit(g)
-            ]
-            if tier2_groups:
-                random.shuffle(tier2_groups)
-                selected.extend(tier2_groups[:2])
-
-        # Tier 3: Rotate through local groups (1-2 per day)
-        tier3_groups = [
-            g for g in self.get_active_groups(tier=3)
-            if self._is_allowed_today(g) and self._check_frequency_limit(g)
-        ]
-        if tier3_groups:
-            day_of_year = datetime.now().timetuple().tm_yday
-            tier3_index = day_of_year % len(tier3_groups)
-            selected.append(tier3_groups[tier3_index])
-            # Add a second tier 3 group if available
-            if len(tier3_groups) > 1:
-                tier3_index2 = (day_of_year + len(tier3_groups) // 2) % len(tier3_groups)
-                if tier3_index2 != tier3_index:
-                    selected.append(tier3_groups[tier3_index2])
+        for gid in today_group_ids:
+            group = self._group_lookup.get(gid)
+            if not group:
+                continue
+            if not group.get('active', False):
+                continue
+            # Safety: still check frequency limit (prevents double-posting)
+            if not self._check_frequency_limit(group):
+                continue
+            selected.append(group)
 
         # Limit to max posts per day
         max_posts = self.settings['posting']['max_posts_per_day']

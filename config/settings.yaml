@@ -9,9 +9,11 @@ browser_use:
 
 # Posting Configuration
 posting:
-  # How many groups to post to per day (random between min and max)
-  min_posts_per_day: 3
-  max_posts_per_day: 5
+  # How many groups to post to per day
+  # Schedule targets 6/day (bi-weekly rotation covers all 77 groups in 14 days)
+  # Tested 13/day safely on Feb 6, so 6 is very conservative
+  min_posts_per_day: 5
+  max_posts_per_day: 6
 
   # Time window for posting (24-hour format)
   # Posts will be randomly distributed within this window
