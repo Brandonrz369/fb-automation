@@ -17,15 +17,19 @@ For VPS deployment, run via cron:
 """
 
 import argparse
+import fcntl
 import json
 import logging
 import os
 import random
 import sys
+import tempfile
 import time
+import traceback
 from datetime import datetime
 from pathlib import Path
 from dotenv import load_dotenv
+import requests as http_requests
 
 # Add src to path for imports
 sys.path.insert(0, str(Path(__file__).parent))
@@ -45,6 +49,77 @@ LOG_DIR = DATA_DIR / "logs"
 # Ensure directories exist
 DATA_DIR.mkdir(exist_ok=True)
 LOG_DIR.mkdir(exist_ok=True)
+
+# Cooldown and lock files
+COOLDOWN_FILE = DATA_DIR / "cooldown.txt"
+LOCK_FILE = Path("/tmp/fb_automation.lock")
+lock_file_handle = None
+
+
+# ========================================
+# Alerting: Discord/Telegram Webhook
+# ========================================
+
+def send_alert(message: str, priority: str = "info"):
+    """Send alert via Discord webhook. Set DISCORD_WEBHOOK_URL in .env."""
+    webhook_url = os.environ.get('DISCORD_WEBHOOK_URL', '')
+    if not webhook_url:
+        return  # No webhook configured, skip silently
+
+    prefix = {
+        'info': '',
+        'success': '**OK:** ',
+        'warning': '**WARNING:** ',
+        'error': '**ERROR:** ',
+        'critical': '**CRITICAL:** ',
+    }.get(priority, '')
+
+    payload = {"content": f"{prefix}{message}"}
+    try:
+        http_requests.post(webhook_url, json=payload, timeout=10)
+    except Exception:
+        pass  # Can't alert if network is down
+
+
+def check_cooldown() -> bool:
+    """Check if we're in CAPTCHA cooldown (24h auto-pause).
+    Returns True if in cooldown (should exit)."""
+    if COOLDOWN_FILE.exists():
+        try:
+            timestamp = float(COOLDOWN_FILE.read_text().strip())
+            elapsed = time.time() - timestamp
+            if elapsed < 86400:  # 24 hours
+                hours_left = (86400 - elapsed) / 3600
+                return True
+            else:
+                COOLDOWN_FILE.unlink()  # Cooldown expired, remove
+        except (ValueError, OSError):
+            COOLDOWN_FILE.unlink(missing_ok=True)
+    return False
+
+
+def trigger_cooldown(reason: str = "Facebook security check detected"):
+    """Enter 24h cooldown mode and alert."""
+    COOLDOWN_FILE.write_text(str(time.time()))
+    send_alert(
+        f"CAPTCHA/Security detected: {reason}. "
+        f"Bot paused for 24 hours. Manual review needed.",
+        "critical"
+    )
+
+
+def acquire_lock() -> bool:
+    """Prevent overlapping cron runs using file lock.
+    Returns True if lock acquired, False if another instance running."""
+    global lock_file_handle
+    lock_file_handle = open(LOCK_FILE, 'w')
+    try:
+        fcntl.lockf(lock_file_handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        lock_file_handle.write(str(os.getpid()))
+        lock_file_handle.flush()
+        return True
+    except IOError:
+        return False
 
 
 def setup_logging(level: str = "INFO"):
@@ -164,11 +239,25 @@ def run_daily_cycle(cm: ContentManager, agent: BrowserAgent, logger: logging.Log
             logger.error(f"Error: {result.error}")
             failure_count += 1
 
+            # Check for CAPTCHA/security check in error message
+            error_text = str(result.message or '') + str(result.error or '')
+            captcha_signals = ['captcha', 'verify', 'unusual activity',
+                             'security check', 'blocked', 'FAILED_BLOCKED']
+            if any(sig.lower() in error_text.lower() for sig in captcha_signals):
+                logger.critical("CAPTCHA/Security check detected! Entering 24h cooldown.")
+                trigger_cooldown(error_text[:200])
+                break
+
             # Check for safety threshold
             if failure_count >= cm.settings['safety']['max_failures']:
                 logger.critical("Max failures reached - creating pause file")
                 pause_file = DATA_DIR / cm.settings['safety']['pause_file']
                 pause_file.write_text(f"Paused at {datetime.now()} after {failure_count} failures")
+                send_alert(
+                    f"Max failures ({failure_count}) reached. Bot paused. "
+                    f"Last error: {error_text[:150]}",
+                    "error"
+                )
                 break
 
         # Random delay before next post (humanization)
@@ -392,6 +481,20 @@ def main():
     # Setup logging
     logger = setup_logging(args.log_level)
 
+    # --- Safety checks for autonomous mode ---
+
+    # Check CAPTCHA cooldown (24h auto-pause)
+    if check_cooldown():
+        logger.warning("In CAPTCHA cooldown mode (24h). Exiting.")
+        sys.exit(0)
+
+    # Acquire process lock (prevent overlapping cron runs)
+    # Skip lock for read-only commands
+    if not args.status and not args.generate:
+        if not acquire_lock():
+            logger.warning("Another instance is running. Exiting.")
+            sys.exit(0)
+
     # Initialize content manager
     cm = ContentManager(CONFIG_DIR, DATA_DIR)
 
@@ -414,17 +517,38 @@ def main():
         api_key=api_key,
     )
 
-    # Execute requested action
-    if args.status:
-        show_status(cm, logger)
-    elif args.generate:
-        generate_posts_for_manual_execution(cm, logger)
-    elif args.post:
-        post_to_specific_group(cm, agent, args.post, logger)
-    elif args.page_only:
-        run_page_only(cm, agent, logger)
-    else:
-        run_daily_cycle(cm, agent, logger)
+    # Execute requested action with error handling
+    try:
+        if args.status:
+            show_status(cm, logger)
+        elif args.generate:
+            generate_posts_for_manual_execution(cm, logger)
+        elif args.post:
+            post_to_specific_group(cm, agent, args.post, logger)
+        elif args.page_only:
+            run_page_only(cm, agent, logger)
+        else:
+            run_daily_cycle(cm, agent, logger)
+
+        # Alert success for autonomous runs
+        if args.api and not dry_run:
+            stats = cm.get_stats()
+            week = cm._get_current_week()
+            send_alert(
+                f"Daily run complete ({week}). "
+                f"Posts today: {stats['posts_today']}. "
+                f"Week total: {stats['posts_this_week']}.",
+                "success"
+            )
+
+    except Exception as e:
+        error_msg = traceback.format_exc()
+        logger.critical(f"Unhandled exception: {error_msg}")
+        send_alert(
+            f"Script crashed: {str(e)[:200]}\n```{error_msg[-500:]}```",
+            "critical"
+        )
+        sys.exit(1)
 
 
 if __name__ == "__main__":

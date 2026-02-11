@@ -6,7 +6,9 @@ Handles content selection, photo matching, and history tracking.
 
 import yaml
 import json
+import os
 import random
+import tempfile
 from pathlib import Path
 from datetime import datetime, timedelta
 from typing import Optional, Dict, List, Any
@@ -51,16 +53,50 @@ class ContentManager:
             return yaml.safe_load(f)
 
     def _load_history(self) -> Dict:
-        """Load posting history from JSON file."""
+        """Load posting history from JSON file. Falls back to backup if corrupted."""
         if self.history_file.exists():
-            with open(self.history_file, 'r') as f:
-                return json.load(f)
+            try:
+                with open(self.history_file, 'r') as f:
+                    return json.load(f)
+            except (json.JSONDecodeError, ValueError):
+                # Try backup
+                backup = self.history_file.with_suffix('.json.bak')
+                if backup.exists():
+                    try:
+                        with open(backup, 'r') as f:
+                            return json.load(f)
+                    except (json.JSONDecodeError, ValueError):
+                        pass
+                return {}
         return {}
 
     def _save_history(self):
-        """Save posting history to JSON file."""
-        with open(self.history_file, 'w') as f:
-            json.dump(self.history, f, indent=2, default=str)
+        """Save posting history to JSON file using atomic write.
+        Writes to temp file first, then renames to prevent corruption."""
+        # Save backup
+        backup_file = self.history_file.with_suffix('.json.bak')
+        if self.history_file.exists():
+            try:
+                import shutil
+                shutil.copy2(self.history_file, backup_file)
+            except OSError:
+                pass
+
+        # Atomic write: write to temp file in same dir, then rename
+        fd, tmp_path = tempfile.mkstemp(
+            dir=self.history_file.parent, suffix='.tmp'
+        )
+        try:
+            with os.fdopen(fd, 'w') as f:
+                json.dump(self.history, f, indent=2, default=str)
+            os.replace(tmp_path, self.history_file)
+        except Exception:
+            # Clean up temp file on failure
+            try:
+                os.unlink(tmp_path)
+            except OSError:
+                pass
+            raise
 
     # Day name mapping for posting_rules.promo_days
     DAY_NAMES = {
